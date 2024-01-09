@@ -2,9 +2,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class UrlLauncher {
   Future<void> launchweb(Uri url) {
-    return launchUrl(url, mode: LaunchMode.externalApplication).then((value) {
-      print("hgkjagojdogjdjgjdp;dg");
-    });
+    return launchUrl(url, mode: LaunchMode.externalApplication);
   }
 
   Future<void> launchmail(Uri url) {
@@ -15,9 +13,6 @@ class UrlLauncher {
     print("maps starting");
     String googleUrl =
         'https://www.google.com/maps/place/The+LNM+Institute+of+Information+Technology/@26.9362886,75.9139619,16z/data=!4m10!1m2!2m1!1sThe+LNM+Institute+Of+Information+Technology!3m6!1s0x396dba21e8a1d1c9:0x5ab565cce4d44c2b!8m2!3d26.9362886!4d75.9234891!15sCitUaGUgTE5NIEluc3RpdHV0ZSBPZiBJbmZvcm1hdGlvbiBUZWNobm9sb2d5kgEKdW5pdmVyc2l0eeABAA!16s%2Fm%2F04cql40?entry=ttu';
-    String mapsUrl =
-        'https://www.google.com/maps/search/?api=1&query=The+LNM+Institute+of+Information+Technology&query_place_id=ChIJydGh6CG6bTkRK0zU5MxltVo';
-    Uri mapsUri = Uri.parse(mapsUrl);
     Uri googleUri = Uri.parse(googleUrl);
     launchUrl(googleUri);
 
@@ -38,5 +33,23 @@ class UrlLauncher {
   Future<void> callNumber(String num) async {
     Uri number = Uri.parse("tel:+91$num");
     launchUrl(number);
+  }
+
+  Future<void> launchInstaPage() async {
+    String instaPage = "https://www.instagram.com/vivacity_lnmiit";
+    Uri instaUri = Uri.parse(instaPage);
+    launchUrl(instaUri, mode: LaunchMode.externalApplication);
+  }
+
+  Future<void> launchLinkedInPage() async {
+    String linkedinPage = "https://www.linkedin.com/company/vivacity-lnmiit";
+    Uri linkedinUri = Uri.parse(linkedinPage);
+    launchUrl(linkedinUri, mode: LaunchMode.externalApplication);
+  }
+
+  Future<void> launchYtPage() async {
+    String ytPage = "https://www.youtube.com/@VivacityLNMIIT";
+    Uri ytUri = Uri.parse(ytPage);
+    launchUrl(ytUri, mode: LaunchMode.externalApplication);
   }
 }

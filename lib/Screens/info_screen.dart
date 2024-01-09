@@ -167,48 +167,63 @@ class InfoScreen extends StatelessWidget {
             ),
           ],
         ),
-        const Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              //insta
-              //TODO: Make this icon clickable to Insta page
-              Icon(
-                Icons.install_desktop,
-                size: 30,
-              ),
-              //linkedin
-              Icon(
-                //TODO: Make this icon clickable to linkedin page
-                Icons.linked_camera,
-                size: 30,
-              ),
-              //youtube
-              Icon(
-                //TODO: Make this icon clickable to Youtube page
-                Icons.video_call,
-                size: 30,
-              )
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+                padding: const EdgeInsets.all(25),
+                onPressed: () {
+                  launcher.launchInstaPage();
+                },
+                icon: SizedBox(
+                  height: 35,
+                  child: Image.asset(
+                    "assets/instagramlogo.png",
+                    fit: BoxFit.cover,
+                  ),
+                )),
+            IconButton(
+                padding: const EdgeInsets.all(25),
+                onPressed: () {
+                  launcher.launchLinkedInPage();
+                },
+                icon: SizedBox(
+                  height: 35,
+                  child: Image.asset(
+                    "assets/linkedinlogo.png",
+                    fit: BoxFit.cover,
+                  ),
+                )),
+            IconButton(
+                padding: const EdgeInsets.all(20),
+                onPressed: () {
+                  launcher.launchYtPage();
+                },
+                icon: SizedBox(
+                  height: 35,
+                  child: Image.asset(
+                    "assets/youtubelogo.png",
+                    fit: BoxFit.cover,
+                  ),
+                )),
+          ],
         ),
         const SizedBox(
-          height: 55,
+          height: 45,
         ),
         ListTile(
           textColor: Colors.white,
           enableFeedback: false,
           leading: const Text(
             "Adderess:",
-            style: TextStyle(fontSize: 23),
+            style: TextStyle(fontSize: 22),
           ),
           subtitle: const Text(
             "Rupa ki Nangal, Post-Sumel,Via Jamdoli, Jaipur, Rajasthan 302031",
             style: TextStyle(fontSize: 18),
           ),
           trailing: IconButton(
-            padding: const EdgeInsets.all(2),
+            padding: const EdgeInsets.all(5),
             onPressed: () {
               launcher.launchURL();
             },
