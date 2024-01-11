@@ -42,13 +42,25 @@ class _MyHomePageState extends State<MyHomePage> {
           });
         },
         destinations: const <Widget>[
-          NavigationDestination(icon: Icon(Icons.home_sharp), label: "Home"),
           NavigationDestination(
-              icon: Icon(Icons.checklist_rtl_sharp), label: "Schedule"),
-          NavigationDestination(icon: Icon(Icons.person), label: "Info"),
+              enabled: true,
+              icon: Icon(
+                Icons.home_sharp,
+                size: 35,
+              ),
+              label: "Home"),
+          NavigationDestination(
+              icon: Icon(Icons.checklist_rtl_sharp, size: 35),
+              label: "Schedule"),
+          NavigationDestination(
+              icon: Icon(
+                Icons.person,
+                size: 35,
+              ),
+              label: "Info"),
         ],
       ),
-      body: Center(child: screens[currentPageIndex]),
+      body: screens[currentPageIndex],
     );
   }
 }

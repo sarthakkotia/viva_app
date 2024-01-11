@@ -1,130 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:viva_app/Widgets/ContactUs_widget.dart';
 import 'package:viva_app/urllauncher.dart';
 
 UrlLauncher launcher = UrlLauncher();
-
-//TODO: Reasearch https://api.flutter.dev/flutter/widgets/precacheImage.html
 
 class InfoScreen extends StatelessWidget {
   const InfoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    double heightscreen = MediaQuery.of(context).size.height;
+    final bottomPadding = MediaQuery.of(context).padding.bottom;
+    final topPadding = MediaQuery.of(context).padding.top;
     AppBar ab = AppBar();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SizedBox(
-          height: ab.preferredSize.height - 20,
-        ),
-        const Padding(
-          padding: EdgeInsets.only(top: 20.0, bottom: 20),
-          child: Text(
-            "Contact Us",
-            style: TextStyle(fontSize: 25),
-          ),
-        ),
-        //TODO: Make contact number clickable
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  //TODO: Rounded Square
-                  const CircleAvatar(radius: 60),
-                  const Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
-                    child: Text(
-                      "placeholder 1",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      IconButton(
-                          onPressed: () async {
-                            await launcher.callNumber("");
-                          },
-                          icon: const Icon(Icons.call)),
-                      InkWell(
-                        borderRadius: BorderRadius.circular(60),
-                        onTap: () async {
-                          await launcher.callNumber("num");
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 5.0, horizontal: 4),
-                          child: Text(
-                            "Contact number",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  const CircleAvatar(radius: 60),
-                  const Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
-                    child: Text(
-                      "placeholder 1",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      IconButton(
-                          onPressed: () {
-                            launcher.callNumber("9461544075");
-                          },
-                          icon: const Icon(Icons.call)),
-                      InkWell(
-                        borderRadius: BorderRadius.circular(60),
-                        onTap: () {
-                          launcher.callNumber("9461544075");
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 5.0, horizontal: 4),
-                          child: Text(
-                            "9461544075",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 45,
-        ),
-        Column(
+    double heightfinal = heightscreen - bottomPadding - topPadding;
+    //TODO: Make it adaptable to screens
+    return SingleChildScrollView(
+      child: SizedBox(
+        height: heightfinal,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 12),
-                    child: IconButton(
-                        onPressed: () async {
-                          await launcher.launchMail();
-                        },
-                        icon: const Icon(Icons.mail_outline, size: 35)),
-                  ),
-                  InkWell(
+            SizedBox(
+              height: ab.preferredSize.height - 25,
+            ),
+            const Flexible(
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "Contact Us",
+                  style: TextStyle(fontSize: 25),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: heightscreen / 70,
+            ),
+            SizedBox(
+                height: heightfinal * 0.3, child: ContactUsWidget(launcher)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                    onPressed: () async {
+                      await launcher.launchMail();
+                    },
+                    icon: const Icon(Icons.mail_outline, size: 35)),
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: InkWell(
                     borderRadius: BorderRadius.circular(55),
                     onTap: () {
                       launcher.launchMail();
@@ -134,23 +58,23 @@ class InfoScreen extends StatelessWidget {
                       child: Text("vivacity@lnmiit.ac.in",
                           style: TextStyle(fontSize: 25)),
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                      iconSize: 38,
-                      onPressed: () async {
-                        await launcher.launchweb(
-                            Uri(scheme: "https", host: "vivacity.live"));
-                      },
-                      icon: const Icon(Icons.web)),
-                  InkWell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                    iconSize: 38,
+                    onPressed: () async {
+                      await launcher.launchweb(
+                          Uri(scheme: "https", host: "vivacity.live"));
+                    },
+                    icon: const Icon(Icons.web)),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: InkWell(
                     borderRadius: BorderRadius.circular(55),
                     onTap: () {
                       launcher.launchweb(
@@ -161,80 +85,89 @@ class InfoScreen extends StatelessWidget {
                       child:
                           Text("vivacity.live", style: TextStyle(fontSize: 25)),
                     ),
-                  )
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+              height: heightscreen / 60,
+            ),
+            SizedBox(
+              height: heightfinal * .15,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                      padding: const EdgeInsets.all(15),
+                      onPressed: () {
+                        launcher.launchInstaPage();
+                      },
+                      icon: SizedBox(
+                        height: 35,
+                        child: Image.asset(
+                          "assets/instagramlogo.png",
+                          fit: BoxFit.cover,
+                        ),
+                      )),
+                  IconButton(
+                      padding: const EdgeInsets.all(15),
+                      onPressed: () {
+                        launcher.launchLinkedInPage();
+                      },
+                      icon: SizedBox(
+                        height: 35,
+                        child: Image.asset(
+                          "assets/linkedinlogo.png",
+                          fit: BoxFit.cover,
+                        ),
+                      )),
+                  IconButton(
+                      padding: const EdgeInsets.all(15),
+                      onPressed: () {
+                        launcher.launchYtPage();
+                      },
+                      icon: SizedBox(
+                        height: 35,
+                        child: Image.asset(
+                          "assets/youtubelogo.png",
+                          fit: BoxFit.cover,
+                        ),
+                      )),
                 ],
+              ),
+            ),
+            SizedBox(
+              height: heightscreen / 60,
+            ),
+            //TODO: Add GMAPS Snippet
+            Expanded(
+              child: ListTile(
+                textColor: Colors.white,
+                enableFeedback: false,
+                leading: const Text(
+                  "Address:",
+                  style: TextStyle(fontSize: 22),
+                ),
+                subtitle: const Text(
+                  "Rupa ki Nangal, Post-Sumel,Via Jamdoli, Jaipur, Rajasthan 302031",
+                  style: TextStyle(fontSize: 18),
+                ),
+                trailing: IconButton(
+                  padding: const EdgeInsets.all(5),
+                  onPressed: () {
+                    launcher.launchURL();
+                  },
+                  color: Colors.white,
+                  icon: const Icon(
+                    Icons.location_on_outlined,
+                    size: 50,
+                  ),
+                ),
               ),
             ),
           ],
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-                padding: const EdgeInsets.all(25),
-                onPressed: () {
-                  launcher.launchInstaPage();
-                },
-                icon: SizedBox(
-                  height: 35,
-                  child: Image.asset(
-                    "assets/instagramlogo.png",
-                    fit: BoxFit.cover,
-                  ),
-                )),
-            IconButton(
-                padding: const EdgeInsets.all(25),
-                onPressed: () {
-                  launcher.launchLinkedInPage();
-                },
-                icon: SizedBox(
-                  height: 35,
-                  child: Image.asset(
-                    "assets/linkedinlogo.png",
-                    fit: BoxFit.cover,
-                  ),
-                )),
-            IconButton(
-                padding: const EdgeInsets.all(20),
-                onPressed: () {
-                  launcher.launchYtPage();
-                },
-                icon: SizedBox(
-                  height: 35,
-                  child: Image.asset(
-                    "assets/youtubelogo.png",
-                    fit: BoxFit.cover,
-                  ),
-                )),
-          ],
-        ),
-        const SizedBox(
-          height: 45,
-        ),
-        ListTile(
-          textColor: Colors.white,
-          enableFeedback: false,
-          leading: const Text(
-            "Adderess:",
-            style: TextStyle(fontSize: 22),
-          ),
-          subtitle: const Text(
-            "Rupa ki Nangal, Post-Sumel,Via Jamdoli, Jaipur, Rajasthan 302031",
-            style: TextStyle(fontSize: 18),
-          ),
-          trailing: IconButton(
-            padding: const EdgeInsets.all(5),
-            onPressed: () {
-              launcher.launchURL();
-            },
-            color: Colors.white,
-            icon: const Icon(
-              Icons.location_on_outlined,
-              size: 50,
-            ),
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
