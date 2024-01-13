@@ -14,125 +14,128 @@ class InfoScreen extends StatelessWidget {
     final topPadding = MediaQuery.of(context).padding.top;
     AppBar ab = AppBar();
     double heightfinal = heightscreen - bottomPadding - topPadding;
-    //TODO: Make it adaptable to screens
     return SingleChildScrollView(
       child: SizedBox(
-        height: heightfinal,
+        height: heightfinal + 10,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Expanded(
+                flex: 2, child: FittedBox(child: ContactUsWidget(launcher))),
             SizedBox(
-              height: ab.preferredSize.height - 25,
+              height: heightscreen / 70,
             ),
-            const Flexible(
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "Contact Us",
-                  style: TextStyle(fontSize: 25),
+            Expanded(
+              flex: 0,
+              child: FittedBox(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                        onPressed: () async {
+                          await launcher.launchMail();
+                        },
+                        icon: const Icon(Icons.mail_outline, size: 35)),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(55),
+                        onTap: () {
+                          launcher.launchMail();
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.only(right: 20.0, left: 20),
+                          child: FittedBox(
+                            child: Text("vivacity@lnmiit.ac.in",
+                                style: TextStyle(fontSize: 28)),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 0,
+              child: FittedBox(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                        iconSize: 38,
+                        onPressed: () async {
+                          await launcher.launchweb(
+                              Uri(scheme: "https", host: "vivacity.live"));
+                        },
+                        icon: const Icon(Icons.web)),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(55),
+                        onTap: () {
+                          launcher.launchweb(
+                              Uri(scheme: "https", host: "vivacity.live"));
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.only(right: 20.0, left: 20),
+                          child: Text("vivacity.live",
+                              style: TextStyle(fontSize: 28)),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),
             SizedBox(
-              height: heightscreen / 70,
+              height: heightscreen / 100,
             ),
-            SizedBox(
-                height: heightfinal * 0.3, child: ContactUsWidget(launcher)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                    onPressed: () async {
-                      await launcher.launchMail();
-                    },
-                    icon: const Icon(Icons.mail_outline, size: 35)),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(55),
-                    onTap: () {
-                      launcher.launchMail();
-                    },
-                    child: const Padding(
-                      padding: EdgeInsets.only(right: 20.0, left: 20),
-                      child: Text("vivacity@lnmiit.ac.in",
-                          style: TextStyle(fontSize: 25)),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                    iconSize: 38,
-                    onPressed: () async {
-                      await launcher.launchweb(
-                          Uri(scheme: "https", host: "vivacity.live"));
-                    },
-                    icon: const Icon(Icons.web)),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(55),
-                    onTap: () {
-                      launcher.launchweb(
-                          Uri(scheme: "https", host: "vivacity.live"));
-                    },
-                    child: const Padding(
-                      padding: EdgeInsets.only(right: 20.0, left: 20),
-                      child:
-                          Text("vivacity.live", style: TextStyle(fontSize: 25)),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
-              height: heightscreen / 60,
-            ),
-            SizedBox(
-              height: heightfinal * .15,
+            Flexible(
+              fit: FlexFit.loose,
+              flex: 1,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
-                      padding: const EdgeInsets.all(15),
-                      onPressed: () {
-                        launcher.launchInstaPage();
-                      },
-                      icon: SizedBox(
-                        height: 35,
-                        child: Image.asset(
-                          "assets/instagramlogo.png",
-                          fit: BoxFit.cover,
-                        ),
-                      )),
+                    padding: const EdgeInsets.all(15),
+                    onPressed: () {
+                      launcher.launchInstaPage();
+                    },
+                    icon: SizedBox(
+                      height: 45,
+                      child: Image.asset(
+                        "assets/instagramlogo.png",
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
                   IconButton(
-                      padding: const EdgeInsets.all(15),
-                      onPressed: () {
-                        launcher.launchLinkedInPage();
-                      },
-                      icon: SizedBox(
-                        height: 35,
-                        child: Image.asset(
-                          "assets/linkedinlogo.png",
-                          fit: BoxFit.cover,
-                        ),
-                      )),
+                    padding: const EdgeInsets.all(15),
+                    onPressed: () {
+                      launcher.launchLinkedInPage();
+                    },
+                    icon: SizedBox(
+                      height: 45,
+                      child: Image.asset(
+                        "assets/linkedinlogo.png",
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
                   IconButton(
-                      padding: const EdgeInsets.all(15),
-                      onPressed: () {
-                        launcher.launchYtPage();
-                      },
-                      icon: SizedBox(
-                        height: 35,
-                        child: Image.asset(
-                          "assets/youtubelogo.png",
-                          fit: BoxFit.cover,
-                        ),
-                      )),
+                    padding: const EdgeInsets.all(15),
+                    onPressed: () {
+                      launcher.launchYtPage();
+                    },
+                    icon: SizedBox(
+                      height: 45,
+                      child: Image.asset(
+                        "assets/youtubelogo.png",
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -141,15 +144,16 @@ class InfoScreen extends StatelessWidget {
             ),
             //TODO: Add GMAPS Snippet
             Expanded(
+              flex: 2,
               child: ListTile(
                 textColor: Colors.white,
                 enableFeedback: false,
                 leading: const Text(
                   "Address:",
-                  style: TextStyle(fontSize: 22),
+                  style: TextStyle(fontSize: 25),
                 ),
                 subtitle: const Text(
-                  "Rupa ki Nangal, Post-Sumel,Via Jamdoli, Jaipur, Rajasthan 302031",
+                  "Rupa ki Nangal, Post-Sumel,Via Jamdoli,Jaipur, Rajasthan",
                   style: TextStyle(fontSize: 18),
                 ),
                 trailing: IconButton(

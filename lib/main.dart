@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   //TODO: Make orientation permanent
+  //TODO: implement native splash screen using flutter_native_splash
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,

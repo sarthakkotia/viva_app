@@ -31,7 +31,13 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      appBar: currentPageIndex == 2
+          ? AppBar(
+              scrolledUnderElevation: 0,
+              centerTitle: true,
+              title: const Text("Contact Us", style: TextStyle(fontSize: 30)),
+            )
+          : null,
       primary: true,
       bottomNavigationBar: NavigationBar(
         labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
