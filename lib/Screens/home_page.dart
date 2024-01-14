@@ -1,3 +1,5 @@
+import "dart:core";
+
 import "package:flutter/material.dart";
 import "package:viva_app/Screens/home_screen.dart";
 import "package:viva_app/Screens/info_screen.dart";

@@ -1,25 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_collapsing_toolbar/flutter_collapsing_toolbar.dart';
+import 'package:viva_app/Widgets/schedule_list_tile.dart';
 
-List<IconButton> kSampleIcons = [
-  IconButton(
-      onPressed: () {},
-      icon: SizedBox(
-        height: 80,
-        child: Image.asset("assets/Logos/calendar-date (1).png"),
-      )),
-  IconButton(
-      onPressed: () {},
-      icon: SizedBox(
-        height: 80,
-        child: Image.asset("assets/Logos/calendar-date.png"),
-      )),
-  IconButton(
-      onPressed: () {},
-      icon: SizedBox(
-        height: 80,
-        child: Image.asset("assets/Logos/calendar-days.png"),
-      ))
+List<String> daysassets = [
+  "assets/Logos/calendar-date (1).png",
+  "assets/Logos/calendar-date.png",
+  "assets/Logos/calendar-days.png",
 ];
 
 class ScheduleScreen extends StatefulWidget {
@@ -30,6 +16,13 @@ class ScheduleScreen extends StatefulWidget {
 class _ScheduleScreenState extends State<ScheduleScreen> {
   final controller = ScrollController();
   double headerOffset = 0.0;
+  int selectedIndex = 0;
+
+  List<List<String>> lists = [
+    ["List 1 Item 1", "List 1 Item 2"],
+    ["List 2 Item 1", "List 2 Item 2"],
+    ["List 3 Item 1", "List 3 Item 2"],
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +46,11 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                 },
                 featureCount: 3,
                 featureIconBuilder: (context, index) {
-                  return kSampleIcons[index];
+                  return SizedBox(
+                    height: 80,
+                    width: 80,
+                    child: Image.asset(daysassets[index]),
+                  );
                 },
                 featureLabelBuilder: (context, index) {
                   return Text(
@@ -67,7 +64,26 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                   );
                 },
                 featureOnPressed: (context, index) {
-                  kSampleIcons[index].onPressed!();
+                  setState(() {
+                    selectedIndex = index;
+                  });
+                },
+              ),
+            ),
+            Expanded(
+              child: ListView.separated(
+                itemCount: lists[selectedIndex].length,
+                itemBuilder: (context, itemIndex) {
+                  return CustomListTile(
+                    title: lists[selectedIndex][itemIndex],
+                    venue: 'LT-1',
+                    time: '10:00 AM',
+                    eventDescription:
+                        'text used in laying out print text used in laying out print text used in laying out print text used in laying out printtext used in laying out print',
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return Divider(height: 10, thickness: 0,);
                 },
               ),
             ),

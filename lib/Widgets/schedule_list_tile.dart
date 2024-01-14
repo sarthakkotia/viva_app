@@ -1,19 +1,45 @@
+// i think its not necessary to make this
+
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
 
-class ListTile extends StatefulWidget {
-  const ListTile({Key? key}) : super(key: key);
+class CustomListTile extends StatefulWidget {
+  const CustomListTile(
+      {Key? key,
+      required this.title,
+      required this.venue,
+      required this.time,
+      required this.eventDescription})
+      : super(key: key);
+
+  final String title;
+  final String venue;
+  final String time;
+  final String eventDescription;
 
   @override
-  State<ListTile> createState() => _ListTileState();
+  State<CustomListTile> createState() => _CustomListTileState();
 }
 
-class _ListTileState extends State<ListTile> {
+class _CustomListTileState extends State<CustomListTile> {
   @override
   Widget build(BuildContext context) {
     return ExpansionTileCard(
-      title: Text("Event Name"),
-      children: [Container()],
+      // lessen their width
+      title: Column(
+        children: [
+          Text(widget.title),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [Text(widget.venue), Text(widget.time)],
+          )
+        ],
+      ),
+      children: [
+        Text(widget.eventDescription),
+        ElevatedButton(
+            onPressed: () {}, child: const Text("Detailed Description"))
+      ],
     );
   }
 }
