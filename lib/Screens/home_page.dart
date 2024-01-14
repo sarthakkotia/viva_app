@@ -22,7 +22,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int currentPageIndex = 0;
 
-  List<Widget> screens = const [HomeScreen(), ScheduleScreen(), InfoScreen()];
+  List<Widget> screens = [HomeScreen(), ScheduleScreen(), InfoScreen()];
 
   @override
   Widget build(BuildContext context) {
