@@ -105,7 +105,7 @@ class InfoScreen extends StatelessWidget {
                     icon: SizedBox(
                       height: 45,
                       child: Image.asset(
-                        "assets/instagramlogo.png",
+                        "assets/Logos/instagramlogo.png",
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -118,7 +118,7 @@ class InfoScreen extends StatelessWidget {
                     icon: SizedBox(
                       height: 45,
                       child: Image.asset(
-                        "assets/linkedinlogo.png",
+                        "assets/Logos/linkedinlogo.png",
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -131,7 +131,7 @@ class InfoScreen extends StatelessWidget {
                     icon: SizedBox(
                       height: 45,
                       child: Image.asset(
-                        "assets/youtubelogo.png",
+                        "assets/Logos/youtubelogo.png",
                         fit: BoxFit.contain,
                       ),
                     ),
