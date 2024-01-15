@@ -12,7 +12,6 @@ class InfoScreen extends StatelessWidget {
     double heightscreen = MediaQuery.of(context).size.height;
     final bottomPadding = MediaQuery.of(context).padding.bottom;
     final topPadding = MediaQuery.of(context).padding.top;
-    AppBar ab = AppBar();
     double heightfinal = heightscreen - bottomPadding - topPadding;
     return SingleChildScrollView(
       child: SizedBox(
@@ -103,7 +102,7 @@ class InfoScreen extends StatelessWidget {
                       launcher.launchInstaPage();
                     },
                     icon: SizedBox(
-                      height: 45,
+                      height: 43,
                       child: Image.asset(
                         "assets/Logos/instagramlogo.png",
                         fit: BoxFit.contain,
@@ -116,7 +115,7 @@ class InfoScreen extends StatelessWidget {
                       launcher.launchLinkedInPage();
                     },
                     icon: SizedBox(
-                      height: 45,
+                      height: 43,
                       child: Image.asset(
                         "assets/Logos/linkedinlogo.png",
                         fit: BoxFit.contain,
@@ -129,7 +128,7 @@ class InfoScreen extends StatelessWidget {
                       launcher.launchYtPage();
                     },
                     icon: SizedBox(
-                      height: 45,
+                      height: 43,
                       child: Image.asset(
                         "assets/Logos/youtubelogo.png",
                         fit: BoxFit.contain,
@@ -140,31 +139,22 @@ class InfoScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: heightscreen / 60,
+              height: heightscreen / 50,
             ),
-            //TODO: Add GMAPS Snippet
             Expanded(
               flex: 2,
-              child: ListTile(
-                textColor: Colors.white,
-                enableFeedback: false,
-                leading: const Text(
-                  "Address:",
-                  style: TextStyle(fontSize: 25),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 5,
                 ),
-                subtitle: const Text(
-                  "Rupa ki Nangal, Post-Sumel,Via Jamdoli,Jaipur, Rajasthan",
-                  style: TextStyle(fontSize: 18),
-                ),
-                trailing: IconButton(
-                  padding: const EdgeInsets.all(5),
-                  onPressed: () {
-                    launcher.launchURL();
-                  },
-                  color: Colors.white,
-                  icon: const Icon(
-                    Icons.location_on_outlined,
-                    size: 50,
+                child: InkWell(
+                  onTap: () => launcher.launchURL(),
+                  child: Image.asset(
+                    "assets/Logos/MapsImage.png",
+                    fit: BoxFit.contain,
+                    filterQuality: FilterQuality.high,
+                    alignment: Alignment.center,
+                    isAntiAlias: true,
                   ),
                 ),
               ),
