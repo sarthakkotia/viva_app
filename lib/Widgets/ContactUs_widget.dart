@@ -33,7 +33,10 @@ class ContactUsWidget extends StatelessWidget {
                       onPressed: () async {
                         await launcher.callNumber("");
                       },
-                      icon: const Icon(Icons.call)),
+                      icon: const Icon(
+                        Icons.call,
+                        color: Colors.green,
+                      )),
                   InkWell(
                     borderRadius: BorderRadius.circular(60),
                     onTap: () async {
@@ -69,7 +72,10 @@ class ContactUsWidget extends StatelessWidget {
                       onPressed: () {
                         launcher.callNumber("9461544075");
                       },
-                      icon: const Icon(Icons.call)),
+                      icon: const Icon(
+                        Icons.call,
+                        color: Colors.green,
+                      )),
                   InkWell(
                     borderRadius: BorderRadius.circular(60),
                     onTap: () {
