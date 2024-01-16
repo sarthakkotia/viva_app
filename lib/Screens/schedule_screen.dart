@@ -3,9 +3,9 @@ import 'package:flutter_collapsing_toolbar/flutter_collapsing_toolbar.dart';
 import 'package:viva_app/Widgets/schedule_list_tile.dart';
 
 List<String> daysassets = [
-  "assets/Logos/calendar-date (1).png",
-  "assets/Logos/calendar-date.png",
-  "assets/Logos/calendar-days.png",
+  "assets/Logos/9feb.png",
+  "assets/Logos/10feb.png",
+  "assets/Logos/11feb.png",
 ];
 
 class ScheduleScreen extends StatefulWidget {
@@ -37,7 +37,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                 controller: controller,
                 expandedHeight: 160,
                 collapsedHeight: 64,
-                decorationForegroundColor: Color(0xFFFF5000),
+                decorationForegroundColor: Colors.greenAccent,
                 decorationBackgroundColor: Colors.white,
                 onCollapsing: (double offset) {
                   setState(() {
@@ -47,9 +47,15 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                 featureCount: 3,
                 featureIconBuilder: (context, index) {
                   return SizedBox(
-                    height: 80,
-                    width: 80,
-                    child: Image.asset(daysassets[index]),
+                    height: index == selectedIndex
+                        ? 80
+                        : 55, // Adjust the values as needed
+                    width: index == selectedIndex
+                        ? 80
+                        : 55, // Adjust the values as needed
+                    child: Image.asset(
+                      daysassets[index],
+                    ),
                   );
                 },
                 featureLabelBuilder: (context, index) {
@@ -72,6 +78,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
             ),
             Expanded(
               child: ListView.separated(
+                padding: EdgeInsets.only(left: 10,right: 10),
                 itemCount: lists[selectedIndex].length,
                 itemBuilder: (context, itemIndex) {
                   return CustomListTile(
@@ -83,7 +90,10 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) {
-                  return Divider(height: 10, thickness: 0,);
+                  return Divider(
+                    height: 10,
+                    thickness: 0,
+                  );
                 },
               ),
             ),
