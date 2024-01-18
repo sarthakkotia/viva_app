@@ -17,6 +17,8 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
+  //TODO: https://karthikponnam.medium.com/flutter-pageview-withbottomnavigationbar-fb4c87580f6a
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -24,14 +26,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int currentPageIndex = 0;
 
-  List<Widget> screens = [HomeScreen(), ScheduleScreen(), InfoScreen()];
+  List<Widget> screens = [
+    const HomeScreen(),
+    ScheduleScreen(),
+    const InfoScreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    final PageController controller = PageController();
     return Scaffold(
       appBar: currentPageIndex == 2
           ? AppBar(
@@ -68,7 +71,17 @@ class _MyHomePageState extends State<MyHomePage> {
               label: "Info"),
         ],
       ),
-      body: screens[currentPageIndex],
+      body: PageView(
+        controller: controller,
+        scrollDirection: Axis.horizontal,
+        children: screens,
+        onPageChanged: (value) {
+          setState(() {
+            currentPageIndex = value;
+          });
+        },
+      ),
+      // body: screens[currentPageIndex],
     );
   }
 }
