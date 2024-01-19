@@ -17,8 +17,6 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  //TODO: https://karthikponnam.medium.com/flutter-pageview-withbottomnavigationbar-fb4c87580f6a
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
