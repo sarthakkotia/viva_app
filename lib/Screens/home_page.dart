@@ -31,18 +31,29 @@ class _MyHomePageState extends State<MyHomePage> {
     ScheduleScreen(),
     const InfoScreen()
   ];
+  final PageController controller =
+      PageController(initialPage: 0, keepPage: true);
+  List<NavigationDestination> listNavigationDestination = [
+    const NavigationDestination(
+        enabled: true,
+        icon: Icon(
+          Icons.home_sharp,
+          size: 35,
+        ),
+        label: "Home"),
+    const NavigationDestination(
+        icon: Icon(Icons.checklist_rtl_sharp, size: 35), label: "Schedule"),
+    const NavigationDestination(
+        icon: Icon(
+          Icons.person,
+          size: 35,
+        ),
+        label: "Info"),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    final PageController controller = PageController();
     return Scaffold(
-      appBar: currentPageIndex == 2
-          ? AppBar(
-              scrolledUnderElevation: 0,
-              centerTitle: true,
-              title: const Text("Contact Us", style: TextStyle(fontSize: 30)),
-            )
-          : null,
       primary: true,
       bottomNavigationBar: NavigationBar(
         labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
@@ -50,36 +61,21 @@ class _MyHomePageState extends State<MyHomePage> {
         onDestinationSelected: (value) {
           setState(() {
             currentPageIndex = value;
+            controller.animateToPage(currentPageIndex,
+                duration: const Duration(milliseconds: 250),
+                curve: Curves.ease);
           });
         },
-        destinations: const <Widget>[
-          NavigationDestination(
-              enabled: true,
-              icon: Icon(
-                Icons.home_sharp,
-                size: 35,
-              ),
-              label: "Home"),
-          NavigationDestination(
-              icon: Icon(Icons.checklist_rtl_sharp, size: 35),
-              label: "Schedule"),
-          NavigationDestination(
-              icon: Icon(
-                Icons.person,
-                size: 35,
-              ),
-              label: "Info"),
-        ],
+        destinations: listNavigationDestination,
       ),
       body: PageView(
         controller: controller,
-        scrollDirection: Axis.horizontal,
-        children: screens,
         onPageChanged: (value) {
           setState(() {
             currentPageIndex = value;
           });
         },
+        children: screens,
       ),
       // body: screens[currentPageIndex],
     );
