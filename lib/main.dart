@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:viva_app/Screens/home_page.dart';
+
+import 'Screens/home_page.dart';
 
 //TODO: Add splash screen
 //TODO: Configure bottom navigation bar
