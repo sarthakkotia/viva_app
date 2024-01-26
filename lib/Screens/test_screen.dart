@@ -17,7 +17,7 @@ class TestScreen extends StatefulWidget {
 class _MyHomePageState extends State<TestScreen> with TickerProviderStateMixin {
   late final AnimationController _controller;
   int currentPageIndex = 0;
-  bool transition = false;
+  bool homecolor = true;
 
   List<Widget> screens = [
     const HomeScreen(),
@@ -47,10 +47,11 @@ class _MyHomePageState extends State<TestScreen> with TickerProviderStateMixin {
         ),
         label: "Info"),
   ];
-  final BorderRadius _borderRadius = const BorderRadius.only(
-    topLeft: Radius.circular(25),
-    topRight: Radius.circular(25),
-  );
+
+  // final BorderRadius _borderRadius = const BorderRadius.only(
+  //   topLeft: Radius.circular(25),
+  //   topRight: Radius.circular(25),
+  // );
 
   EdgeInsets padding = const EdgeInsets.all(12);
 
@@ -64,7 +65,7 @@ class _MyHomePageState extends State<TestScreen> with TickerProviderStateMixin {
 
   Color? containerColor;
   List<Color> containerColors = [
-    const Color(0xFFFDE1D7),
+    const Color(0xFFECD7FD),
     const Color(0xFFE4EDF5),
     const Color(0xFFE7EEED),
     const Color(0xFFF4E4CE),
@@ -87,6 +88,7 @@ class _MyHomePageState extends State<TestScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     double heightscreen = MediaQuery.of(context).size.height;
     if (currentPageIndex == 0) {
+      homecolor = true;
       _controller.repeat();
     }
 
@@ -99,11 +101,10 @@ class _MyHomePageState extends State<TestScreen> with TickerProviderStateMixin {
         behaviour: SnakeBarBehaviour.pinned,
         snakeShape: SnakeShape.circle,
         elevation: 5,
-        //TODO: decide this color depending on a game
-        snakeViewColor: Colors.white12,
+        snakeViewColor: const Color.fromRGBO(74, 68, 88, 1),
         unselectedItemColor: Colors.white,
         selectedItemColor: Colors.white,
-        backgroundColor: Colors.black12,
+        backgroundColor: const Color.fromRGBO(42, 39, 47, 1),
 
         ///configuration for SnakeNavigationBar.gradient
         //  snakeViewGradient: selectedGradient,
@@ -117,27 +118,27 @@ class _MyHomePageState extends State<TestScreen> with TickerProviderStateMixin {
         currentIndex: currentPageIndex,
         onTap: (value) {
           setState(() {
+            homecolor = false;
             currentPageIndex = value;
-            transition = true;
-            controller.animateToPage(currentPageIndex,
-                duration: const Duration(milliseconds: 250),
-                curve: Curves.ease);
+            controller
+                .animateToPage(currentPageIndex,
+                    duration: const Duration(milliseconds: 250),
+                    curve: Curves.ease)
+                .then((value) {
+              if (currentPageIndex == 0) {
+                homecolor = true;
+                _controller.repeat();
+              } else {
+                _controller.reset;
+              }
+            });
           });
-          transition = false;
-          if (currentPageIndex == 0) {
-            _controller.repeat();
-            // Timer(const Duration(seconds: 2), () {
-            //   _controller.reset();
-            // });
-          } else {
-            _controller.reset();
-          }
         },
         items: [
           BottomNavigationBarItem(
               icon: SizedBox(
                 height: heightscreen / 17,
-                child: currentPageIndex == 0 && transition == false
+                child: homecolor == true
                     ? Lottie.asset(
                         "assets/AnimatedIcons/icons8-home.json",
                         fit: BoxFit.cover,
@@ -149,13 +150,22 @@ class _MyHomePageState extends State<TestScreen> with TickerProviderStateMixin {
                       ),
               ),
               label: "Home"),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.checklist_rtl_sharp, size: 35),
               label: "Schedule"),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                size: 35,
+              icon: SizedBox(
+                height: heightscreen / 17,
+                child: currentPageIndex == 2
+                    ? Lottie.asset(
+                        "assets/AnimatedIcons/icons8-info.json",
+                        fit: BoxFit.cover,
+                        controller: _controller,
+                      )
+                    : Image.asset(
+                        "assets/Logos/icons8-info-64.png",
+                        fit: BoxFit.cover,
+                      ),
               ),
               label: "Info"),
         ],

@@ -36,7 +36,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
               controller: controller,
               expandedHeight: 160,
               collapsedHeight: 64,
-              decorationForegroundColor: Color(0xFFFF5000),
+              decorationForegroundColor: const Color(0xFFFF5000),
               decorationBackgroundColor: Colors.white,
               onCollapsing: (double offset) {
                 setState(() {
@@ -52,7 +52,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                 );
               },
               featureLabelBuilder: (context, index) {
-                return Text(
+                return const Text(
                   "",
                   textAlign: TextAlign.center,
                   maxLines: 1,
@@ -82,7 +82,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                 );
               },
               separatorBuilder: (BuildContext context, int index) {
-                return Divider(
+                return const Divider(
                   height: 10,
                   thickness: 0,
                 );
