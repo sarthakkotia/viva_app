@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:viva_app/Provider/schedule_provider.dart';
 
 import 'Screens/test2_screen.dart';
 
@@ -21,14 +23,17 @@ class MyApp extends StatelessWidget {
   @override
   //TODO: implement native splash screen using flutter_native_splash
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (context) => ScheduleDataProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          useMaterial3: true,
+        ),
+        home: Test2Screen(),
+        //      home: const MyHomePage(),
       ),
-      home: Test2Screen(),
-//      home: const MyHomePage(),
     );
   }
 }

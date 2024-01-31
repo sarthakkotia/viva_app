@@ -2,9 +2,12 @@ import "dart:core";
 
 import "package:flutter/material.dart";
 import "package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart";
+import "package:provider/provider.dart";
 import "package:viva_app/Screens/home_screen.dart";
 import "package:viva_app/Screens/info_screen.dart";
 import "package:viva_app/Screens/schedule_screen.dart";
+
+import "../Provider/schedule_provider.dart";
 
 class Test2Screen extends StatefulWidget {
   const Test2Screen({super.key});
@@ -63,6 +66,12 @@ class _MyHomePageState extends State<Test2Screen>
     const Color(0xFFE7EEED),
     const Color(0xFFF4E4CE),
   ];
+
+  @override
+  void initState() {
+    Provider.of<ScheduleDataProvider>(context, listen: false).fetchData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
