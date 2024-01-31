@@ -160,6 +160,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  logging:
+    dependency: transitive
+    description:
+      name: logging
+      sha256: "623a88c9594aa774443aa3eb2d41807a48486b5613e67599fb4c41c0ad47c340"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   lottie:
     dependency: "direct main"
     description:
@@ -192,6 +200,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
+  parallax_sensors_bg:
+    dependency: "direct main"
+    description:
+      name: parallax_sensors_bg
+      sha256: "5c3d725bc0ccdc41b5595bf120b10695da9767bd60363024531a9233787704ec"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   path:
     dependency: transitive
     description:
@@ -208,6 +224,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+  sensors_plus:
+    dependency: transitive
+    description:
+      name: sensors_plus
+      sha256: "3ec8b74d73d72a54baa328beb6fa33df80963f3e5491fc6e714b98b935b65dd9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.5"
+  sensors_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: sensors_plus_platform_interface
+      sha256: bc472d6cfd622acb4f020e726433ee31788b038056691ba433fec80e448a094f
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   pointycastle:
     dependency: transitive
     description:
@@ -237,6 +269,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.1"
+  stacked_listview:
+    dependency: "direct main"
+    description:
+      name: stacked_listview
+      sha256: "975c0ee9f7671d43d8a03377031d33568e79a59f7f159976f56058093222cb2a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.4"
   stream_channel:
     dependency: transitive
     description:
