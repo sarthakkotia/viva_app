@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'Screens/test_screen.dart';
+import 'Screens/test2_screen.dart';
 
 //TODO: Add splash screen
 //TODO: Configure bottom navigation bar
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         useMaterial3: true,
       ),
-      home: TestScreen(),
+      home: Test2Screen(),
 //      home: const MyHomePage(),
     );
   }
