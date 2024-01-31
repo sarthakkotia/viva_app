@@ -149,7 +149,7 @@ class InfoScreen extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 5),
+                  margin: const EdgeInsets.symmetric(vertical: 5),
                   child: InkWell(
                     onTap: () => launcher.launchURL(),
                     child: Image.asset(
