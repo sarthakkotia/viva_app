@@ -65,7 +65,6 @@ class ContactUsWidget extends StatelessWidget {
                   style: TextStyle(fontSize: 20),
                 ),
               ),
-              //TODO: Make call icon colored
               Row(
                 children: [
                   IconButton(

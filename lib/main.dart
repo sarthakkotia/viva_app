@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:viva_app/Screens/home_page.dart';
+import 'package:flutter/services.dart';
+
+import 'Screens/test_screen.dart';
 
 //TODO: Add splash screen
 //TODO: Configure bottom navigation bar
@@ -7,7 +9,9 @@ import 'package:viva_app/Screens/home_page.dart';
 //TODO: Notch style would be good with
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => runApp(const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +19,6 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
-  //TODO: Make orientation permanent
   //TODO: implement native splash screen using flutter_native_splash
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,7 +27,8 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: TestScreen(),
+//      home: const MyHomePage(),
     );
   }
 }
