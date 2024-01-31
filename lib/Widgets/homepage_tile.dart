@@ -10,7 +10,9 @@ class HomePageCard extends StatefulWidget {
 class _HomePageCardState extends State<HomePageCard> {
   @override
   Widget build(BuildContext context) {
-    return Card(child: Text("wffw") //Image.asset(),
-        );
+    return GestureDetector(
+      child: Card(child: Image.asset("assets/Logos/linkedinlogo.png")),
+      onTap: () {},
+    );
   }
 }
