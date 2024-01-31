@@ -104,7 +104,7 @@ class _MyHomePageState extends State<Test2Screen>
               icon: SizedBox(
                 height: heightscreen / 17,
                 child: Image.asset(
-                  "assets/Logos/icons8-home-64.png",
+                  "assets/Logos/icons8-home.png",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -116,7 +116,7 @@ class _MyHomePageState extends State<Test2Screen>
               icon: SizedBox(
                 height: heightscreen / 17,
                 child: Image.asset(
-                  "assets/Logos/icons8-info-64.png",
+                  "assets/Logos/icons8-info.png",
                   fit: BoxFit.cover,
                 ),
               ),

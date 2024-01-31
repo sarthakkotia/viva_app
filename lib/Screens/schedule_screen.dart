@@ -78,7 +78,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
             ),
             Expanded(
               child: ListView.separated(
-                padding: EdgeInsets.only(left: 10,right: 10),
+                padding: EdgeInsets.only(left: 10, right: 10),
                 itemCount: lists[selectedIndex].length,
                 itemBuilder: (context, itemIndex) {
                   return CustomListTile(
@@ -97,8 +97,8 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                 },
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
