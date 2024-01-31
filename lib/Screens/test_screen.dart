@@ -16,6 +16,7 @@ class TestScreen extends StatefulWidget {
 
 class _MyHomePageState extends State<TestScreen> with TickerProviderStateMixin {
   late final AnimationController _controller;
+  late final AnimationController _controller2;
   int currentPageIndex = 0;
   bool homecolor = true;
 
@@ -76,11 +77,15 @@ class _MyHomePageState extends State<TestScreen> with TickerProviderStateMixin {
     super.initState();
     _controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 2));
+    _controller2 = AnimationController(
+      vsync: this,
+    );
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _controller2.dispose();
     super.dispose();
   }
 
@@ -150,9 +155,21 @@ class _MyHomePageState extends State<TestScreen> with TickerProviderStateMixin {
                       ),
               ),
               label: "Home"),
-          const BottomNavigationBarItem(
-              icon: Icon(Icons.checklist_rtl_sharp, size: 35),
-              label: "Schedule"),
+          BottomNavigationBarItem(
+              icon: SizedBox(
+                height: heightscreen / 17,
+                child: currentPageIndex == 1
+                    ? Lottie.asset(
+                        "assets/AnimatedIcons/list.json",
+                        fit: BoxFit.cover,
+                        controller: _controller2,
+                      )
+                    : Image.asset(
+                        "assets/Logos/icons8-info-64.png",
+                        fit: BoxFit.cover,
+                      ),
+              ),
+              label: "Info"),
           BottomNavigationBarItem(
               icon: SizedBox(
                 height: heightscreen / 17,
@@ -179,7 +196,6 @@ class _MyHomePageState extends State<TestScreen> with TickerProviderStateMixin {
         },
         children: screens,
       ),
-      // body: screens[currentPageIndex],
     );
   }
 }
