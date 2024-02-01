@@ -6,7 +6,6 @@ import "package:provider/provider.dart";
 import "package:viva_app/Screens/home_screen.dart";
 import "package:viva_app/Screens/info_screen.dart";
 import "package:viva_app/Screens/schedule_screen.dart";
-
 import "../Provider/schedule_provider.dart";
 
 class Test2Screen extends StatefulWidget {
@@ -26,7 +25,7 @@ class _MyHomePageState extends State<Test2Screen>
     const InfoScreen()
   ];
   final PageController controller =
-      PageController(initialPage: 0, keepPage: true);
+  PageController(initialPage: 0, keepPage: true);
   List<NavigationDestination> listNavigationDestination = [
     const NavigationDestination(
         enabled: true,
@@ -55,9 +54,9 @@ class _MyHomePageState extends State<Test2Screen>
   Color unselectedColor = Colors.blueGrey;
 
   Gradient selectedGradient =
-      const LinearGradient(colors: [Colors.red, Colors.amber]);
+  const LinearGradient(colors: [Colors.red, Colors.amber]);
   Gradient unselectedGradient =
-      const LinearGradient(colors: [Colors.red, Colors.blueGrey]);
+  const LinearGradient(colors: [Colors.red, Colors.blueGrey]);
 
   Color? containerColor;
   List<Color> containerColors = [
@@ -75,7 +74,10 @@ class _MyHomePageState extends State<Test2Screen>
 
   @override
   Widget build(BuildContext context) {
-    double heightscreen = MediaQuery.of(context).size.height;
+    double heightscreen = MediaQuery
+        .of(context)
+        .size
+        .height;
     return Scaffold(
       extendBody: false,
       primary: true,
