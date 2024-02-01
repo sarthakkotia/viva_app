@@ -17,23 +17,26 @@ class _ScheduleListState extends State<ScheduleList> {
   Widget build(BuildContext context) {
     List<ScheduleModel> list = widget.list;
     return Expanded(
-      child: ListView.separated(
-        padding: const EdgeInsets.only(left: 10, right: 10),
-        itemCount: list.length,
-        itemBuilder: (context, itemIndex) {
-          return CustomListTile(
-            title: list[itemIndex].title,
-            venue: list[itemIndex].venue,
-            time: '10:00 AM',
-            eventDescription: list[itemIndex].description,
-          );
-        },
-        separatorBuilder: (BuildContext context, int index) {
-          return const Divider(
-            height: 10,
-            thickness: 0,
-          );
-        },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5.0),
+        child: ListView.separated(
+          padding: const EdgeInsets.only(left: 10, right: 10),
+          itemCount: list.length,
+          itemBuilder: (context, itemIndex) {
+            return CustomListTile(
+              title: list[itemIndex].title,
+              venue: list[itemIndex].venue,
+              time: '10:00 AM',
+              eventDescription: list[itemIndex].description,
+            );
+          },
+          separatorBuilder: (BuildContext context, int index) {
+            return const Divider(
+              height: 10,
+              thickness: 0,
+            );
+          },
+        ),
       ),
     );
   }
