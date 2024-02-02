@@ -1,4 +1,3 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_collapsing_toolbar/flutter_collapsing_toolbar.dart';
 import 'package:lottie/lottie.dart';
@@ -14,7 +13,9 @@ List<String> daysassets = [
 ];
 
 class ScheduleScreen extends StatefulWidget {
-  const ScheduleScreen({super.key});
+  final bool offline;
+
+  const ScheduleScreen(this.offline, {super.key});
 
   @override
   _ScheduleScreenState createState() => _ScheduleScreenState();
@@ -29,24 +30,16 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
   List<ScheduleModel> schedule = [];
   late ScheduleDataProvider schedule_data;
   bool loaded = false;
-  bool offline = true;
 
   @override
   void initState() {
-    (Connectivity().checkConnectivity()).then((connectivityResult) {
-      if (connectivityResult == ConnectivityResult.wifi ||
-          connectivityResult == ConnectivityResult.mobile) {
-        setState(() {
-          offline = false;
-        });
-        schedule_data =
-            Provider.of<ScheduleDataProvider>(context, listen: false);
-        setState(() {
-          schedule = schedule_data.Dayindexdetails(0);
-          loaded = true;
-        });
-      }
-    });
+    if (widget.offline == false) {
+      schedule_data = Provider.of<ScheduleDataProvider>(context, listen: false);
+      setState(() {
+        schedule = schedule_data.Dayindexdetails(0);
+        loaded = true;
+      });
+    }
 
     super.initState();
   }
@@ -105,7 +98,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
               },
             ),
           ),
-          offline == true
+          widget.offline == true
               ? Lottie.asset("assets/AnimatedIcons/NoConnection.json")
               : loaded == false
                   ? const CircularProgressIndicator()

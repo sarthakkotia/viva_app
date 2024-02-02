@@ -14,12 +14,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int currentPageIndex = 0;
-
-  List<Widget> screens = [
-    const HomeScreen(),
-    ScheduleScreen(),
-    const InfoScreen()
-  ];
+  List<Widget> screens = [];
+  // List<Widget> screens = [
+  //   const HomeScreen(),
+  //   ScheduleScreen(),
+  //   const InfoScreen()
+  // ];
   final PageController controller =
       PageController(initialPage: 0, keepPage: true);
   List<NavigationDestination> listNavigationDestination = [

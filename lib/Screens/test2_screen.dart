@@ -1,11 +1,13 @@
 import "dart:core";
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import "package:flutter/material.dart";
 import "package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart";
 import "package:provider/provider.dart";
 import "package:viva_app/Screens/home_screen.dart";
 import "package:viva_app/Screens/info_screen.dart";
 import "package:viva_app/Screens/schedule_screen.dart";
+
 import "../Provider/schedule_provider.dart";
 
 class Test2Screen extends StatefulWidget {
@@ -18,14 +20,10 @@ class Test2Screen extends StatefulWidget {
 class _MyHomePageState extends State<Test2Screen>
     with TickerProviderStateMixin {
   int currentPageIndex = 0;
+  List<Widget> screens = [];
 
-  List<Widget> screens = [
-    const HomeScreen(),
-    ScheduleScreen(),
-    const InfoScreen()
-  ];
   final PageController controller =
-  PageController(initialPage: 0, keepPage: true);
+      PageController(initialPage: 0, keepPage: true);
   List<NavigationDestination> listNavigationDestination = [
     const NavigationDestination(
         enabled: true,
@@ -48,36 +46,23 @@ class _MyHomePageState extends State<Test2Screen>
         label: "Info"),
   ];
 
-  EdgeInsets padding = const EdgeInsets.all(12);
-
-  Color selectedColor = Colors.black;
-  Color unselectedColor = Colors.blueGrey;
-
-  Gradient selectedGradient =
-  const LinearGradient(colors: [Colors.red, Colors.amber]);
-  Gradient unselectedGradient =
-  const LinearGradient(colors: [Colors.red, Colors.blueGrey]);
-
-  Color? containerColor;
-  List<Color> containerColors = [
-    const Color(0xFFECD7FD),
-    const Color(0xFFE4EDF5),
-    const Color(0xFFE7EEED),
-    const Color(0xFFF4E4CE),
-  ];
-
   @override
   void initState() {
     Provider.of<ScheduleDataProvider>(context, listen: false).fetchData();
+    bool offline = true;
+    (Connectivity().checkConnectivity()).then((connectivityResult) {
+      if (connectivityResult == ConnectivityResult.wifi ||
+          connectivityResult == ConnectivityResult.mobile) {
+        offline = false;
+      }
+    });
+    screens = [const HomeScreen(), ScheduleScreen(offline), const InfoScreen()];
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    double heightscreen = MediaQuery
-        .of(context)
-        .size
-        .height;
+    double heightscreen = MediaQuery.of(context).size.height;
     return Scaffold(
       extendBody: false,
       primary: true,
