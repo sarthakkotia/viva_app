@@ -48,15 +48,20 @@ class _MyHomePageState extends State<Test2Screen>
 
   @override
   void initState() {
-    Provider.of<ScheduleDataProvider>(context, listen: false).fetchData();
     bool offline = true;
     (Connectivity().checkConnectivity()).then((connectivityResult) {
       if (connectivityResult == ConnectivityResult.wifi ||
           connectivityResult == ConnectivityResult.mobile) {
         offline = false;
+        Provider.of<ScheduleDataProvider>(context, listen: false).fetchData();
       }
+      screens = [
+        const HomeScreen(),
+        ScheduleScreen(offline),
+        const InfoScreen()
+      ];
     });
-    screens = [const HomeScreen(), ScheduleScreen(offline), const InfoScreen()];
+
     super.initState();
   }
 

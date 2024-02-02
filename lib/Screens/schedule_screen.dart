@@ -13,9 +13,9 @@ List<String> daysassets = [
 ];
 
 class ScheduleScreen extends StatefulWidget {
-  final bool offline;
+  bool offline;
 
-  const ScheduleScreen(this.offline, {super.key});
+  ScheduleScreen(this.offline, {super.key});
 
   @override
   _ScheduleScreenState createState() => _ScheduleScreenState();
