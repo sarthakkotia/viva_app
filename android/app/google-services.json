@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "985618950954",
+    "project_id": "viva-schedule",
+    "storage_bucket": "viva-schedule.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985618950954:android:1f7117140429c95302cc53",
+        "android_client_info": {
+          "package_name": "com.example.viva_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqAAyWc8Uyuu5Jw2CX4G_3E8ilWzFuMPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

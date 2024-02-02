@@ -46,6 +46,7 @@ dependencies:
   google_nav_bar: ^5.0.6
   provider: ^6.1.1
   connectivity_plus: ^2.3.8
+  firebase_core: ^2.25.2
 
 dev_dependencies:
   flutter_test:
