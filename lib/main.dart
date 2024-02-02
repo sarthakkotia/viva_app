@@ -1,17 +1,22 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:viva_app/Provider/schedule_provider.dart';
 
 import 'Screens/test2_screen.dart';
+import 'firebase_options.dart';
 
 //TODO: Add splash screen
 //TODO: Configure bottom navigation bar
 //TODO: Make bottom navigation bar such that when we scroll down it disappears
 //TODO: Notch style would be good with
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((value) => runApp(const MyApp()));
 }
