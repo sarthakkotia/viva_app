@@ -29,8 +29,8 @@ List<String> icons = [
   "assets/Logos/concert.png",
   "assets/Logos/concert.png",
   "assets/Logos/healthy-lifestyle.png",
-  "assets/Logos/palette.png"
-      "assets/Logos/concert.png",
+  "assets/Logos/palette.png",
+  "assets/Logos/concert.png",
   "assets/Logos/concert.png",
   "assets/Logos/concert.png",
   "assets/Logos/concert.png",
@@ -43,37 +43,35 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Column(children: [
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 20),
-          height: 200,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (BuildContext context, int index) {
-              return HomePageChip(
-                title: names[index],
-                icon: icons[index],
-              );
-            },
-            separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(
-                width: 10,
-              );
-            },
-            itemCount: names.length,
-          ),
+    return Column(children: [
+      Container(
+        margin: const EdgeInsets.symmetric(vertical: 20),
+        height: 200,
+        child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (BuildContext context, int index) {
+            return HomePageChip(
+              title: names[index],
+              icon: icons[index],
+            );
+          },
+          separatorBuilder: (BuildContext context, int index) {
+            return SizedBox(
+              width: 10,
+            );
+          },
+          itemCount: names.length,
         ),
-        Container(
-          height: MediaQuery.sizeOf(context).height * 0.5,
-          child: StackedListView(
-              itemCount: 50,
-              builder: (BuildContext context, int index) {
-                return HomePageCard();
-              },
-              itemExtent: MediaQuery.sizeOf(context).height * 0.3),
-        )
-      ]),
-    );
+      ),
+      Container(
+        height: MediaQuery.sizeOf(context).height * 0.5,
+        child: StackedListView(
+            itemCount: 50,
+            builder: (BuildContext context, int index) {
+              return HomePageCard();
+            },
+            itemExtent: MediaQuery.sizeOf(context).height * 0.3),
+      )
+    ]);
   }
 }
