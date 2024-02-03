@@ -48,6 +48,7 @@ dependencies:
   connectivity_plus: ^2.3.8
   firebase_core: ^2.25.2
   particles_flutter: ^0.1.4
+  animate_gradient: ^0.0.2+1
 
 dev_dependencies:
   flutter_test:

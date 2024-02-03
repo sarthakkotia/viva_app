@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:viva_app/Provider/schedule_provider.dart';
-import 'package:viva_app/Widgets/particles_flutter.dart';
+import 'package:viva_app/Widgets/animate_gradient.dart';
 
 import 'Screens/test2_screen.dart';
 import 'firebase_options.dart';
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           useMaterial3: true,
         ),
-        home: Stack(children: [ParticleBackgroundScreen(), Test2Screen()]),
+        home: Test2Screen(),
       ),
     );
   }
