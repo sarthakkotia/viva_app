@@ -7,6 +7,7 @@ import "package:provider/provider.dart";
 import "package:viva_app/Screens/home_screen.dart";
 import "package:viva_app/Screens/info_screen.dart";
 import "package:viva_app/Screens/schedule_screen.dart";
+import "package:viva_app/Widgets/particles_flutter.dart";
 
 import "../Provider/schedule_provider.dart";
 
@@ -56,9 +57,9 @@ class _MyHomePageState extends State<Test2Screen>
         Provider.of<ScheduleDataProvider>(context, listen: false).fetchData();
       }
       screens = [
-        const HomeScreen(),
-        ScheduleScreen(offline),
-        const InfoScreen()
+        ParticleBackgroundScreen(const HomeScreen()),
+        ParticleBackgroundScreen(ScheduleScreen(offline)),
+        ParticleBackgroundScreen(const InfoScreen())
       ];
     });
 
