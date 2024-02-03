@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:viva_app/Provider/schedule_provider.dart';
 import 'package:viva_app/Widgets/animate_gradient.dart';
-
+import 'Screens/firebasetestScreen.dart';
 import 'Screens/test2_screen.dart';
 import 'firebase_options.dart';
 
