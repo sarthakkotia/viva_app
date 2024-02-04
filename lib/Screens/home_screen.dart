@@ -44,9 +44,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
+      Image.asset("assets/Logos/vivlogo.png"),
       Container(
         margin: const EdgeInsets.symmetric(vertical: 20),
-        height: 200,
+        height: 50,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
           itemBuilder: (BuildContext context, int index) {
@@ -64,13 +65,13 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       Container(
-        height: MediaQuery.sizeOf(context).height * 0.5,
+        height: MediaQuery.sizeOf(context).height * 0.2,
         child: StackedListView(
             itemCount: 50,
             builder: (BuildContext context, int index) {
               return HomePageCard();
             },
-            itemExtent: MediaQuery.sizeOf(context).height * 0.3),
+            itemExtent: MediaQuery.sizeOf(context).height * 0.2),
       )
     ]);
   }
