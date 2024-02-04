@@ -3,7 +3,11 @@ import 'package:viva_app/Screens/event_detail_screen.dart';
 import 'package:viva_app/Screens/test2_screen.dart';
 
 class HomePageCard extends StatefulWidget {
-  const HomePageCard({Key? key}) : super(key: key);
+  final String imgUrl;
+  final String title;
+
+  const HomePageCard({Key? key, required this.imgUrl, required this.title})
+      : super(key: key);
 
   @override
   State<HomePageCard> createState() => _HomePageCardState();
@@ -16,7 +20,15 @@ class _HomePageCardState extends State<HomePageCard> {
       child: Card(child: Image.asset("assets/Logos/linkedinlogo.png")),
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return EventDetailScreen();
+          // fetch data from hive
+
+          return EventDetailScreen(
+            genre: '',
+            title: '',
+            date: '',
+            time: '',
+            desc: '',
+          );
         }));
       },
     );
