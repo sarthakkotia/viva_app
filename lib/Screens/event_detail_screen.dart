@@ -2,7 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class EventDetailScreen extends StatefulWidget {
-  const EventDetailScreen({Key? key}) : super(key: key);
+  final String genre;
+  final String title;
+  final String date;
+  final String time;
+  final String desc;
+
+  const EventDetailScreen(
+      {Key? key,
+      required this.genre,
+      required this.title,
+      required this.date,
+      required this.time,
+      required this.desc})
+      : super(key: key);
 
   @override
   State<EventDetailScreen> createState() => _EventDetailScreenState();
@@ -25,6 +38,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
           Text("Similar Events"),
           // ListView.builder(
           //   itemBuilder: (context, index) {
+          // fetch from hive based on the current genre
           //     return Card();
           //   },
           //   scrollDirection: Axis.horizontal,
