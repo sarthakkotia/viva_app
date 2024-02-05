@@ -4,16 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart' as path;
 import 'package:provider/provider.dart';
-import 'package:video_player/video_player.dart';
 import 'package:viva_app/Models/EventModelwithHive.dart';
 import 'package:viva_app/Models/EventsList.dart';
 import 'package:viva_app/Provider/Data_provider.dart';
 import 'package:viva_app/Provider/schedule_provider.dart';
-import 'package:viva_app/Screens/Test3Screen.dart';
-import 'package:viva_app/Widgets/splash_screen2.dart';
+import 'package:viva_app/Widgets/splash_screen.dart';
 
 import 'firebase_options.dart';
-import 'Widgets/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,7 +46,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           useMaterial3: true,
         ),
-        home: const SplashScreen2(),
+        home: const SplashScreen(),
       ),
     );
   }
