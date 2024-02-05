@@ -44,9 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    return Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
       Padding(
-        padding: EdgeInsets.all(25),
+        padding: const EdgeInsets.all(25),
         child: Image.asset("assets/Logos/vivlogo.png"),
       ),
       Container(
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           },
           separatorBuilder: (BuildContext context, int index) {
-            return SizedBox(
+            return const SizedBox(
               width: 10,
             );
           },
@@ -74,6 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
         height: MediaQuery.of(context).size.height * 0.6,
         child: StackedListView(
           itemCount: 10,

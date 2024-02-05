@@ -46,62 +46,20 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 24.0),
-      child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        actions: [],
+      ),
+      body: Column(
         children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: CollapsingToolbar(
-              controller: controller,
-              expandedHeight: 160,
-              collapsedHeight: 64,
-              decorationForegroundColor: Colors.greenAccent,
-              decorationBackgroundColor: Colors.white,
-              onCollapsing: (double offset) {
-                setState(() {
-                  headerOffset = offset;
-                });
-              },
-              featureCount: 3,
-              featureIconBuilder: (context, index) {
-                return SizedBox(
-                  height: index == selectedIndex
-                      ? 80
-                      : 55, // Adjust the values as needed
-                  width: index == selectedIndex
-                      ? 80
-                      : 55, // Adjust the values as needed
-                  child: Image.asset(
-                    daysassets[index],
-                  ),
-                );
-              },
-              featureLabelBuilder: (context, index) {
-                return const Text(
-                  "",
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.white,
-                  ),
-                );
-              },
-              featureOnPressed: (context, index) {
-                setState(() {
-                  selectedIndex = index;
-                  loaded = false;
-                  schedule = schedule_data.Dayindexdetails(index);
-                  loaded = true;
-                });
-              },
-            ),
-          ),
+          // Align(
+          //   alignment: Alignment.topCenter,
+          //   child:
+          // ),
           widget.offline == true
               ? Lottie.asset("assets/AnimatedIcons/NoConnection.json")
               : loaded == false
-                  ? const CircularProgressIndicator()
+                  ? CircularProgressIndicator()
                   : ScheduleList(schedule)
         ],
       ),
