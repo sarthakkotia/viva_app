@@ -22,14 +22,19 @@ class DataProvider with ChangeNotifier {
   List<EventModel> FashionList = [];
 
   Future<bool> Checkid() async {
-    var value = await _db
-        .collection("Data")
-        .doc("events")
-        .get(const GetOptions(source: Source.cache));
-    final int cacheid = value.get("id") as int;
-    value = await _db.collection("Data").doc("events").get();
-    final int serverid = value.get("id") as int;
-    return cacheid == serverid;
+    print("ghghhg");
+    try{
+      var value=await _db
+          .collection("Data")
+          .doc("events")
+          .get(const GetOptions(source: Source.cache));
+      final int cacheid = value.get("id") as int;
+      value = await _db.collection("Data").doc("events").get();
+      final int serverid = value.get("id") as int;
+      return cacheid == serverid;
+    }catch(e){
+      return false;
+    }
   }
 
   Future<EventsList> fetchFromFirebase(bool val) async {
