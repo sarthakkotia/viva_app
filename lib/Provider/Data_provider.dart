@@ -20,11 +20,13 @@ class DataProvider with ChangeNotifier {
   List<EventModel> DramaList = [];
   List<EventModel> SocialList = [];
   List<EventModel> FashionList = [];
+  List<EventModel> day9 = [];
+  List<EventModel> day10 = [];
+  List<EventModel> day11 = [];
 
   Future<bool> Checkid() async {
-    print("ghghhg");
-    try{
-      var value=await _db
+    try {
+      var value = await _db
           .collection("Data")
           .doc("events")
           .get(const GetOptions(source: Source.cache));
@@ -32,7 +34,7 @@ class DataProvider with ChangeNotifier {
       value = await _db.collection("Data").doc("events").get();
       final int serverid = value.get("id") as int;
       return cacheid == serverid;
-    }catch(e){
+    } catch (e) {
       return false;
     }
   }
@@ -58,7 +60,11 @@ class DataProvider with ChangeNotifier {
             Venue: val["Venue"]);
         allEventList.add(em);
       }
-      EventsListbox.put(0, EventsList(ls: allEventList));
+      EventsListbox.put(
+          0,
+          EventsList(
+            ls: allEventList,
+          ));
     } else {
       if (allEventList.isEmpty) {
         final data = await _db
@@ -89,7 +95,6 @@ class DataProvider with ChangeNotifier {
   }
 
   GenresList fetchGenreList() {
-    print("start");
     Box<EventsList> EventsListbox = Hive.box<EventsList>("Events");
     if (DanceList.isEmpty ||
         DramaList.isEmpty ||
@@ -163,5 +168,23 @@ class DataProvider with ChangeNotifier {
         Social: SocialList,
         Fashion: FashionList);
     return gl;
+  }
+
+  List<List<EventModel>> fetchDaysList() {
+    Box<EventsList> EventsListbox = Hive.box<EventsList>("Events");
+    for (var event in EventsListbox.get(0)!.ls) {
+      switch (event.Day) {
+        case 9:
+          day9.add(event);
+          break;
+        case 10:
+          day10.add(event);
+          break;
+        case 11:
+          day11.add(event);
+          break;
+      }
+    }
+    return [day9, day10, day11];
   }
 }
