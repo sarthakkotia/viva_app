@@ -15,15 +15,15 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset('assets/videos/splash_video.mp4')
+    _controller = VideoPlayerController.asset('assets/Logos/logorevealvertical.mp4')
       ..initialize().then((_) {
         setState(() {});
         _controller.play();
-        Future.delayed(Duration(seconds: 5), () {
+        Future.delayed(const Duration(seconds: 5), () {
           // Navigate to Test2Screen after 5 seconds
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
-              builder: (context) => Test2Screen(),
+              builder: (context) => const Test2Screen(),
             ),
           );
         });
@@ -42,16 +42,14 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          _controller.value.isInitialized
-              ? FittedBox(
-                  fit: BoxFit.cover,
-                  child: SizedBox(
-                    width: _controller.value.size.width,
-                    height: _controller.value.size.height,
-                    child: VideoPlayer(_controller),
-                  ),
-                )
-              : CircularProgressIndicator(),
+          FittedBox(
+            fit: BoxFit.cover,
+            child: SizedBox(
+              width: _controller.value.size.width,
+              height: _controller.value.size.height,
+              child: VideoPlayer(_controller),
+            ),
+          )
         ],
       ),
     );

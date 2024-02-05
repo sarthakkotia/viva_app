@@ -74,7 +74,7 @@ class _MyHomePageState extends State<Test2Screen>
       primary: true,
       // backgroundColor: Colors.amber,
       bottomNavigationBar: SnakeNavigationBar.color(
-        height: heightscreen / 11,
+        height: heightscreen / 12,
         behaviour: SnakeBarBehaviour.pinned,
         snakeShape: SnakeShape.circle,
         elevation: 5,
