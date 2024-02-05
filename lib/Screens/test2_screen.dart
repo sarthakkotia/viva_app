@@ -3,10 +3,13 @@ import "dart:core";
 import 'package:connectivity_plus/connectivity_plus.dart';
 import "package:flutter/material.dart";
 import "package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart";
+import "package:provider/provider.dart";
 import "package:viva_app/Screens/home_screen.dart";
 import "package:viva_app/Screens/info_screen.dart";
 import "package:viva_app/Screens/schedule_screen.dart";
 import "package:viva_app/Widgets/animate_gradient.dart";
+
+import "../Provider/schedule_provider.dart";
 
 class Test2Screen extends StatefulWidget {
   const Test2Screen({super.key});
@@ -18,6 +21,7 @@ class Test2Screen extends StatefulWidget {
 class _MyHomePageState extends State<Test2Screen>
     with TickerProviderStateMixin {
   int currentPageIndex = 0;
+  late ScheduleDataProvider schedule_data;
   List<Widget> screens = [];
 
   final PageController controller =
@@ -46,6 +50,8 @@ class _MyHomePageState extends State<Test2Screen>
 
   @override
   void initState() {
+    schedule_data = Provider.of<ScheduleDataProvider>(context, listen: false);
+    schedule_data.fetchData();
     bool offline = true;
     (Connectivity().checkConnectivity()).then((connectivityResult) {
       if (connectivityResult == ConnectivityResult.wifi ||

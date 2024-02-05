@@ -8,9 +8,10 @@ import 'package:video_player/video_player.dart';
 import 'package:viva_app/Models/EventModelwithHive.dart';
 import 'package:viva_app/Models/EventsList.dart';
 import 'package:viva_app/Provider/Data_provider.dart';
+import 'package:viva_app/Provider/schedule_provider.dart';
 import 'package:viva_app/Screens/Test3Screen.dart';
-
 import 'firebase_options.dart';
+import 'Widgets/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,11 +30,17 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => DataProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => DataProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ScheduleDataProvider(),
+        )
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -41,58 +48,6 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: const SplashScreen(),
-      ),
-    );
-  }
-}
-
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
-
-  @override
-  _SplashScreenState createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  final VideoPlayerController _controller =
-      VideoPlayerController.asset('assets/Logos/logorevealvertical.mp4');
-  late DataProvider data_provider;
-
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration.zero).then((value) {
-      _controller.initialize();
-      setState(() {});
-      Stopwatch stopwatch = Stopwatch();
-      stopwatch.start();
-      _controller.play();
-      data_provider = Provider.of<DataProvider>(context, listen: false);
-      data_provider.Checkid().then((value) {
-        data_provider.fetchFromFirebase(value).then((value) {
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const Test3Screen()));
-        });
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: _controller.value.isInitialized
-            ? AspectRatio(
-                aspectRatio: _controller.value.aspectRatio,
-                child: VideoPlayer(_controller),
-              )
-            : const CircularProgressIndicator(),
       ),
     );
   }

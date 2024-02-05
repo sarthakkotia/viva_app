@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_collapsing_toolbar/flutter_collapsing_toolbar.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:viva_app/Models/ScheduleListModel.dart';
@@ -52,10 +51,6 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
       ),
       body: Column(
         children: [
-          // Align(
-          //   alignment: Alignment.topCenter,
-          //   child:
-          // ),
           widget.offline == true
               ? Lottie.asset("assets/AnimatedIcons/NoConnection.json")
               : loaded == false
