@@ -10,6 +10,8 @@ import 'package:viva_app/Models/EventsList.dart';
 import 'package:viva_app/Provider/Data_provider.dart';
 import 'package:viva_app/Provider/schedule_provider.dart';
 import 'package:viva_app/Screens/Test3Screen.dart';
+import 'package:viva_app/Widgets/splash_screen2.dart';
+
 import 'firebase_options.dart';
 import 'Widgets/splash_screen.dart';
 
@@ -47,7 +49,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           useMaterial3: true,
         ),
-        home: const SplashScreen(),
+        home: const SplashScreen2(),
       ),
     );
   }
