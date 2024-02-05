@@ -6,14 +6,14 @@ import 'package:viva_app/Widgets/homepage_tile.dart';
 
 import '../Provider/Data_provider.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class DuplicateHomeScreen extends StatefulWidget {
+  const DuplicateHomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<DuplicateHomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<DuplicateHomeScreen> {
   int currentindex =
       0; // to decide which chip selected and subsequently the stackview
 
@@ -48,6 +48,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     DataProvider data_provider =
         Provider.of<DataProvider>(context, listen: false);
+    data_provider.fetchGenreList();
+    print(data_provider.ExcitingList.length);
+    print(data_provider.ArtList.length);
     return Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
       Padding(
         padding: const EdgeInsets.all(25),

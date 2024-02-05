@@ -10,24 +10,24 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  late VideoPlayerController _controller;
+  final VideoPlayerController _controller =
+      VideoPlayerController.asset('assets/Logos/logorevealvertical.mp4')
+        ..initialize();
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset('assets/Logos/logorevealvertical.mp4')
-      ..initialize().then((_) {
-        setState(() {});
-        _controller.play();
-        Future.delayed(const Duration(seconds: 5), () {
-          // Navigate to Test2Screen after 5 seconds
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => const Test2Screen(),
-            ),
-          );
-        });
-      });
+    setState(() {});
+    _controller.play();
+
+    Future.delayed(const Duration(seconds: 5), () {
+      // Navigate to Test2Screen after 5 seconds
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const Test2Screen(),
+        ),
+      );
+    });
   }
 
   @override

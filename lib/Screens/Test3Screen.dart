@@ -3,19 +3,19 @@ import "dart:core";
 import 'package:connectivity_plus/connectivity_plus.dart';
 import "package:flutter/material.dart";
 import "package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart";
-import "package:viva_app/Screens/home_screen.dart";
+import "package:viva_app/Screens/DuplicateHomeScreen.dart";
 import "package:viva_app/Screens/info_screen.dart";
 import "package:viva_app/Screens/schedule_screen.dart";
 import "package:viva_app/Widgets/animate_gradient.dart";
 
-class Test2Screen extends StatefulWidget {
-  const Test2Screen({super.key});
+class Test3Screen extends StatefulWidget {
+  const Test3Screen({super.key});
 
   @override
-  State<Test2Screen> createState() => _MyHomePageState();
+  State<Test3Screen> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<Test2Screen>
+class _MyHomePageState extends State<Test3Screen>
     with TickerProviderStateMixin {
   int currentPageIndex = 0;
   List<Widget> screens = [];
@@ -53,9 +53,9 @@ class _MyHomePageState extends State<Test2Screen>
         offline = false;
       }
       screens = [
-        AnimateGradientClass(const HomeScreen()),
+        const AnimateGradientClass(DuplicateHomeScreen()),
         AnimateGradientClass(ScheduleScreen(offline)),
-        AnimateGradientClass(const InfoScreen())
+        const AnimateGradientClass(InfoScreen())
       ];
     });
 
