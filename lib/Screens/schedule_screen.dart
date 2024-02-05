@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:viva_app/Models/ScheduleListModel.dart';
 import 'package:viva_app/Provider/schedule_provider.dart';
+import 'package:viva_app/Widgets/schedule_list_tile.dart';
 import 'package:viva_app/Widgets/schedule_list_widget.dart';
 
 List<String> daysassets = [
@@ -24,8 +25,6 @@ class ScheduleScreen extends StatefulWidget {
 
 class _ScheduleScreenState extends State<ScheduleScreen>
     with SingleTickerProviderStateMixin {
-  final controller = ScrollController();
-  double headerOffset = 0.0;
   int selectedIndex = 0;
   List<ScheduleModel> schedule = [];
   late ScheduleDataProvider schedule_data;
@@ -48,6 +47,11 @@ class _ScheduleScreenState extends State<ScheduleScreen>
     super.initState();
   }
 
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,46 +61,51 @@ class _ScheduleScreenState extends State<ScheduleScreen>
           tabs: [
             TextButton(
                 onPressed: () {
-                  selectedIndex = 0;
-                  setState(() {});
+                  selectedIndex = 1;
+                  // setState(() {});
                 },
                 child: Image.asset("assets/Logos/9feb.png")),
             TextButton(
                 onPressed: () {
-                  selectedIndex = 1;
-                  setState(() {});
+                  selectedIndex = 2;
+                  // setState(() {});
                 },
                 child: Image.asset("assets/Logos/10feb.png")),
             TextButton(
                 onPressed: () {
-                  selectedIndex = 2;
-                  setState(() {});
+                  selectedIndex = 3;
+                  // setState(() {});
                 },
                 child: Image.asset("assets/Logos/11feb.png")),
           ],
         ),
       ),
-      body: Column(
+      body: TabBarView(
+        controller: tabController,
         children: [
-          TabBarView(
-            controller: tabController,
-            children: const <Widget>[
-              Center(
-                child: Text("It's cloudy here"),
-              ),
-              Center(
-                child: Text("It's rainy here"),
-              ),
-              Center(
-                child: Text("It's sunny here"),
-              ),
-            ],
-          ),
-          widget.offline == true
-              ? Lottie.asset("assets/AnimatedIcons/NoConnection.json")
-              : loaded == false
-                  ? CircularProgressIndicator()
-                  : ScheduleList(schedule)
+          // ListView.separated(
+          //     itemBuilder: (context, index) {
+          //       return const CustomListTile(
+          //           title: "Razzmataz",
+          //           venue: "OAT",
+          //           time: "10:00 AM",
+          //           eventDescription: "Dance");
+          //     },
+          //     separatorBuilder: (context, index) {
+          //       return const SizedBox(
+          //         height: 50,
+          //       );
+          //     },
+          //     itemCount: 8)
+          Text("1"),
+          Text("2"),
+          Text("3"),
+
+          // widget.offline == true
+          //     ? Lottie.asset("assets/AnimatedIcons/NoConnection.json")
+          //     : loaded == false
+          //         ? const CircularProgressIndicator()
+          //         : ScheduleList(schedule)
         ],
       ),
     );
