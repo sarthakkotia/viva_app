@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parallax_sensors_bg/parallax_sensors_bg.dart';
+
 class ParallaxWidget extends StatelessWidget {
   const ParallaxWidget({
     super.key,
@@ -11,20 +12,17 @@ class ParallaxWidget extends StatelessWidget {
       layers: [
         Layer(
           sensitivity: 1,
-          image: AssetImage("assets/Logos/middlelayer.jpg"),
-          preventCrop: true,
-          imageBlurValue: 5,
-        ),
-        Layer(
-          sensitivity: 7,
-          image: AssetImage("assets/Logos/obj.png"),
-          imageHeight: 500,
-          imageFit: BoxFit.fitHeight,
+          image: AssetImage("assets/Logos/subwaysurferbg.webp"),
+          imageBlurValue: 2,
         ),
         Layer(
           sensitivity: 12,
-          child: Text('Topmost layer'),
+          image: AssetImage("assets/Logos/subwaysurf.png"),
+          imageHeight: 500,
+          imageFit: BoxFit.fitHeight,
         ),
+        // is third layer even needed
+        Layer(sensitivity: 10),
       ],
       child: Column(
         children: [
