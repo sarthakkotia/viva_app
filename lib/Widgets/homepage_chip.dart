@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class HomePageChip extends StatefulWidget {
   const HomePageChip(
@@ -25,6 +26,6 @@ class _HomePageChipState extends State<HomePageChip> {
         onTap: widget.onPressed,
         child: Image.asset(widget.icon),
       ),
-    );
+    ).animate().moveX().fade();
   }
 }

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:viva_app/Models/EventModelwithHive.dart';
 import 'package:viva_app/Provider/Data_provider.dart';
 
-import '../Models/EventsList.dart';
 import '../Widgets/schedule_list_tile.dart';
 
 List<String> daysassets = [

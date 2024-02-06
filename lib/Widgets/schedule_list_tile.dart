@@ -28,7 +28,10 @@ class _CustomListTileState extends State<CustomListTile> {
       // lessen their width
       title: Column(
         children: [
-          Text(widget.title, textAlign: TextAlign.center,),
+          Text(
+            widget.title,
+            textAlign: TextAlign.center,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [Text(widget.venue), Text(widget.time)],

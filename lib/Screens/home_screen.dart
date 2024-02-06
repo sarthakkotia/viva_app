@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked_listview/stacked_listview.dart';
 import 'package:viva_app/Widgets/homepage_chip.dart';
@@ -51,9 +52,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
       Padding(
-        padding: const EdgeInsets.all(25),
-        child: Image.asset("assets/Logos/vivlogo.png"),
-      ),
+          padding: const EdgeInsets.all(25),
+          child: Image.asset("assets/Logos/vivlogo.png")
+              .animate()
+              .flipV(duration: const Duration(milliseconds: 1250))
+              .slideY()
+              .scaleXY()),
       Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         height: 40,
