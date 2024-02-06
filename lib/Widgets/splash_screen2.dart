@@ -52,7 +52,6 @@ class _SplashScreenState extends State<SplashScreen2> {
   @override
   void initState() {
     super.initState();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     _controller.initialize().then((value) {
       Stopwatch stopwatch = Stopwatch();
       setState(() {});
@@ -82,8 +81,6 @@ class _SplashScreenState extends State<SplashScreen2> {
 
   @override
   void dispose() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: SystemUiOverlay.values);
     _controller.dispose();
     super.dispose();
   }

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
@@ -5,6 +7,7 @@ import 'package:viva_app/Models/EventModelwithHive.dart';
 import 'package:viva_app/Provider/Data_provider.dart';
 
 import '../Models/EventsList.dart';
+import '../Widgets/schedule_list_tile.dart';
 
 List<String> daysassets = [
   "assets/Logos/9feb.png",
@@ -29,15 +32,18 @@ class _ScheduleScreenState extends State<ScheduleScreen>
   final controller = ScrollController();
   double headerOffset = 0.0;
   late DataProvider dataProvider;
-  late final TabController tabController;
+  // late final TabController tabController;
+  late List<List<EventModel>> days;
 
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 3, vsync: this);
     Hive.openBox<EventsList>("Events").then((value) {
       dataProvider = Provider.of<DataProvider>(context, listen: false);
-      dataProvider.fetchDaysList();
+      days = dataProvider.fetchDaysList();
+      setState(() {
+        schedule = days[0];
+      });
     });
 
     /*
@@ -51,59 +57,97 @@ class _ScheduleScreenState extends State<ScheduleScreen>
   }
 
   void dispose() {
-    tabController.dispose();
+    // tabController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        bottom: TabBar(
-          controller: tabController,
-          tabs: [
-            TextButton(
-                onPressed: () {
-                  selectedIndex = 1;
-                  // setState(() {
-                  //   schedule = dataProvider.day9;
-                  // });
-                },
-                child: Image.asset("assets/Logos/9feb.png")),
-            TextButton(
-                onPressed: () {
-                  selectedIndex = 2;
-                  // setState(() {
-                  //   schedule = dataProvider.day10;
-                  // });
-                },
-                child: Image.asset("assets/Logos/10feb.png")),
-            TextButton(
-                onPressed: () {
-                  selectedIndex = 3;
-                  // setState(() {
-                  //   schedule = dataProvider.day11;
-                  // });
-                },
-                child: Image.asset("assets/Logos/11feb.png")),
-          ],
-        ),
-      ),
-      body: TabBarView(
-        controller: tabController,
-        children: const <Widget>[
-          Center(
-            child: Text("It's cloudy here"),
+    return DefaultTabController(
+        length: 3,
+        initialIndex: 1,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: TabBar(
+              tabs: [
+                TextButton(
+                    onPressed: () {
+                      setState(() {
+                        selectedIndex = 1;
+                        schedule = days[0];
+                      });
+                    },
+                    child: Image.asset("assets/Logos/9feb.png")),
+                TextButton(
+                    onPressed: () {
+                      setState(() {
+                        selectedIndex = 2;
+                        schedule = days[1];
+                      });
+                    },
+                    child: Image.asset("assets/Logos/10feb.png")),
+                TextButton(
+                    onPressed: () {
+                      setState(() {
+                        selectedIndex = 3;
+                        schedule = days[2];
+                      });
+                    },
+                    child: Image.asset("assets/Logos/11feb.png")),
+              ],
+            ),
           ),
-          Center(
-            child: Text("It's rainy here"),
+          body: TabBarView(
+            children: <Widget>[
+              ListView.separated(
+                  itemBuilder: (context, index) {
+                    return CustomListTile(
+                        title: days[0][index].Title +
+                            (" (${days[0][index].Genre})"),
+                        venue: days[0][index].Venue,
+                        time: days[0][index].DateandTime.toString(),
+                        eventDescription: schedule[index].Desc);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(
+                      height: 10,
+                    );
+                  },
+                  itemCount: days[0].length),
+              ListView.separated(
+                  itemBuilder: (context, index) {
+                    return CustomListTile(
+                        title: days[1][index].Title +
+                            (" (${days[1][index].Genre})"),
+                        venue: days[1][index].Venue,
+                        time: days[1][index].DateandTime.toString(),
+                        eventDescription: schedule[index].Desc);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(
+                      height: 10,
+                    );
+                  },
+                  itemCount: days[1].length),
+              ListView.separated(
+                  itemBuilder: (context, index) {
+                    return CustomListTile(
+                        title: days[2][index].Title +
+                            (" (${days[2][index].Genre})"),
+                        venue: days[2][index].Venue,
+                        time: days[2][index].DateandTime.toString(),
+                        eventDescription: schedule[index].Desc);
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(
+                      height: 10,
+                    );
+                  },
+                  itemCount: days[2].length)
+            ],
           ),
-          Center(
-            child: Text("It's sunny here"),
-          ),
-        ],
-      ),
-    );
+        ));
+
     /*
           widget.offline == true
               ? Lottie.asset("assets/AnimatedIcons/NoConnection.json")
