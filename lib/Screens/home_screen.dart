@@ -48,6 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     DataProvider data_provider =
         Provider.of<DataProvider>(context, listen: false);
+    var fetchedLists = data_provider.fetchGenreList();
+
     return Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
       Padding(
         padding: const EdgeInsets.all(25),
@@ -78,15 +80,15 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         height: MediaQuery.of(context).size.height * 0.6,
         child: StackedListView(
-          itemCount: 10,
+          itemCount: fetchedLists[currentindex]!.length,
           builder: (BuildContext context, int index) {
             // fetch data from hive
             return HomePageCard(
-              title: 'dummy',
-              imgUrl: 'dummy',
+              title: fetchedLists[currentindex]![index].Title,
+              imgUrl: fetchedLists[currentindex]![index].Img,
             );
           },
           itemExtent: MediaQuery.of(context).size.height * 0.25,

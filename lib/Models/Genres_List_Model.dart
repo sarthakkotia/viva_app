@@ -1,6 +1,7 @@
 import 'package:viva_app/Models/EventModelwithHive.dart';
 
 class GenresList {
+
   List<EventModel> Drama;
   List<EventModel> Dance;
   List<EventModel> Music;

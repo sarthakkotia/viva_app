@@ -17,7 +17,7 @@ class _HomePageCardState extends State<HomePageCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Card(child: Image.asset("assets/Logos/linkedinlogo.png")),
+      child: Card(child: Image.network(widget.imgUrl)),
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           // fetch data from hive

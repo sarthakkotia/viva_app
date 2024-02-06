@@ -20,9 +20,10 @@ class DataProvider with ChangeNotifier {
   List<EventModel> DramaList = [];
   List<EventModel> SocialList = [];
   List<EventModel> FashionList = [];
-  List<EventModel> day9 = [];
-  List<EventModel> day10 = [];
-  List<EventModel> day11 = [];
+
+  // this function checks if the "id" field in the "events" document of the "Data" collection
+  // is the same in both the local cache and on the server. It returns true if the values match
+  // or false if there's an error or a mismatch.
 
   Future<bool> Checkid() async {
     try {
@@ -42,12 +43,16 @@ class DataProvider with ChangeNotifier {
   Future<EventsList> fetchFromFirebase(bool val) async {
     await Hive.openBox<EventsList>("Events");
     Box<EventsList> EventsListbox = Hive.box<EventsList>("Events");
+
+    // either cache data != serverdata or cache empty
     if (val == false) {
       final data = await _db
           .collection("Data")
           .doc("events")
           .collection("Events")
           .get(const GetOptions(source: Source.serverAndCache));
+      // Causes Firestore to try to retrieve an up-to-date (server-retrieved) snapshot,
+      // but fall back to returning cached data if the server can't be reached.
       for (var event in data.docs) {
         final val = event.data();
         EventModel em = EventModel(
@@ -66,12 +71,14 @@ class DataProvider with ChangeNotifier {
             ls: allEventList,
           ));
     } else {
+      // cached and serverdata equal but not present in hive
       if (allEventList.isEmpty) {
         final data = await _db
             .collection("Data")
             .doc("events")
             .collection("Events")
-            .get(const GetOptions(source: Source.cache));
+            .get(const GetOptions(
+                source: Source.cache)); // getting data from cache
         for (var event in data.docs) {
           final val = event.data();
           EventModel em = EventModel(
@@ -82,8 +89,9 @@ class DataProvider with ChangeNotifier {
               Genre: val["Genre"],
               Img: val["Img"],
               Venue: val["Venue"]);
-          allEventList.add(em);
+          allEventList.add(em); // adding the data to hive
         }
+        // 0 is the key
         EventsListbox.put(0, EventsList(ls: allEventList));
         return EventsList(ls: allEventList);
       } else {
@@ -94,7 +102,7 @@ class DataProvider with ChangeNotifier {
     return res!;
   }
 
-  GenresList fetchGenreList() {
+  Map<int, List<EventModel>> fetchGenreList() {
     Box<EventsList> EventsListbox = Hive.box<EventsList>("Events");
     if (DanceList.isEmpty ||
         DramaList.isEmpty ||
@@ -143,34 +151,39 @@ class DataProvider with ChangeNotifier {
             break;
         }
       }
-      var gl = GenresList(
-          Dance: DanceList,
-          Drama: DramaList,
-          Music: MusicList,
-          Quiz: QuizList,
-          SpeakingArts: SpeakingArtsList,
-          Photography: PhotographyList,
-          Nukkad: NukkadList,
-          Exciting: ExcitingList,
-          Social: SocialList,
-          Fashion: FashionList);
+      Map<int, List<EventModel>> gl = {
+        0: DanceList,
+        1: DramaList,
+        2: MusicList,
+        3: QuizList,
+        4: SpeakingArtsList,
+        5: PhotographyList,
+        6: NukkadList,
+        7: ExcitingList,
+        8: SocialList,
+        9: FashionList,
+      };
       return gl;
     }
-    var gl = GenresList(
-        Dance: DanceList,
-        Drama: DramaList,
-        Music: MusicList,
-        Quiz: QuizList,
-        SpeakingArts: SpeakingArtsList,
-        Photography: PhotographyList,
-        Nukkad: NukkadList,
-        Exciting: ExcitingList,
-        Social: SocialList,
-        Fashion: FashionList);
+    Map<int, List<EventModel>> gl = {
+      0: DanceList,
+      1: DramaList,
+      2: MusicList,
+      3: QuizList,
+      4: SpeakingArtsList,
+      5: PhotographyList,
+      6: NukkadList,
+      7: ExcitingList,
+      8: SocialList,
+      9: FashionList,
+    };
     return gl;
   }
 
   List<List<EventModel>> fetchDaysList() {
+    List<EventModel> day9 = [];
+    List<EventModel> day10 = [];
+    List<EventModel> day11 = [];
     Box<EventsList> EventsListbox = Hive.box<EventsList>("Events");
     for (var event in EventsListbox.get(0)!.ls) {
       switch (event.Day) {
