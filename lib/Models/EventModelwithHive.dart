@@ -19,7 +19,7 @@ class EventModel extends HiveObject {
   @HiveField(6)
   final int Day;
   @HiveField(7)
-  final String? Poster;
+  final String Poster;
 
   EventModel(
       {required this.Title,
@@ -29,5 +29,5 @@ class EventModel extends HiveObject {
       required this.Genre,
       required this.Img,
       required this.Venue,
-      this.Poster});
+      required this.Poster});
 }

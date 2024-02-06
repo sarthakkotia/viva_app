@@ -67,7 +67,7 @@ class _SplashScreenState extends State<SplashScreen> {
         setupAndInitializeHive();
         // setupPushNotifications();
         setupProvider().then((value) {
-          if (stopwatch.elapsedMilliseconds * 1000 >= 6000) {
+          if (stopwatch.elapsedMilliseconds * 1000 >= 8000) {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
               builder: (context) => const HomePage(),
             ));
@@ -75,7 +75,7 @@ class _SplashScreenState extends State<SplashScreen> {
             stopwatch.reset();
           } else {
             Future.delayed(Duration(
-                    milliseconds: 6000 - stopwatch.elapsedMilliseconds * 1000))
+                    milliseconds: 8000 - stopwatch.elapsedMilliseconds * 1000))
                 .then((value) {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const HomePage()));

@@ -24,7 +24,7 @@ class EventModelAdapter extends TypeAdapter<EventModel> {
       Genre: fields[3] as String,
       Img: fields[2] as String,
       Venue: fields[5] as String,
-      Poster: fields[7] as String?,
+      Poster: fields[7].toString() as String,
     );
   }
 

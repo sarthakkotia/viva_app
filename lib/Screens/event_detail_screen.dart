@@ -9,6 +9,7 @@ class EventDetailScreen extends StatefulWidget {
   final int day;
   final String desc;
   final String venue;
+  final String poster;
 
   const EventDetailScreen({
     Key? key,
@@ -18,7 +19,7 @@ class EventDetailScreen extends StatefulWidget {
     required this.desc,
     required this.venue,
     required this.day,
-    required this.imgUrl,
+    required this.imgUrl, required this.poster,
   }) : super(key: key);
 
   @override
@@ -31,7 +32,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     return Scaffold(
       body: Column(
         children: [
-          CachedNetworkImage(imageUrl: widget.imgUrl),
+          CachedNetworkImage(imageUrl: widget.poster),
           Row(children: [Icon(Icons.add), Text("Genre")]),
           Row(children: [Icon(Icons.location_pin), Text(widget.genre)]),
           Row(

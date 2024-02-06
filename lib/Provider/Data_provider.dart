@@ -42,6 +42,7 @@ class DataProvider with ChangeNotifier {
   }
 
   Future<EventsList> fetchFromFirebase(bool val) async {
+    await Hive.openBox<EventsList>("Events");
     Box<EventsList> EventsListbox = Hive.box<EventsList>("Events");
 
     // either cache data != serverdata or cache empty
@@ -63,7 +64,7 @@ class DataProvider with ChangeNotifier {
             Genre: val["Genre"],
             Img: val["Img"],
             Venue: val["Venue"],
-            Poster: val["Poster"] ?? "null");
+            Poster: val["Poster"]==null?"null":val["Poster"]);
         allEventList.add(em);
       }
       EventsListbox.put(
