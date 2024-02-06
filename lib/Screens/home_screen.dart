@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     DataProvider data_provider =
         Provider.of<DataProvider>(context, listen: false);
-    var fetchedLists = data_provider.fetchGenreList();
+    var fetchedLists = data_provider.fetcheddata;
 
     return Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
       Padding(

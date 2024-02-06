@@ -52,6 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
     data_provider = Provider.of<DataProvider>(context, listen: false);
     final bool val = await data_provider.Checkid();
     await data_provider.fetchFromFirebase(val);
+    data_provider.fetchGenreList();
   }
 
   @override
@@ -63,9 +64,9 @@ class _SplashScreenState extends State<SplashScreen> {
       _controller.play().then((value) {
         stopwatch.start();
         setupAndInitializeHive();
-        setupPushNotifications();
+        // setupPushNotifications();
         setupProvider().then((value) {
-          if (stopwatch.elapsedMilliseconds * 1000 >= 5000) {
+          if (stopwatch.elapsedMilliseconds * 1000 >= 6000) {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
               builder: (context) => const HomePage(),
             ));
@@ -73,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen> {
             stopwatch.reset();
           } else {
             Future.delayed(Duration(
-                    milliseconds: 5000 - stopwatch.elapsedMilliseconds * 1000))
+                    milliseconds: 6000 - stopwatch.elapsedMilliseconds * 1000))
                 .then((value) {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const HomePage()));

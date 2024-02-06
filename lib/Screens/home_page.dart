@@ -1,12 +1,17 @@
 import "dart:core";
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/material.dart";
 import "package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart";
+import "package:provider/provider.dart";
 import "package:viva_app/Screens/home_screen.dart";
 import "package:viva_app/Screens/info_screen.dart";
 import "package:viva_app/Screens/schedule_screen.dart";
 import "package:viva_app/Widgets/animate_gradient.dart";
+
+import "../Provider/Data_provider.dart";
+import "../Provider/Services/Notifier.dart";
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,8 +24,8 @@ class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
   int currentPageIndex = 0;
   List<Widget> screens = [
     const AnimateGradientClass(HomeScreen()),
-    AnimateGradientClass(ScheduleScreen(false)),
-    const AnimateGradientClass(InfoScreen())
+    (ScheduleScreen([])),
+    (InfoScreen())
   ];
 
   final PageController controller =
@@ -47,9 +52,28 @@ class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
         label: "Info"),
   ];
 
+  void setupPushNotifications() async {
+    final fcm = FirebaseMessaging.instance;
+    fcm.requestPermission(
+        alert: true,
+        announcement: true,
+        badge: true,
+        criticalAlert: true,
+        provisional: true,
+        sound: true);
+    fcm.subscribeToTopic("users");
+    fcm.setForegroundNotificationPresentationOptions(
+        sound: true, badge: true, alert: true);
+    NotificationClass nc = NotificationClass();
+    nc.intitalize();
+  }
+
   @override
   void initState() {
+    setupPushNotifications();
     super.initState();
+    var data_provider = Provider.of<DataProvider>(context, listen: false);
+    var days = data_provider.days;
     bool offline = true;
     (Connectivity().checkConnectivity()).then((connectivityResult) {
       if (connectivityResult == ConnectivityResult.wifi ||
@@ -58,8 +82,8 @@ class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
       }
       screens = [
         const AnimateGradientClass(HomeScreen()),
-        AnimateGradientClass(ScheduleScreen(offline)),
-        const AnimateGradientClass(InfoScreen())
+        (ScheduleScreen(days)),
+        (InfoScreen())
       ];
     });
   }

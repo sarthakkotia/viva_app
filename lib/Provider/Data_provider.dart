@@ -19,6 +19,8 @@ class DataProvider with ChangeNotifier {
   List<EventModel> DramaList = [];
   List<EventModel> SocialList = [];
   List<EventModel> FashionList = [];
+  Map<int, List<EventModel>> fetcheddata = {};
+  List<List<EventModel>> days = [];
 
   // this function checks if the "id" field in the "events" document of the "Data" collection
   // is the same in both the local cache and on the server. It returns true if the values match
@@ -100,7 +102,7 @@ class DataProvider with ChangeNotifier {
     return res!;
   }
 
-  Map<int, List<EventModel>> fetchGenreList() {
+  void fetchGenreList() {
     Box<EventsList> EventsListbox = Hive.box<EventsList>("Events");
     if (DanceList.isEmpty ||
         DramaList.isEmpty ||
@@ -149,7 +151,7 @@ class DataProvider with ChangeNotifier {
             break;
         }
       }
-      Map<int, List<EventModel>> gl = {
+      fetcheddata = {
         0: DanceList,
         1: DramaList,
         2: MusicList,
@@ -161,9 +163,8 @@ class DataProvider with ChangeNotifier {
         8: SocialList,
         9: FashionList,
       };
-      return gl;
     }
-    Map<int, List<EventModel>> gl = {
+    fetcheddata = {
       0: DanceList,
       1: DramaList,
       2: MusicList,
@@ -175,27 +176,31 @@ class DataProvider with ChangeNotifier {
       8: SocialList,
       9: FashionList,
     };
-    return gl;
   }
 
   List<List<EventModel>> fetchDaysList() {
-    List<EventModel> day9 = [];
-    List<EventModel> day10 = [];
-    List<EventModel> day11 = [];
-    Box<EventsList> EventsListbox = Hive.box<EventsList>("Events");
-    for (var event in EventsListbox.get(0)!.ls) {
-      switch (event.Day) {
-        case 9:
-          day9.add(event);
-          break;
-        case 10:
-          day10.add(event);
-          break;
-        case 11:
-          day11.add(event);
-          break;
+    if (days.isEmpty) {
+      List<EventModel> day9 = [];
+      List<EventModel> day10 = [];
+      List<EventModel> day11 = [];
+      Box<EventsList> EventsListbox = Hive.box<EventsList>("Events");
+      for (var event in EventsListbox.get(0)!.ls) {
+        switch (event.Day) {
+          case 9:
+            day9.add(event);
+            break;
+          case 10:
+            day10.add(event);
+            break;
+          case 11:
+            day11.add(event);
+            break;
+        }
       }
+      days = [day9, day10, day11];
+      return days;
+    } else {
+      return days;
     }
-    return [day9, day10, day11];
   }
 }
