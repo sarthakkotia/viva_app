@@ -18,12 +18,17 @@ class ContactUsWidget extends StatelessWidget {
         children: [
           Column(
             children: [
-              //TODO: Rounded Square
-              const CircleAvatar(radius: 60),
+              const CircleAvatar(
+                radius: 60,
+                backgroundImage: AssetImage(
+                  "assets/Logos/Ajay-Raj.jpeg",
+                ),
+                backgroundColor: Colors.transparent,
+              ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
                 child: Text(
-                  "placeholder 1",
+                  "Ajay Raj",
                   style: TextStyle(fontSize: 20),
                 ),
               ),
@@ -31,7 +36,7 @@ class ContactUsWidget extends StatelessWidget {
                 children: [
                   IconButton(
                       onPressed: () async {
-                        await launcher.callNumber("");
+                        await launcher.callNumber("8529528101");
                       },
                       icon: const Icon(
                         Icons.call,
@@ -40,13 +45,13 @@ class ContactUsWidget extends StatelessWidget {
                   InkWell(
                     borderRadius: BorderRadius.circular(60),
                     onTap: () async {
-                      await launcher.callNumber("num");
+                      await launcher.callNumber("8529528101");
                     },
                     child: const Padding(
                       padding:
                           EdgeInsets.symmetric(vertical: 5.0, horizontal: 4),
                       child: Text(
-                        "Contact number",
+                        "8529528101",
                         style: TextStyle(fontSize: 18),
                       ),
                     ),
@@ -57,19 +62,28 @@ class ContactUsWidget extends StatelessWidget {
           ),
           Column(
             children: [
-              const CircleAvatar(radius: 60),
+              const CircleAvatar(
+                radius: 60,
+                backgroundImage: AssetImage(
+                  "assets/Logos/Prathmesh.jpeg",
+                ),
+                backgroundColor: Colors.transparent,
+              ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
-                child: Text(
-                  "placeholder 1",
-                  style: TextStyle(fontSize: 20),
+                child: FittedBox(
+                  child: Text(
+                    maxLines: 3,
+                    "Prathmesh Ranjan",
+                    style: TextStyle(fontSize: 19),
+                  ),
                 ),
               ),
               Row(
                 children: [
                   IconButton(
                       onPressed: () {
-                        launcher.callNumber("9461544075");
+                        launcher.callNumber("7007175380");
                       },
                       icon: const Icon(
                         Icons.call,
@@ -78,7 +92,7 @@ class ContactUsWidget extends StatelessWidget {
                   InkWell(
                     borderRadius: BorderRadius.circular(60),
                     onTap: () {
-                      launcher.callNumber("9461544075");
+                      launcher.callNumber("7007175380");
                     },
                     child: const Padding(
                       padding:

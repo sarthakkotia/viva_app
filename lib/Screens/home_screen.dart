@@ -14,8 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int currentindex =
-      0; // to decide which chip selected and subsequently the stackview
+  int currentindex = 0;
 
   List<String> names = [
     "Pronites",
