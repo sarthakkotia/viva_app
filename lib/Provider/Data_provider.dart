@@ -40,7 +40,6 @@ class DataProvider with ChangeNotifier {
   }
 
   Future<EventsList> fetchFromFirebase(bool val) async {
-    await Hive.openBox<EventsList>("Events");
     Box<EventsList> EventsListbox = Hive.box<EventsList>("Events");
     if (val == false) {
       final data = await _db
