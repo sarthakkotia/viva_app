@@ -91,7 +91,11 @@ class _HomeScreenState extends State<HomeScreen> {
               genre: fetchedLists[currentindex]![index].Genre,
               desc: fetchedLists[currentindex]![index].Desc,
               date: fetchedLists[currentindex]![index].DateandTime,
-              venue: fetchedLists[currentindex]![index].Venue, day: fetchedLists[currentindex]![index].Day,
+              venue: fetchedLists[currentindex]![index].Venue,
+              day: fetchedLists[currentindex]![index].Day,
+              poster: (fetchedLists[currentindex]![index].Poster != 'null')
+                  ? fetchedLists[currentindex]![index].Poster
+                  : fetchedLists[currentindex]![index].Img,
             );
           },
           itemExtent: MediaQuery.of(context).size.height * 0.25,
