@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:viva_app/Models/EventModelwithHive.dart';
 import 'package:viva_app/Provider/Data_provider.dart';
 
+import '../Models/EventsList.dart';
 import '../Widgets/schedule_list_tile.dart';
 
 List<String> daysassets = [
@@ -100,7 +102,7 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                             (" (${days[0][index].Genre})"),
                         venue: days[0][index].Venue,
                         time: days[0][index].DateandTime.toString(),
-                        eventDescription: schedule[index].Desc);
+                        eventDescription: days[0][index].Desc);
                   },
                   separatorBuilder: (context, index) {
                     return const SizedBox(
@@ -130,7 +132,7 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                             (" (${days[2][index].Genre})"),
                         venue: days[2][index].Venue,
                         time: days[2][index].DateandTime.toString(),
-                        eventDescription: schedule[index].Desc);
+                        eventDescription: days[2][index].Desc);
                   },
                   separatorBuilder: (context, index) {
                     return const SizedBox(

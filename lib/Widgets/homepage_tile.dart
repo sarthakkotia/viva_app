@@ -4,8 +4,21 @@ import 'package:viva_app/Screens/event_detail_screen.dart';
 class HomePageCard extends StatefulWidget {
   final String imgUrl;
   final String title;
+  final String genre;
+  final DateTime date;
+  final String desc;
+  final String venue;
+  final int day;
 
-  const HomePageCard({Key? key, required this.imgUrl, required this.title})
+  const HomePageCard(
+      {Key? key,
+      required this.imgUrl,
+      required this.title,
+      required this.genre,
+      required this.date,
+      required this.desc,
+      required this.venue,
+      required this.day})
       : super(key: key);
 
   @override
@@ -22,11 +35,13 @@ class _HomePageCardState extends State<HomePageCard> {
           // fetch data from hive
 
           return EventDetailScreen(
-            genre: '',
-            title: '',
-            date: '',
-            time: '',
-            desc: '',
+            genre: widget.genre,
+            title: widget.title,
+            day: widget.day,
+            time: widget.date,
+            desc: widget.desc,
+            venue: widget.venue,
+            imgUrl: widget.imgUrl,
           );
         }));
       },

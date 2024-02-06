@@ -88,6 +88,10 @@ class _HomeScreenState extends State<HomeScreen> {
             return HomePageCard(
               title: fetchedLists[currentindex]![index].Title,
               imgUrl: fetchedLists[currentindex]![index].Img,
+              genre: fetchedLists[currentindex]![index].Genre,
+              desc: fetchedLists[currentindex]![index].Desc,
+              date: fetchedLists[currentindex]![index].DateandTime,
+              venue: fetchedLists[currentindex]![index].Venue, day: fetchedLists[currentindex]![index].Day,
             );
           },
           itemExtent: MediaQuery.of(context).size.height * 0.25,
