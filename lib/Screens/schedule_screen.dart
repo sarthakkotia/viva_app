@@ -30,7 +30,6 @@ class _ScheduleScreenState extends State<ScheduleScreen>
   final controller = ScrollController();
   double headerOffset = 0.0;
   late DataProvider dataProvider;
-  // late final TabController tabController;
   late List<List<EventModel>> days;
 
   @override

@@ -1,23 +1,28 @@
 import "dart:core";
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import "package:flutter/material.dart";
+import "package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart";
+import "package:viva_app/Screens/home_screen.dart";
+import "package:viva_app/Screens/info_screen.dart";
+import "package:viva_app/Screens/schedule_screen.dart";
+import "package:viva_app/Widgets/animate_gradient.dart";
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
   int currentPageIndex = 0;
-  List<Widget> screens = [];
+  List<Widget> screens = [
+    const AnimateGradientClass(HomeScreen()),
+    AnimateGradientClass(ScheduleScreen(false)),
+    const AnimateGradientClass(InfoScreen())
+  ];
 
-  // List<Widget> screens = [
-  //   const HomeScreen(),
-  //   ScheduleScreen(),
-  //   const InfoScreen()
-  // ];
   final PageController controller =
       PageController(initialPage: 0, keepPage: true);
   List<NavigationDestination> listNavigationDestination = [
@@ -29,7 +34,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         label: "Home"),
     const NavigationDestination(
-        icon: Icon(Icons.checklist_rtl_sharp, size: 35), label: "Schedule"),
+        icon: Icon(
+          Icons.checklist_rtl_sharp,
+          size: 35,
+        ),
+        label: "Schedule"),
     const NavigationDestination(
         icon: Icon(
           Icons.person,
@@ -39,13 +48,41 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    bool offline = true;
+    (Connectivity().checkConnectivity()).then((connectivityResult) {
+      if (connectivityResult == ConnectivityResult.wifi ||
+          connectivityResult == ConnectivityResult.mobile) {
+        offline = false;
+      }
+      screens = [
+        const AnimateGradientClass(HomeScreen()),
+        AnimateGradientClass(ScheduleScreen(offline)),
+        const AnimateGradientClass(InfoScreen())
+      ];
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    double heightscreen = MediaQuery.of(context).size.height;
     return Scaffold(
+      extendBody: true,
       primary: true,
-      bottomNavigationBar: NavigationBar(
-        labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-        selectedIndex: currentPageIndex,
-        onDestinationSelected: (value) {
+      bottomNavigationBar: SnakeNavigationBar.color(
+        height: heightscreen / 12,
+        behaviour: SnakeBarBehaviour.pinned,
+        snakeShape: SnakeShape.circle,
+        elevation: 5,
+        snakeViewColor: const Color.fromRGBO(74, 68, 88, 1),
+        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.white,
+        backgroundColor: const Color.fromRGBO(42, 39, 47, 1),
+        showUnselectedLabels: false,
+        showSelectedLabels: false,
+        currentIndex: currentPageIndex,
+        onTap: (value) {
           setState(() {
             currentPageIndex = value;
             controller.animateToPage(currentPageIndex,
@@ -53,7 +90,29 @@ class _MyHomePageState extends State<MyHomePage> {
                 curve: Curves.ease);
           });
         },
-        destinations: listNavigationDestination,
+        items: [
+          BottomNavigationBarItem(
+              icon: SizedBox(
+                height: heightscreen / 17,
+                child: Image.asset(
+                  "assets/Logos/icons8-home-64.png",
+                  fit: BoxFit.cover,
+                ),
+              ),
+              label: "Home"),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.format_list_bulleted_sharp),
+          ),
+          BottomNavigationBarItem(
+              icon: SizedBox(
+                height: heightscreen / 17,
+                child: Image.asset(
+                  "assets/Logos/icons8-info-64.png",
+                  fit: BoxFit.cover,
+                ),
+              ),
+              label: "Info"),
+        ],
       ),
       body: PageView(
         controller: controller,
@@ -64,7 +123,6 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         children: screens,
       ),
-      // body: screens[currentPageIndex],
     );
   }
 }
