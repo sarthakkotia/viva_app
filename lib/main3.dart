@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 import 'package:viva_app/Models/EventModelwithHive.dart';
 import 'package:viva_app/Models/EventsList.dart';
 import 'package:viva_app/Provider/Data_provider.dart';
-import 'package:viva_app/Provider/schedule_provider.dart';
 import 'package:viva_app/Widgets/splash_screen.dart';
 
 import 'firebase_options.dart';
@@ -31,15 +30,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => DataProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => ScheduleDataProvider(),
-        )
-      ],
+    return ChangeNotifierProvider(
+      create: (context) => DataProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

@@ -22,7 +22,11 @@ class _MyHomePageState extends State<Test2Screen>
     with TickerProviderStateMixin {
   int currentPageIndex = 0;
   late ScheduleDataProvider schedule_data;
-  List<Widget> screens = [];
+  List<Widget> screens = [
+    AnimateGradientClass(const HomeScreen()),
+    AnimateGradientClass(ScheduleScreen(false)),
+    AnimateGradientClass(const InfoScreen())
+  ];
 
   final PageController controller =
       PageController(initialPage: 0, keepPage: true);
@@ -50,6 +54,7 @@ class _MyHomePageState extends State<Test2Screen>
 
   @override
   void initState() {
+    super.initState();
     schedule_data = Provider.of<ScheduleDataProvider>(context, listen: false);
     schedule_data.fetchData();
     bool offline = true;
@@ -64,8 +69,6 @@ class _MyHomePageState extends State<Test2Screen>
         AnimateGradientClass(const InfoScreen())
       ];
     });
-
-    super.initState();
   }
 
   @override

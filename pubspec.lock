@@ -369,6 +369,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.3"
+  firebase_messaging:
+    dependency: "direct main"
+    description:
+      name: firebase_messaging
+      sha256: "56a35bb6cf3a0dd4878c052b10ab3b7ccece95f1961066e6c6078d8f2559d0f5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "14.7.14"
+  firebase_messaging_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_messaging_platform_interface
+      sha256: d52e428a51144b916ce2a09635d8da4eeee0613b2bb76c40288585f6015ce3f3
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.5.22"
+  firebase_messaging_web:
+    dependency: transitive
+    description:
+      name: firebase_messaging_web
+      sha256: "8796f9e947c92e51ed48fed702522c5c1a7d7c62197c8f1e23e9691793d20689"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.6.3"
   fixnum:
     dependency: transitive
     description:

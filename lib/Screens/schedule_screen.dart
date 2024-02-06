@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:viva_app/Models/EventModelwithHive.dart';
-import 'package:viva_app/Widgets/schedule_list_widget.dart';
 import 'package:viva_app/Provider/Data_provider.dart';
+
 import '../Models/EventsList.dart';
-import '../Provider/Data_provider.dart';
 
 List<String> daysassets = [
   "assets/Logos/9feb.png",
@@ -16,6 +14,7 @@ List<String> daysassets = [
 
 class ScheduleScreen extends StatefulWidget {
   bool offline;
+
   ScheduleScreen(this.offline, {super.key});
 
   @override
@@ -34,6 +33,7 @@ class _ScheduleScreenState extends State<ScheduleScreen>
 
   @override
   void initState() {
+    super.initState();
     tabController = TabController(length: 3, vsync: this);
     Hive.openBox<EventsList>("Events").then((value) {
       dataProvider = Provider.of<DataProvider>(context, listen: false);
@@ -48,8 +48,6 @@ class _ScheduleScreenState extends State<ScheduleScreen>
       });
     }
      */
-
-    super.initState();
   }
 
   void dispose() {

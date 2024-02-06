@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_collapsing_toolbar/flutter_collapsing_toolbar.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:viva_app/Models/ScheduleListModel.dart';
 import 'package:viva_app/Provider/schedule_provider.dart';
-import 'package:viva_app/Widgets/schedule_list_tile.dart';
-import 'package:viva_app/Widgets/schedule_list_widget.dart';
 
 List<String> daysassets = [
   "assets/Logos/9feb.png",
@@ -15,6 +11,7 @@ List<String> daysassets = [
 
 class ScheduleScreen extends StatefulWidget {
   bool offline;
+
   ScheduleScreen(this.offline, {super.key});
 
   @override
@@ -34,6 +31,7 @@ class _ScheduleScreenState extends State<ScheduleScreen>
 
   @override
   void initState() {
+    super.initState();
     tabController = TabController(length: 3, vsync: this);
 
     if (widget.offline == false) {
@@ -43,8 +41,6 @@ class _ScheduleScreenState extends State<ScheduleScreen>
         loaded = true;
       });
     }
-
-    super.initState();
   }
 
   void dispose() {
