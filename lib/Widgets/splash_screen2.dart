@@ -1,6 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:path_provider/path_provider.dart' as path;
 import 'package:provider/provider.dart';
@@ -10,6 +9,7 @@ import 'package:viva_app/Screens/Test3Screen.dart';
 import '../Models/EventModelwithHive.dart';
 import '../Models/EventsList.dart';
 import '../Provider/Data_provider.dart';
+import '../Provider/Services/Notifier.dart';
 
 class SplashScreen2 extends StatefulWidget {
   const SplashScreen2({Key? key}) : super(key: key);
@@ -29,10 +29,13 @@ class _SplashScreenState extends State<SplashScreen2> {
     Hive.initFlutter("hive_db_test");
     Hive.registerAdapter<EventModel>(EventModelAdapter());
     Hive.registerAdapter<EventsList>(EventsListAdapter());
+    await Hive.openBox<EventsList>("Events");
   }
 
   void setupPushNotifications() async {
     final fcm = FirebaseMessaging.instance;
+    final val = await fcm.getToken();
+    print(val);
     fcm.requestPermission(
         alert: true,
         announcement: true,
@@ -41,6 +44,10 @@ class _SplashScreenState extends State<SplashScreen2> {
         provisional: true,
         sound: true);
     fcm.subscribeToTopic("users");
+    fcm.setForegroundNotificationPresentationOptions(
+        sound: true, badge: true, alert: true);
+    NotificationClass nc = NotificationClass();
+    nc.intitalize();
   }
 
   Future<void> setupProvider() async {
