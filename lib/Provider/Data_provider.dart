@@ -95,6 +95,7 @@ class DataProvider with ChangeNotifier {
   }
 
   GenresList fetchGenreList() {
+    Hive.openBox<EventsList>("Events");
     Box<EventsList> EventsListbox = Hive.box<EventsList>("Events");
     if (DanceList.isEmpty ||
         DramaList.isEmpty ||
