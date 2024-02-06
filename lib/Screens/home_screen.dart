@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   : fetchedLists[currentindex]![index].Img,
             );
           },
-          itemExtent: MediaQuery.of(context).size.height * 0.25,
+          itemExtent: MediaQuery.of(context).size.height * 0.30,
         ),
       )
     ]);
