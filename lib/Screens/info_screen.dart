@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:viva_app/Widgets/ContactUs_widget.dart';
 import 'package:viva_app/urllauncher.dart';
 
@@ -28,7 +29,7 @@ class InfoScreen extends StatelessWidget {
                     child: ContactUsWidget(launcher),
                   ),
                 ),
-              ),
+              ).animate().fadeIn(duration: Duration(milliseconds: 1000)),
               Expanded(
                 flex: 0,
                 child: FittedBox(
@@ -36,10 +37,12 @@ class InfoScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                          onPressed: () async {
-                            await launcher.launchMail();
-                          },
-                          icon: const Icon(Icons.mail_outline, size: 35)),
+                              onPressed: () async {
+                                await launcher.launchMail();
+                              },
+                              icon: const Icon(Icons.mail_outline, size: 35))
+                          .animate()
+                          .flipV(),
                       Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: InkWell(
@@ -53,7 +56,7 @@ class InfoScreen extends StatelessWidget {
                               child: Text("vivacity@lnmiit.ac.in",
                                   style: TextStyle(fontSize: 28)),
                             ),
-                          ),
+                          ).animate().fadeIn(),
                         ),
                       )
                     ],
@@ -69,12 +72,14 @@ class InfoScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         IconButton(
-                            iconSize: 38,
-                            onPressed: () async {
-                              await launcher.launchweb(
-                                  Uri(scheme: "https", host: "vivacity.live"));
-                            },
-                            icon: const Icon(Icons.web)),
+                                iconSize: 38,
+                                onPressed: () async {
+                                  await launcher.launchweb(Uri(
+                                      scheme: "https", host: "vivacity.live"));
+                                },
+                                icon: const Icon(Icons.web))
+                            .animate()
+                            .flipV(),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: InkWell(
@@ -89,7 +94,7 @@ class InfoScreen extends StatelessWidget {
                                   style: TextStyle(fontSize: 28)),
                             ),
                           ),
-                        )
+                        ).animate().fadeIn()
                       ],
                     ),
                   ),
@@ -115,7 +120,7 @@ class InfoScreen extends StatelessWidget {
                             fit: BoxFit.contain,
                           ),
                         ),
-                      ),
+                      ).animate().slideX(),
                       IconButton(
                         padding: const EdgeInsets.all(15),
                         onPressed: () {
@@ -128,7 +133,7 @@ class InfoScreen extends StatelessWidget {
                             fit: BoxFit.contain,
                           ),
                         ),
-                      ),
+                      ).animate().slideX(),
                       IconButton(
                         padding: const EdgeInsets.all(15),
                         onPressed: () {
@@ -141,7 +146,7 @@ class InfoScreen extends StatelessWidget {
                             fit: BoxFit.contain,
                           ),
                         ),
-                      ),
+                      ).animate().slideX(),
                     ],
                   ),
                 ),
@@ -156,7 +161,7 @@ class InfoScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15.0),
                         border: Border.all(
-                          color: Color.fromRGBO(143, 37, 114, 1),
+                          color: const Color.fromRGBO(143, 37, 114, 1),
                           width: 10.0,
                         ),
                       ),
@@ -173,7 +178,7 @@ class InfoScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
+              ).animate().flipH(),
             ],
           ),
         ),

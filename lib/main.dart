@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          fontFamily: "kojiro",
           brightness: Brightness.dark,
           useMaterial3: true,
         ),
