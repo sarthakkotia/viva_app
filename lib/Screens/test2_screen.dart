@@ -23,9 +23,9 @@ class _MyHomePageState extends State<Test2Screen>
   int currentPageIndex = 0;
   late ScheduleDataProvider schedule_data;
   List<Widget> screens = [
-    AnimateGradientClass(const HomeScreen()),
-    AnimateGradientClass(ScheduleScreen(false)),
-    AnimateGradientClass(const InfoScreen())
+    const AnimateGradientClass(HomeScreen()),
+    (ScheduleScreen(false)),
+    (const InfoScreen())
   ];
 
   final PageController controller =
@@ -64,9 +64,9 @@ class _MyHomePageState extends State<Test2Screen>
         offline = false;
       }
       screens = [
-        AnimateGradientClass(const HomeScreen()),
-        AnimateGradientClass(ScheduleScreen(offline)),
-        AnimateGradientClass(const InfoScreen())
+        const AnimateGradientClass(HomeScreen()),
+        (ScheduleScreen(offline)),
+        (const InfoScreen())
       ];
     });
   }

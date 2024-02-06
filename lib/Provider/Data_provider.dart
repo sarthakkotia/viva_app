@@ -4,7 +4,6 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:viva_app/Models/EventModelwithHive.dart';
 import 'package:viva_app/Models/EventsList.dart';
-import 'package:viva_app/Models/Genres_List_Model.dart';
 
 class DataProvider with ChangeNotifier {
   final _db = FirebaseFirestore.instance;

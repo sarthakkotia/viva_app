@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 
 class AnimateGradientClass extends StatelessWidget {
   final Widget child;
-  const AnimateGradientClass(this.child);
 
+  const AnimateGradientClass(this.child, {super.key});
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: AnimateGradient(

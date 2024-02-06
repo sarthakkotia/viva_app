@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:viva_app/Widgets/Parallax__widget.dart';
+import 'package:flutter/material.dart';
 
 class EventDetailScreen extends StatefulWidget {
   final String genre;

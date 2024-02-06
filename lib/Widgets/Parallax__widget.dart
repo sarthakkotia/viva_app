@@ -12,12 +12,12 @@ class ParallaxWidget extends StatelessWidget {
       layers: [
         Layer(
           sensitivity: 1,
-          image: AssetImage("assets/Logos/subwaysurferbg.webp"),
+          image: const AssetImage("assets/Logos/subwaysurferbg.webp"),
           imageBlurValue: 2,
         ),
         Layer(
           sensitivity: 12,
-          image: AssetImage("assets/Logos/subwaysurf.png"),
+          image: const AssetImage("assets/Logos/subwaysurf.png"),
           imageHeight: 500,
           imageFit: BoxFit.fitHeight,
         ),

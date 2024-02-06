@@ -34,8 +34,6 @@ class _SplashScreenState extends State<SplashScreen2> {
 
   void setupPushNotifications() async {
     final fcm = FirebaseMessaging.instance;
-    final val = await fcm.getToken();
-    print(val);
     fcm.requestPermission(
         alert: true,
         announcement: true,

@@ -1,9 +1,6 @@
 import "dart:core";
 
 import "package:flutter/material.dart";
-import "package:viva_app/Screens/home_screen.dart";
-import "package:viva_app/Screens/info_screen.dart";
-import "package:viva_app/Screens/schedule_screen.dart";
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -15,6 +12,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int currentPageIndex = 0;
   List<Widget> screens = [];
+
   // List<Widget> screens = [
   //   const HomeScreen(),
   //   ScheduleScreen(),

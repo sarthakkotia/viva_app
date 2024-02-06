@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class HomePageChip extends StatefulWidget {
-  HomePageChip({required this.title, required this.icon, required this.onPressed, Key? key})
+  const HomePageChip(
+      {required this.title,
+      required this.icon,
+      required this.onPressed,
+      Key? key})
       : super(key: key);
 
   final String title;

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
@@ -56,6 +54,7 @@ class _ScheduleScreenState extends State<ScheduleScreen>
      */
   }
 
+  @override
   void dispose() {
     // tabController.dispose();
     super.dispose();

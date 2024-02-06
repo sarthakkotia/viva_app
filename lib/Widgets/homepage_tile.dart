@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:viva_app/Screens/event_detail_screen.dart';
-import 'package:viva_app/Screens/test2_screen.dart';
 
 class HomePageCard extends StatefulWidget {
   final String imgUrl;
