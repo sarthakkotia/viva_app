@@ -115,7 +115,7 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                             (" (${days[1][index].Genre})"),
                         venue: days[1][index].Venue,
                         time: days[1][index].DateandTime.toString(),
-                        eventDescription: schedule[index].Desc);
+                        eventDescription: days[1][index].Desc);
                   },
                   separatorBuilder: (context, index) {
                     return const SizedBox(

@@ -53,6 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
     final bool val = await data_provider.Checkid();
     await data_provider.fetchFromFirebase(val);
     data_provider.fetchGenreList();
+    data_provider.fetchDaysList();
   }
 
   @override
