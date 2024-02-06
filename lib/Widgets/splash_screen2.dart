@@ -43,6 +43,12 @@ class _SplashScreenState extends State<SplashScreen2> {
     fcm.subscribeToTopic("users");
   }
 
+  Future<void> setupProvider() async {
+    data_provider = Provider.of<DataProvider>(context, listen: false);
+    final bool val = await data_provider.Checkid();
+    await data_provider.fetchFromFirebase(val);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -53,22 +59,21 @@ class _SplashScreenState extends State<SplashScreen2> {
         stopwatch.start();
         setupAndInitializeHive();
         setupPushNotifications();
-        data_provider = Provider.of<DataProvider>(context, listen: false);
-        data_provider.Checkid().then((value) {
-          data_provider.fetchFromFirebase(value).then((value) {
-            if (stopwatch.elapsedMilliseconds * 1000 >= 5000) {
+        setupProvider().then((value) {
+          if (stopwatch.elapsedMilliseconds * 1000 >= 5000) {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) => const Test3Screen(),
+            ));
+            stopwatch.stop();
+            stopwatch.reset();
+          } else {
+            Future.delayed(Duration(
+                    milliseconds: 5000 - stopwatch.elapsedMilliseconds * 1000))
+                .then((value) {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const Test3Screen()));
-            } else {
-              Future.delayed(Duration(
-                      milliseconds:
-                          5000 - stopwatch.elapsedMilliseconds * 1000))
-                  .then((value) {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const Test3Screen()));
-              });
-            }
-          });
+            });
+          }
         });
       });
     });

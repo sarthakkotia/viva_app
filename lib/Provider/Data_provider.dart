@@ -41,7 +41,6 @@ class DataProvider with ChangeNotifier {
   }
 
   Future<EventsList> fetchFromFirebase(bool val) async {
-    await Hive.openBox<EventsList>("Events");
     Box<EventsList> EventsListbox = Hive.box<EventsList>("Events");
 
     // either cache data != serverdata or cache empty
