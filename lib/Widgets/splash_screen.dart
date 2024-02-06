@@ -14,22 +14,9 @@ class _SplashScreenState extends State<SplashScreen> {
   final VideoPlayerController _controller =
       VideoPlayerController.asset('assets/Logos/logorevealvertical.mp4');
 
-  void setupPushNotifications() async {
-    final fcm = FirebaseMessaging.instance;
-    fcm.requestPermission(
-        alert: true,
-        announcement: true,
-        badge: true,
-        criticalAlert: true,
-        provisional: true,
-        sound: true);
-    fcm.subscribeToTopic("users");
-  }
-
   @override
   void initState() {
     super.initState();
-    setupPushNotifications();
     _controller.initialize().then((value) {
       setState(() {});
       _controller.play().then((value) {

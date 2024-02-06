@@ -18,7 +18,11 @@ class Test3Screen extends StatefulWidget {
 class _MyHomePageState extends State<Test3Screen>
     with TickerProviderStateMixin {
   int currentPageIndex = 0;
-  List<Widget> screens = [];
+  List<Widget> screens = [
+    const AnimateGradientClass(DuplicateHomeScreen()),
+    AnimateGradientClass(ScheduleScreen(false)),
+    const AnimateGradientClass(InfoScreen())
+  ];
 
   final PageController controller =
       PageController(initialPage: 0, keepPage: true);
@@ -46,6 +50,7 @@ class _MyHomePageState extends State<Test3Screen>
 
   @override
   void initState() {
+    super.initState();
     bool offline = true;
     (Connectivity().checkConnectivity()).then((connectivityResult) {
       if (connectivityResult == ConnectivityResult.wifi ||
@@ -58,8 +63,6 @@ class _MyHomePageState extends State<Test3Screen>
         const AnimateGradientClass(InfoScreen())
       ];
     });
-
-    super.initState();
   }
 
   @override
