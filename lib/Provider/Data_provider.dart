@@ -62,7 +62,8 @@ class DataProvider with ChangeNotifier {
             Desc: val["Desc"],
             Genre: val["Genre"],
             Img: val["Img"],
-            Venue: val["Venue"]);
+            Venue: val["Venue"],
+            Poster: val["Poster"] ?? "null");
         allEventList.add(em);
       }
       EventsListbox.put(
@@ -88,7 +89,8 @@ class DataProvider with ChangeNotifier {
               Desc: val["Desc"],
               Genre: val["Genre"],
               Img: val["Img"],
-              Venue: val["Venue"]);
+              Venue: val["Venue"],
+              Poster: val["Poster"] ?? "null");
           allEventList.add(em); // adding the data to hive
         }
         // 0 is the key

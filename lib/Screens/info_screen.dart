@@ -152,12 +152,24 @@ class InfoScreen extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(vertical: 5),
                   child: InkWell(
                     onTap: () => launcher.launchURL(),
-                    child: Image.asset(
-                      "assets/Logos/MapsImage.png",
-                      fit: BoxFit.contain,
-                      filterQuality: FilterQuality.high,
-                      alignment: Alignment.center,
-                      isAntiAlias: true,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.0),
+                        border: Border.all(
+                          color: Color.fromRGBO(143, 37, 114, 1),
+                          width: 10.0,
+                        ),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5),
+                        child: Image.asset(
+                          "assets/Logos/MapsImage.png",
+                          fit: BoxFit.contain,
+                          filterQuality: FilterQuality.high,
+                          alignment: Alignment.center,
+                          isAntiAlias: true,
+                        ),
+                      ),
                     ),
                   ),
                 ),
