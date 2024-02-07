@@ -1,5 +1,3 @@
-// i think its not necessary to make this
-
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
 
@@ -96,6 +94,5 @@ class _CustomListTileState extends State<CustomListTile> {
         ),
       ],
     );
-
   }
 }
