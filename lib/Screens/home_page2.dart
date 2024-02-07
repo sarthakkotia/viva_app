@@ -2,6 +2,7 @@ import "dart:core";
 import "dart:ui";
 
 import "package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart";
+import 'package:circle_nav_bar/circle_nav_bar.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/material.dart";
@@ -13,14 +14,14 @@ import "package:viva_app/Screens/schedule_screen.dart";
 import "../Provider/Data_provider.dart";
 import "../Provider/Services/Notifier.dart";
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePage2 extends StatefulWidget {
+  const HomePage2({super.key});
 
   @override
-  State<HomePage> createState() => _MyHomePageState();
+  State<HomePage2> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
+class _MyHomePageState extends State<HomePage2> with TickerProviderStateMixin {
   int currentPageIndex = 0;
   List<Widget> screens = [(HomeScreen()), (ScheduleScreen([])), (InfoScreen())];
   List<NavigationDestination> listNavigationDestination = [
@@ -114,8 +115,42 @@ class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
       ),
        */
       bottomNavigationBar: ClipRect(
+        clipBehavior: Clip.antiAliasWithSaveLayer,
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 10.0),
+          child: CircleNavBar(
+            iconCurve: Curves.linear,
+            iconDurationMillSec: 500,
+            tabCurve: Curves.easeOutSine,
+            tabDurationMillSec: 1500,
+            activeIcons: const [
+              Icon(Icons.home, color: Colors.white),
+              Icon(Icons.list_alt, color: Colors.white),
+              Icon(Icons.info, color: Colors.white),
+            ],
+            inactiveIcons: const [
+              Icon(Icons.home),
+              Icon(Icons.list_alt),
+              Icon(Icons.info)
+            ],
+            color: const Color.fromRGBO(0, 0, 0, 1),
+            circleColor: const Color.fromRGBO(0, 0, 0, 0.25),
+            padding: const EdgeInsets.only(top: 25),
+            height: 60,
+            circleWidth: 60,
+            onTap: (index) {
+              setState(() {
+                currentPageIndex = index;
+              });
+            },
+            circleGradient: LinearGradient(colors: [
+              Color.fromRGBO(222, 111, 0, 1),
+              Color.fromRGBO(255, 163, 0, 1)
+            ]),
+            shadowColor: Colors.black,
+            elevation: 10,
+            activeIndex: currentPageIndex,
+          ),
           /*
           child: GNav(
               style: GnavStyle.google,
@@ -146,7 +181,7 @@ class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
                   text: "Info",
                 )
               ]),
-
+        
            */
           /*
           child: CurvedNavigationBar(
@@ -183,7 +218,7 @@ class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
               //     label: "Info"),
             ],
           ),
-
+        
            */
         ),
       ),
