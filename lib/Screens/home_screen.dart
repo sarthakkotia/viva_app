@@ -7,7 +7,7 @@ import 'package:viva_app/Widgets/homepage_tile.dart';
 import '../Provider/Data_provider.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -49,10 +49,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    DataProvider data_provider =
-        Provider.of<DataProvider>(context, listen: false);
+    var data_provider = Provider.of<DataProvider>(context, listen: false);
     var fetchedLists = data_provider.fetcheddata;
-
+    print("fhg");
     return Container(
       decoration: const BoxDecoration(
           image: DecorationImage(
@@ -65,48 +64,49 @@ class _HomeScreenState extends State<HomeScreen> {
                 .animate()
                 .flipV(duration: const Duration(milliseconds: 1250))),
         Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            height: 40,
-            child: ListView.separated(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, int chipidx) {
-                return ChoiceChip(
-                  elevation: 9,
-                  label: Text(names[chipidx]),
-                  selected: chipidx == _value,
-                  avatar: Image.asset(icons[chipidx]),
-                  backgroundColor: Colors.black,
-                  selectedColor: Colors.black,
-                  // surfaceTintColor: Colors.white12,
-                  side: const BorderSide(width: 1),
-                  showCheckmark: false,
-                  // shadowColor: Colors.black,
-                  // surfaceTintColor: Colors.transparent,
-                  // color: MaterialStateColor.resolveWith((states) {
-                  //   // If the button is pressed, return green, otherwise blue
-                  //   if (states.contains(MaterialState.pressed)) {
-                  //     return Colors.transparent;
-                  //   }
-                  //   return Colors.transparent;
-                  // }),
-                  onSelected: (value) {
-                    if (value == true) {
-                      setState(() {
-                        _value = chipidx;
-                        currentindex = _value;
-                      });
-                    }
-                  },
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(
-                  width: 10,
-                );
-              },
-              itemCount: names.length,
-            )),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          height: 40,
+          child: ListView.separated(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (BuildContext context, int chipidx) {
+              return ChoiceChip(
+                elevation: 9,
+                label: Text(names[chipidx]),
+                selected: chipidx == _value,
+                avatar: Image.asset(icons[chipidx]),
+                backgroundColor: Colors.black,
+                selectedColor: Colors.black,
+                // surfaceTintColor: Colors.white12,
+                side: const BorderSide(width: 1),
+                showCheckmark: false,
+                // shadowColor: Colors.black,
+                // surfaceTintColor: Colors.transparent,
+                // color: MaterialStateColor.resolveWith((states) {
+                //   // If the button is pressed, return green, otherwise blue
+                //   if (states.contains(MaterialState.pressed)) {
+                //     return Colors.transparent;
+                //   }
+                //   return Colors.transparent;
+                // }),
+                onSelected: (value) {
+                  if (value == true) {
+                    setState(() {
+                      _value = chipidx;
+                      currentindex = _value;
+                    });
+                  }
+                },
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return const SizedBox(
+                width: 10,
+              );
+            },
+            itemCount: names.length,
+          ),
+        ),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           height: MediaQuery.of(context).size.height * 0.6,

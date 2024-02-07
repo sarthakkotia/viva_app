@@ -10,7 +10,6 @@ import '../Models/EventModelwithHive.dart';
 import '../Models/EventsList.dart';
 import '../Provider/Data_provider.dart';
 import '../Provider/Services/Notifier.dart';
-import '../Screens/home_page2.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -51,6 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> setupProvider() async {
     data_provider = Provider.of<DataProvider>(context, listen: false);
+    await data_provider.checkInternetAccess();
     final bool val = await data_provider.Checkid();
     await data_provider.fetchFromFirebase(val);
     data_provider.fetchGenreList();
@@ -61,25 +61,32 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     _controller.initialize().then((value) {
+      _controller.setVolume(0);
       Stopwatch stopwatch = Stopwatch();
       setState(() {});
       _controller.play().then((value) {
         stopwatch.start();
         setupAndInitializeHive();
-        // setupPushNotifications();
+        setupPushNotifications();
         setupProvider().then((value) {
-          if (stopwatch.elapsedMilliseconds * 1000 >= 8000) {
+          var data_provider = Provider.of<DataProvider>(context, listen: false);
+          var days = data_provider.days;
+          if (stopwatch.elapsedMilliseconds * 1000 >= 4000) {
+            stopwatch.stop();
+            stopwatch.reset();
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => const HomePage(),
+              builder: (context) => HomePage(days),
             ));
             stopwatch.stop();
             stopwatch.reset();
           } else {
+            stopwatch.stop();
+            stopwatch.reset();
             Future.delayed(Duration(
-                    milliseconds: 8000 - stopwatch.elapsedMilliseconds * 1000))
+                    milliseconds: 4000 - stopwatch.elapsedMilliseconds * 1000))
                 .then((value) {
               Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const HomePage()));
+                  MaterialPageRoute(builder: (context) => HomePage(days)));
             });
           }
         });
