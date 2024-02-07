@@ -41,6 +41,32 @@ class DataProvider with ChangeNotifier {
     }
   }
 
+  List<EventModel> fetchSimilarEvents(String genre) {
+    switch (genre) {
+      case "Dance":
+        return DanceList;
+      case "Drama":
+        return DramaList;
+      case "Music":
+        return MusicList;
+      case "Quiz":
+        return QuizList;
+      case "Art":
+        return ArtList;
+      case "Speaking Arts":
+        return SpeakingArtsList;
+      case "Photography":
+        return PhotographyList;
+      case "Social":
+        return SocialList;
+      case "Exciting":
+        return ExcitingList;
+      case "Fashion":
+        return FashionList;
+    }
+    return allEventList;
+  }
+
   Future<EventsList> fetchFromFirebase(bool val) async {
     await Hive.openBox<EventsList>("Events");
     Box<EventsList> EventsListbox = Hive.box<EventsList>("Events");
@@ -64,7 +90,7 @@ class DataProvider with ChangeNotifier {
             Genre: val["Genre"],
             Img: val["Img"],
             Venue: val["Venue"],
-            Poster: val["Poster"]==null?"null":val["Poster"]);
+            Poster: val["Poster"] == null ? "null" : val["Poster"]);
         allEventList.add(em);
       }
       EventsListbox.put(

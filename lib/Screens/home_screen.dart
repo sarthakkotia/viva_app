@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
     "Natak",
     "Photography",
     "Quizzinga",
-    "Social Causes",
+    "Social",
     "Lifestyle",
     "Art",
     "Media Cell",
