@@ -51,10 +51,9 @@ class _HomeScreenState extends State<HomeScreen> {
     var fetchedLists = data_provider.fetcheddata;
 
     return Container(
-      color: Colors.purple.shade600,
-      // decoration: const BoxDecoration(
-      //     image: DecorationImage(
-      //         image: AssetImage("assets/Logos/img2.png"), fit: BoxFit.cover)),
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/Logos/img2.png"), fit: BoxFit.cover)),
       child:
           Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         Padding(
@@ -63,52 +62,48 @@ class _HomeScreenState extends State<HomeScreen> {
                 .animate()
                 .flipV(duration: const Duration(milliseconds: 1250))),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          height: 40,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (BuildContext context, int chipidx) {
-              // print(chipidx);
-              return ChoiceChip(
-                label: Text(names[chipidx]),
-                selected: chipidx == _value,
-                avatar: Image.asset(icons[chipidx]),
-                disabledColor: Colors.amber,
-                // backgroundColor: Colors.black,
-                // selectedColor: Colors.black,
-                showCheckmark: false,
-                // shadowColor: Colors.black,
-
-                // surfaceTintColor: Colors.transparent,
-                // color: MaterialStateColor.resolveWith((states) {
-                //   // If the button is pressed, return green, otherwise blue
-                //   if (states.contains(MaterialState.pressed)) {
-                //     return Colors.transparent;
-                //   }
-                //   return Colors.transparent;
-                // }),
-                onSelected: (value) {
-                  print(value);
-                  if (value == true) {
-                    setState(() {
-                      _value = chipidx;
-                      currentindex = _value;
-                    });
-                  }
-                  // setState(() {
-                  //   _value == value ? index : null;
-                  // });
-                },
-              );
-            },
-            separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(
-                width: 10,
-              );
-            },
-            itemCount: names.length,
-          ),
-        ),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            height: 40,
+            child: ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (BuildContext context, int chipidx) {
+                return ChoiceChip(
+                  elevation: 9,
+                  label: Text(names[chipidx]),
+                  selected: chipidx == _value,
+                  avatar: Image.asset(icons[chipidx]),
+                  backgroundColor: Colors.black,
+                  selectedColor: Colors.black,
+                  // surfaceTintColor: Colors.white12,
+                  side: const BorderSide(width: 1),
+                  showCheckmark: false,
+                  // shadowColor: Colors.black,
+                  // surfaceTintColor: Colors.transparent,
+                  // color: MaterialStateColor.resolveWith((states) {
+                  //   // If the button is pressed, return green, otherwise blue
+                  //   if (states.contains(MaterialState.pressed)) {
+                  //     return Colors.transparent;
+                  //   }
+                  //   return Colors.transparent;
+                  // }),
+                  onSelected: (value) {
+                    if (value == true) {
+                      setState(() {
+                        _value = chipidx;
+                        currentindex = _value;
+                      });
+                    }
+                  },
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return const SizedBox(
+                  width: 10,
+                );
+              },
+              itemCount: names.length,
+            )),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           height: MediaQuery.of(context).size.height * 0.6,
