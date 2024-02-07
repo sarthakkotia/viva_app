@@ -16,7 +16,7 @@ class InfoScreen extends StatelessWidget {
     double heightfinal = heightscreen - bottomPadding - topPadding;
     return SingleChildScrollView(
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/Logos/about us png(1).png"))),
         child: SafeArea(
