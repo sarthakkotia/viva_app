@@ -20,27 +20,30 @@ class _HomeScreenState extends State<HomeScreen> {
     "Pronites",
     "Dance",
     "Music",
-    "Natak",
+    "Drama",
+    "Exciting",
     "Photography",
-    "Quizzinga",
-    "Social",
-    "Lifestyle",
+    "Speaking Arts",
+    "Nukkad",
+    "Fashion",
     "Art",
-    "Media Cell",
-    "Speaking Arts"
+    "Quizzing",
+    "Social"
   ];
+
   List<String> icons = [
     "assets/Logos/concert.png",
+    "assets/Logos/dance.png",
+    "assets/Logos/musical-notes.png",
+    "assets/Logos/theatre.png",
+    "assets/Logos/smiley.png",
+    "assets/Logos/camera.png",
+    "assets/Logos/conference.png",
     "assets/Logos/concert.png",
-    "assets/Logos/concert.png",
-    "assets/Logos/concert.png",
-    "assets/Logos/healthy-lifestyle.png",
+    "assets/Logos/fashion.png",
     "assets/Logos/palette.png",
-    "assets/Logos/concert.png",
-    "assets/Logos/concert.png",
-    "assets/Logos/concert.png",
-    "assets/Logos/concert.png",
-    "assets/Logos/healthy-lifestyle.png",
+    "assets/Logos/quiz.png",
+    "assets/Logos/social-care.png"
   ];
   int _value = 0;
 

@@ -19,6 +19,7 @@ class DataProvider with ChangeNotifier {
   List<EventModel> DramaList = [];
   List<EventModel> SocialList = [];
   List<EventModel> FashionList = [];
+  List<EventModel> PronitesList = [];
   Map<int, List<EventModel>> fetcheddata = {};
   List<List<EventModel>> days = [];
 
@@ -180,31 +181,22 @@ class DataProvider with ChangeNotifier {
             break;
         }
       }
+
       fetcheddata = {
-        0: DanceList,
-        1: DramaList,
+        0: PronitesList,
+        1: DanceList,
         2: MusicList,
-        3: QuizList,
-        4: SpeakingArtsList,
+        3: DramaList,
+        4: ExcitingList,
         5: PhotographyList,
-        6: NukkadList,
-        7: ExcitingList,
-        8: SocialList,
-        9: FashionList,
+        6: SpeakingArtsList,
+        7: NukkadList,
+        8: FashionList,
+        9: ArtList,
+        10: QuizList,
+        11: SocialList
       };
     }
-    fetcheddata = {
-      0: DanceList,
-      1: DramaList,
-      2: MusicList,
-      3: QuizList,
-      4: SpeakingArtsList,
-      5: PhotographyList,
-      6: NukkadList,
-      7: ExcitingList,
-      8: SocialList,
-      9: FashionList,
-    };
   }
 
   List<List<EventModel>> fetchDaysList() {
