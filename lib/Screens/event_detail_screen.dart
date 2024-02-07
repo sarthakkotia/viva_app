@@ -5,18 +5,19 @@ import 'package:viva_app/Widgets/similar_event_tile.dart';
 
 import '../Provider/Data_provider.dart';
 
-// fetcheddata = {
-// 0: DanceList,
-// 1: DramaList,
-// 2: MusicList,
-// 3: QuizList,
-// 4: SpeakingArtsList,
-// 5: PhotographyList,
-// 6: NukkadList,
-// 7: ExcitingList,
-// 8: SocialList,
-// 9: FashionList,
-// };
+Map<String, String> icons = {
+  "Pronite": "assets/Logos/concert.png", // pronite
+  "Social": "assets/Logos/social-care.png", // social
+  "Photography": "assets/Logos/camera.png", // photography
+  "Speaking Arts": "assets/Logos/conference.png", // speaking arts
+  "": "assets/Logos/healthy-lifestyle.png", //
+  "Art": "assets/Logos/palette.png", // Art
+  "Quizzing": "assets/Logos/quiz.png", // Quizzing
+  "Drama": "assets/Logos/theatre.png", // Drama
+  "Dance": "assets/Logos/dance.png",
+  "b": "assets/Logos/concert.png",
+  "c": "assets/Logos/healthy-lifestyle.png",
+};
 
 class EventDetailScreen extends StatefulWidget {
   final String imgUrl;
@@ -46,14 +47,12 @@ class EventDetailScreen extends StatefulWidget {
 
 class _EventDetailScreenState extends State<EventDetailScreen> {
   @override
-  // DataProvider data_provider =
-  //     Provider.of<DataProvider>(context, listen: false);
-  // var fetchedLists = data_provider.fetcheddata;
-
   Widget build(BuildContext context) {
+    DataProvider data_provider =
+        Provider.of<DataProvider>(context, listen: false);
+    var similarEvents = data_provider.fetchSimilarEvents(widget.genre);
     return Scaffold(
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           CachedNetworkImage(
             imageUrl: widget.poster,
@@ -64,11 +63,12 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                Icon(Icons.add, color: Colors.blue), // Set icon color here
-                SizedBox(width: 8.0),
+                const Icon(Icons.add,
+                    color: Colors.blue), // Set icon color here
+                const SizedBox(width: 8.0),
                 Text(
-                  "Genre",
-                  style: TextStyle(
+                  widget.genre,
+                  style: const TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold,
                   ),
@@ -84,7 +84,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                     color: Colors.blue), // Set icon color here
                 SizedBox(width: 8.0),
                 Text(
-                  widget.genre,
+                  widget.venue,
                   style: TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold,
@@ -97,7 +97,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                Icon(Icons.calendar_today_sharp,
+                const Icon(Icons.calendar_today_sharp,
                     color: Colors.blue), // Set icon color here
                 SizedBox(width: 8.0),
                 Text(
@@ -114,11 +114,11 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             padding: const EdgeInsets.all(16.0),
             child: Text(
               widget.desc,
-              style: TextStyle(fontSize: 16.0),
+              style: const TextStyle(fontSize: 16.0),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text(
               "Similar Events",
               style: TextStyle(
@@ -127,9 +127,25 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               ),
             ),
           ),
-          ListView.builder(itemBuilder: (context, index) {
-            return SimilarEventTile();
-          })
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            height: MediaQuery.of(context).size.height * 0.25,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemCount: similarEvents.length,
+              itemBuilder: (context, index) {
+                return SimilarEventTile(
+                  imgUrl: similarEvents[index].Img,
+                  title: similarEvents[index].Title,
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return SizedBox(
+                  width: 10,
+                );
+              },
+            ),
+          )
         ],
       ),
     );
