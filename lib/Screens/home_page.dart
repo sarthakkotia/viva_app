@@ -72,23 +72,26 @@ class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
     super.initState();
     var data_provider = Provider.of<DataProvider>(context, listen: false);
     var days = data_provider.days;
+    /*
     bool offline = true;
     (Connectivity().checkConnectivity()).then((connectivityResult) {
       if (connectivityResult == ConnectivityResult.wifi ||
           connectivityResult == ConnectivityResult.mobile) {
         offline = false;
       }
-      screens = [(HomeScreen()), (ScheduleScreen(days)), (InfoScreen())];
-    });
+     */
+    screens = [
+      (const HomeScreen()),
+      (ScheduleScreen(days)),
+      (const InfoScreen())
+    ];
   }
-
-  final _controller = NotchBottomBarController(index: 0);
 
   @override
   Widget build(BuildContext context) {
     double heightscreen = MediaQuery.of(context).size.height;
     return Scaffold(
-      extendBody: false,
+      extendBody: true,
       primary: true,
       bottomNavigationBar: ClipRect(
         clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -145,126 +148,9 @@ class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
             elevation: 2,
             activeIndex: currentPageIndex,
           ),
-          /*
-          child: GNav(
-              style: GnavStyle.google,
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              iconSize: 30,
-              gap: 15,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              rippleColor: Colors.grey.shade800,
-              onTabChange: (value) {
-                setState(() {
-                  currentPageIndex = value;
-                });
-              },
-              tabs: const [
-                GButton(
-                  semanticLabel: "Home",
-                  icon: Icons.home_filled,
-                  text: "Home",
-                ),
-                GButton(
-                  semanticLabel: "Schedule",
-                  icon: Icons.format_list_bulleted,
-                  text: "Schedule",
-                ),
-                GButton(
-                  semanticLabel: "Info",
-                  icon: Icons.info_outline,
-                  text: "Info",
-                )
-              ]),
-
-           */
-          /*
-          child: CurvedNavigationBar(
-            index: currentPageIndex,
-            color: const Color.fromRGBO(0, 0, 0, 0.5),
-            height: heightscreen / 15,
-            backgroundColor: Colors.white12,
-            onTap: (value) {
-              setState(() {
-                currentPageIndex = value;
-              });
-            },
-            items: const [
-              Icon(Icons.home),
-              Icon(Icons.format_list_bulleted_sharp),
-              Icon(Icons.info)
-              // BottomNavigationBarItem(
-              //     icon: SizedBox(
-              //       height: heightscreen / 17,
-              //       child: Image.asset(
-              //         "assets/Logos/icons8-home-64.png",
-              //         fit: BoxFit.cover,
-              //       ),
-              //     ),
-              //     label: "Home"),
-              // BottomNavigationBarItem(
-              //     icon: SizedBox(
-              //       height: heightscreen / 17,
-              //       child: Image.asset(
-              //         "assets/Logos/icons8-info-64.png",
-              //         fit: BoxFit.cover,
-              //       ),
-              //     ),
-              //     label: "Info"),
-            ],
-          ),
-
-           */
         ),
       ),
       body: screens[currentPageIndex],
     );
   }
 }
-/*
-      SnakeNavigationBar.color(
-        height: heightscreen / 12,
-        behaviour: SnakeBarBehaviour.pinned,
-        snakeShape: SnakeShape.circle,
-        elevation: 5,
-        snakeViewColor: const Color.fromRGBO(74, 68, 88, 1),
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.white,
-        backgroundColor: const Color.fromRGBO(42, 39, 47, 1),
-        showUnselectedLabels: false,
-        showSelectedLabels: false,
-        currentIndex: currentPageIndex,
-        onTap: (value) {
-          setState(() {
-            currentPageIndex = value;
-            controller.animateToPage(currentPageIndex,
-                duration: const Duration(milliseconds: 250),
-                curve: Curves.ease);
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-              icon: SizedBox(
-                height: heightscreen / 17,
-                child: Image.asset(
-                  "assets/Logos/icons8-home-64.png",
-                  fit: BoxFit.cover,
-                ),
-              ),
-              label: "Home"),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.format_list_bulleted_sharp),
-          ),
-          BottomNavigationBarItem(
-              icon: SizedBox(
-                height: heightscreen / 17,
-                child: Image.asset(
-                  "assets/Logos/icons8-info-64.png",
-                  fit: BoxFit.cover,
-                ),
-              ),
-              label: "Info"),
-        ],
-      ),
-    );
-  }
-} */
