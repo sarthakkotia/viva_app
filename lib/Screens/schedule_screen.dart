@@ -31,10 +31,12 @@ class _ScheduleScreenState extends State<ScheduleScreen>
   double headerOffset = 0.0;
   late DataProvider dataProvider;
   late List<List<EventModel>> days;
+  TabController? tabController;
 
   @override
   void initState() {
     super.initState();
+    tabController = TabController(length: 3, vsync: this);
     // Hive.openBox<EventsList>("Events").then((value) {
     //   dataProvider = Provider.of<DataProvider>(context, listen: false);
     //   days = dataProvider.days;

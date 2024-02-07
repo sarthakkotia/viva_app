@@ -29,7 +29,10 @@ class ContactUsWidget extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
                 child: Text(
                   "Ajay Raj",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
               Row(
@@ -52,7 +55,10 @@ class ContactUsWidget extends StatelessWidget {
                           EdgeInsets.symmetric(vertical: 5.0, horizontal: 4),
                       child: Text(
                         "8529528101",
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -75,7 +81,10 @@ class ContactUsWidget extends StatelessWidget {
                   child: Text(
                     maxLines: 3,
                     "Prathmesh Ranjan",
-                    style: TextStyle(fontSize: 19),
+                    style: TextStyle(
+                        fontSize: 19,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -98,8 +107,11 @@ class ContactUsWidget extends StatelessWidget {
                       padding:
                           EdgeInsets.symmetric(vertical: 5.0, horizontal: 4),
                       child: Text(
-                        "9461544075",
-                        style: TextStyle(fontSize: 18),
+                        "7007175380",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),

@@ -84,7 +84,7 @@ class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     double heightscreen = MediaQuery.of(context).size.height;
     return Scaffold(
-      extendBody: true,
+      extendBody: false,
       primary: true,
       bottomNavigationBar: ClipRect(
         clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -136,7 +136,7 @@ class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
                 currentPageIndex = index;
               });
             },
-            shadowColor: Color.fromRGBO(255, 240, 161, 0.5),
+            shadowColor: const Color.fromRGBO(255, 240, 161, 0.5),
             circleShadowColor: Colors.deepPurple,
             elevation: 2,
             activeIndex: currentPageIndex,
