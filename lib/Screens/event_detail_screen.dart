@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:viva_app/Widgets/similar_event_tile.dart';
 
 import '../Provider/Data_provider.dart';
+import 'package:intl/intl.dart';
 
 Map<String, String> icons = {
   "Pronite": "assets/Logos/concert.png", // pronite
@@ -52,101 +53,97 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         Provider.of<DataProvider>(context, listen: false);
     var similarEvents = data_provider.fetchSimilarEvents(widget.genre);
     return Scaffold(
-      body: Column(
-        children: [
-          CachedNetworkImage(
-            imageUrl: widget.poster,
-            fit: BoxFit.cover,
-            height: 350.0, // Set the desired height for the poster image
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                const Icon(Icons.add,
-                    color: Colors.blue), // Set icon color here
-                const SizedBox(width: 8.0),
-                Text(
-                  widget.genre,
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            CachedNetworkImage(
+              imageUrl: widget.poster,
+              fit: BoxFit.cover,
+              height: 350.0, // Set the desired height for the poster image
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Icon(Icons.location_pin,
+                      color: Colors.blue), // Set icon color here
+                  SizedBox(width: 8.0),
+                  Text(
+                    widget.venue,
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Icon(Icons.location_pin,
-                    color: Colors.blue), // Set icon color here
-                SizedBox(width: 8.0),
-                Text(
-                  widget.venue,
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                const Icon(Icons.calendar_today_sharp,
-                    color: Colors.blue), // Set icon color here
-                SizedBox(width: 8.0),
-                Text(
-                  widget.day.toString(),
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              widget.desc,
-              style: const TextStyle(fontSize: 16.0),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              "Similar Events",
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
+                ],
               ),
             ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            height: MediaQuery.of(context).size.height * 0.25,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: similarEvents.length,
-              itemBuilder: (context, index) {
-                return SimilarEventTile(
-                  imgUrl: similarEvents[index].Img,
-                  title: similarEvents[index].Title,
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return SizedBox(
-                  width: 10,
-                );
-              },
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  const Icon(Icons.calendar_today_sharp,
+                      color: Colors.blue), // Set icon color here
+                  SizedBox(width: 8.0),
+                  Text(
+                    widget.time.toString(),
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                widget.desc,
+                style: const TextStyle(fontSize: 16.0),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "Similar Events",
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              height: MediaQuery.of(context).size.height * 0.25,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: similarEvents.length,
+                itemBuilder: (context, index) {
+                  if (similarEvents[index].Title == widget.title)
+                    return Visibility(visible: false,child: SizedBox());
+
+                  return SimilarEventTile(
+                    imgUrl: similarEvents[index].Img,
+                    title: similarEvents[index].Title,
+                    genre: similarEvents[index].Genre,
+                    time: similarEvents[index].DateandTime,
+                    day: similarEvents[index].Day,
+                    desc: similarEvents[index].Desc,
+                    venue: similarEvents[index].Venue,
+                    poster: similarEvents[index].Poster != 'null'
+                        ? similarEvents[index].Poster
+                        : similarEvents[index].Img,
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return SizedBox(
+                    width: 10,
+                  );
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
