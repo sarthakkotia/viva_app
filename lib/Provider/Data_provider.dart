@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -22,10 +23,21 @@ class DataProvider with ChangeNotifier {
   List<EventModel> PronitesList = [];
   Map<int, List<EventModel>> fetcheddata = {};
   List<List<EventModel>> days = [];
+  bool network = true;
 
   // this function checks if the "id" field in the "events" document of the "Data" collection
   // is the same in both the local cache and on the server. It returns true if the values match
   // or false if there's an error or a mismatch.
+
+  Future<bool> checkInternetAccess() async {
+    ConnectivityResult res = await (Connectivity().checkConnectivity());
+    if (res == ConnectivityResult.wifi || res == ConnectivityResult.mobile) {
+      network = true;
+    } else {
+      network = false;
+    }
+    return network;
+  }
 
   Future<bool> Checkid() async {
     try {
@@ -34,9 +46,13 @@ class DataProvider with ChangeNotifier {
           .doc("events")
           .get(const GetOptions(source: Source.cache));
       final int cacheid = value.get("id") as int;
-      value = await _db.collection("Data").doc("events").get();
-      final int serverid = value.get("id") as int;
-      return cacheid == serverid;
+      if (network == true) {
+        value = await _db.collection("Data").doc("events").get();
+        final int serverid = value.get("id") as int;
+        return cacheid == serverid;
+      } else {
+        return false;
+      }
     } catch (e) {
       return false;
     }
@@ -71,16 +87,13 @@ class DataProvider with ChangeNotifier {
   Future<EventsList> fetchFromFirebase(bool val) async {
     await Hive.openBox<EventsList>("Events");
     Box<EventsList> EventsListbox = Hive.box<EventsList>("Events");
-
-    // either cache data != serverdata or cache empty
-    if (val == false) {
+    if (val == false || network == true) {
+      //get data from server or cache
       final data = await _db
           .collection("Data")
           .doc("events")
           .collection("Events")
           .get(const GetOptions(source: Source.serverAndCache));
-      // Causes Firestore to try to retrieve an up-to-date (server-retrieved) snapshot,
-      // but fall back to returning cached data if the server can't be reached.
       for (var event in data.docs) {
         final val = event.data();
         EventModel em = EventModel(
@@ -196,6 +209,7 @@ class DataProvider with ChangeNotifier {
         10: QuizList,
         11: SocialList
       };
+      return;
     }
   }
 
