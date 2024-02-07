@@ -59,42 +59,44 @@ class _ScheduleScreenState extends State<ScheduleScreen>
   Widget build(BuildContext context) {
     dataProvider = Provider.of<DataProvider>(context, listen: false);
     days = dataProvider.days;
-    return DefaultTabController(
-        length: 3,
-        initialIndex: 1,
-        child: Scaffold(
-          appBar: AppBar(
-            bottom: TabBar(
-              tabs: [
-                TextButton(
-                    onPressed: () {
-                      setState(() {
-                        selectedIndex = 1;
-                        schedule = days[0];
-                      });
-                    },
-                    child: Image.asset("assets/Logos/9feb.png")),
-                TextButton(
-                    onPressed: () {
-                      setState(() {
-                        selectedIndex = 2;
-                        schedule = days[1];
-                      });
-                    },
-                    child: Image.asset("assets/Logos/10feb.png")),
-                TextButton(
-                    onPressed: () {
-                      setState(() {
-                        selectedIndex = 3;
-                        schedule = days[2];
-                      });
-                    },
-                    child: Image.asset("assets/Logos/11feb.png")),
-              ],
+    return Column(
+      children: [
+        const SizedBox(
+          height: 50,
+        ),
+        TabBar(
+          tabs: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8),
+              child: Tab(
+                height: 65,
+                icon: Image.asset(
+                  "assets/Logos/9feb.png",
+                ),
+              ),
             ),
-          ),
-          body: TabBarView(
-            children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8),
+              child: Tab(
+                height: 65,
+                icon: Image.asset("assets/Logos/10feb.png"),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8),
+              child: Tab(
+                height: 65,
+                icon: Image.asset("assets/Logos/11feb.png"),
+              ),
+            )
+          ],
+          controller: tabController,
+          indicatorSize: TabBarIndicatorSize.tab,
+        ),
+        Expanded(
+          child: TabBarView(
+            controller: tabController,
+            children: [
               ListView.separated(
                   itemBuilder: (context, index) {
                     return CustomListTile(
@@ -142,8 +144,94 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                   itemCount: days[2].length)
             ],
           ),
-        ));
+        ),
+      ],
+    );
+    /*
+    return Scaffold(
+      appBar: AppBar(
+        bottom: TabBar(
+          tabs: [
+            TextButton(
+                onPressed: () {
+                  setState(() {
+                    selectedIndex = 1;
+                    schedule = days[0];
+                  });
+                },
+                child: Image.asset("assets/Logos/9feb.png")),
+            TextButton(
+                onPressed: () {
+                  setState(() {
+                    selectedIndex = 2;
+                    schedule = days[1];
+                  });
+                },
+                child: Image.asset("assets/Logos/10feb.png")),
+            TextButton(
+                onPressed: () {
+                  setState(() {
+                    selectedIndex = 3;
+                    schedule = days[2];
+                  });
+                },
+                child: Image.asset("assets/Logos/11feb.png")),
+          ],
+        ),
+      ),
+      body: TabBarView(
+        children: <Widget>[
+          ListView.separated(
+              itemBuilder: (context, index) {
+                return CustomListTile(
+                    title: days[0][index].Title +
+                        (" (${days[0][index].Genre})"),
+                    venue: days[0][index].Venue,
+                    time: days[0][index].DateandTime.toString(),
+                    eventDescription: days[0][index].Desc);
+              },
+              separatorBuilder: (context, index) {
+                return const SizedBox(
+                  height: 10,
+                );
+              },
+              itemCount: days[0].length),
+          ListView.separated(
+              itemBuilder: (context, index) {
+                return CustomListTile(
+                    title: days[1][index].Title +
+                        (" (${days[1][index].Genre})"),
+                    venue: days[1][index].Venue,
+                    time: days[1][index].DateandTime.toString(),
+                    eventDescription: days[1][index].Desc);
+              },
+              separatorBuilder: (context, index) {
+                return const SizedBox(
+                  height: 10,
+                );
+              },
+              itemCount: days[1].length),
+          ListView.separated(
+              itemBuilder: (context, index) {
+                return CustomListTile(
+                    title: days[2][index].Title +
+                        (" (${days[2][index].Genre})"),
+                    venue: days[2][index].Venue,
+                    time: days[2][index].DateandTime.toString(),
+                    eventDescription: days[2][index].Desc);
+              },
+              separatorBuilder: (context, index) {
+                return const SizedBox(
+                  height: 10,
+                );
+              },
+              itemCount: days[2].length)
+        ],
+      ),
+    );
 
+
+     */
     /*
           widget.offline == true
               ? Lottie.asset("assets/AnimatedIcons/NoConnection.json")

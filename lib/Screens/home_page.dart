@@ -23,7 +23,11 @@ class HomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
   int currentPageIndex = 0;
-  List<Widget> screens = [(HomeScreen()), (ScheduleScreen([])), (InfoScreen())];
+  List<Widget> screens = [
+    (const HomeScreen()),
+    (ScheduleScreen([])),
+    (const InfoScreen())
+  ];
   List<NavigationDestination> listNavigationDestination = [
     const NavigationDestination(
         enabled: true,
