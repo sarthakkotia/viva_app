@@ -108,7 +108,7 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                   },
                   separatorBuilder: (context, index) {
                     return const SizedBox(
-                      height: 10,
+                      height: 20,
                     );
                   },
                   itemCount: days[0].length),
@@ -123,7 +123,7 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                   },
                   separatorBuilder: (context, index) {
                     return const SizedBox(
-                      height: 10,
+                      height: 20,
                     );
                   },
                   itemCount: days[1].length),
@@ -138,7 +138,7 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                   },
                   separatorBuilder: (context, index) {
                     return const SizedBox(
-                      height: 10,
+                      height: 20,
                     );
                   },
                   itemCount: days[2].length)
