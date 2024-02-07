@@ -70,7 +70,7 @@ class _SplashScreenState extends State<SplashScreen> {
         setupProvider().then((value) {
           if (stopwatch.elapsedMilliseconds * 1000 >= 8000) {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => const HomePage2(),
+              builder: (context) => const HomePage(),
             ));
             stopwatch.stop();
             stopwatch.reset();

@@ -86,55 +86,48 @@ class _MyHomePageState extends State<HomePage2> with TickerProviderStateMixin {
     return Scaffold(
       extendBody: true,
       primary: true,
-      /*
-      bottomNavigationBar: AnimatedNotchBottomBar(
-        bottomBarWidth: 5,
-        color: Colors.purple,
-        notchBottomBarController: _controller,
-        bottomBarItems: [
-          BottomBarItem(
-              inActiveItem: Icon(Icons.home),
-              activeItem: Icon(Icons.home),
-              itemLabel: "Home"),
-          BottomBarItem(
-              inActiveItem: Icon(Icons.format_list_bulleted_sharp),
-              activeItem: Icon(Icons.format_list_bulleted_sharp),
-              itemLabel: "Schedule"),
-          BottomBarItem(
-              inActiveItem: Icon(Icons.info),
-              activeItem: Icon(Icons.info),
-              itemLabel: "Info"),
-        ],
-        onTap: (int value) {
-          setState(() {
-            currentPageIndex = value;
-          });
-        },
-        kIconSize: 24,
-        kBottomRadius: 28,
-      ),
-       */
       bottomNavigationBar: ClipRect(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 10.0),
+          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
           child: CircleNavBar(
             iconCurve: Curves.linear,
             iconDurationMillSec: 500,
             tabCurve: Curves.easeOutSine,
             tabDurationMillSec: 1500,
             activeIcons: const [
-              Icon(Icons.home, color: Colors.white),
-              Icon(Icons.list_alt, color: Colors.white),
-              Icon(Icons.info, color: Colors.white),
+              Icon(
+                Icons.home,
+                color: Colors.white,
+                size: 35,
+              ),
+              Icon(
+                Icons.list_alt,
+                color: Colors.white,
+                size: 35,
+              ),
+              Icon(
+                Icons.info,
+                color: Colors.white,
+                size: 35,
+              ),
             ],
             inactiveIcons: const [
-              Icon(Icons.home),
-              Icon(Icons.list_alt),
-              Icon(Icons.info)
+              Icon(
+                Icons.home,
+                size: 35,
+              ),
+              Icon(
+                Icons.list_alt,
+                size: 35,
+              ),
+              Icon(
+                Icons.info,
+                size: 35,
+              )
             ],
-            color: const Color.fromRGBO(0, 0, 0, 1),
-            circleColor: const Color.fromRGBO(0, 0, 0, 0.25),
+            color: Colors.black,
+            circleColor: const Color.fromRGBO(0, 0, 0, 0.5),
             padding: const EdgeInsets.only(top: 25),
             height: 60,
             circleWidth: 60,
@@ -143,12 +136,9 @@ class _MyHomePageState extends State<HomePage2> with TickerProviderStateMixin {
                 currentPageIndex = index;
               });
             },
-            circleGradient: LinearGradient(colors: [
-              Color.fromRGBO(222, 111, 0, 1),
-              Color.fromRGBO(255, 163, 0, 1)
-            ]),
-            shadowColor: Colors.black,
-            elevation: 10,
+            shadowColor: Color.fromRGBO(255, 240, 161, 0.5),
+            circleShadowColor: Colors.deepPurple,
+            elevation: 2,
             activeIndex: currentPageIndex,
           ),
           /*

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked_listview/stacked_listview.dart';
-import 'package:viva_app/Widgets/homepage_chip.dart';
 import 'package:viva_app/Widgets/homepage_tile.dart';
 
 import '../Provider/Data_provider.dart';
@@ -43,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
     "assets/Logos/concert.png",
     "assets/Logos/healthy-lifestyle.png",
   ];
+  int _value = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +51,10 @@ class _HomeScreenState extends State<HomeScreen> {
     var fetchedLists = data_provider.fetcheddata;
 
     return Container(
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/Logos/img2.png"), fit: BoxFit.cover)),
+      color: Colors.purple.shade600,
+      // decoration: const BoxDecoration(
+      //     image: DecorationImage(
+      //         image: AssetImage("assets/Logos/img2.png"), fit: BoxFit.cover)),
       child:
           Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         Padding(
@@ -66,14 +67,37 @@ class _HomeScreenState extends State<HomeScreen> {
           height: 40,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            itemBuilder: (BuildContext context, int index) {
-              return HomePageChip(
-                title: names[index],
-                icon: icons[index],
-                onPressed: () {
-                  setState(() {
-                    currentindex = index;
-                  });
+            itemBuilder: (BuildContext context, int chipidx) {
+              // print(chipidx);
+              return ChoiceChip(
+                label: Text(names[chipidx]),
+                selected: chipidx == _value,
+                avatar: Image.asset(icons[chipidx]),
+                disabledColor: Colors.amber,
+                // backgroundColor: Colors.black,
+                // selectedColor: Colors.black,
+                showCheckmark: false,
+                // shadowColor: Colors.black,
+
+                // surfaceTintColor: Colors.transparent,
+                // color: MaterialStateColor.resolveWith((states) {
+                //   // If the button is pressed, return green, otherwise blue
+                //   if (states.contains(MaterialState.pressed)) {
+                //     return Colors.transparent;
+                //   }
+                //   return Colors.transparent;
+                // }),
+                onSelected: (value) {
+                  print(value);
+                  if (value == true) {
+                    setState(() {
+                      _value = chipidx;
+                      currentindex = _value;
+                    });
+                  }
+                  // setState(() {
+                  //   _value == value ? index : null;
+                  // });
                 },
               );
             },
