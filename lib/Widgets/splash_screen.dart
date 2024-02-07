@@ -10,6 +10,7 @@ import '../Models/EventModelwithHive.dart';
 import '../Models/EventsList.dart';
 import '../Provider/Data_provider.dart';
 import '../Provider/Services/Notifier.dart';
+import '../Screens/home_page2.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -69,7 +70,7 @@ class _SplashScreenState extends State<SplashScreen> {
         setupProvider().then((value) {
           if (stopwatch.elapsedMilliseconds * 1000 >= 8000) {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => const HomePage(),
+              builder: (context) => const HomePage2(),
             ));
             stopwatch.stop();
             stopwatch.reset();

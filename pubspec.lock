@@ -33,6 +33,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.2+1"
+  animated_notch_bottom_bar:
+    dependency: "direct main"
+    description:
+      name: animated_notch_bottom_bar
+      sha256: a07b40061d46fa84df38c613797c59e535f043188cae753c8c3482bad9805af7
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   archive:
     dependency: transitive
     description:
@@ -169,6 +177,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
+  circle_nav_bar:
+    dependency: "direct main"
+    description:
+      name: circle_nav_bar
+      sha256: "9aa1702ba2ea9e93f8bbaf8ab280b86a9a041454de1c1c8d72005e71303049ab"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1+1"
   clock:
     dependency: transitive
     description:
@@ -297,6 +313,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.6"
+  curved_navigation_bar:
+    dependency: "direct main"
+    description:
+      name: curved_navigation_bar
+      sha256: ea6412d00c5d83501bbf1cf9d1ac2ff11a20fbaf910c103c95ace7de82910334
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   dart_style:
     dependency: transitive
     description:
@@ -664,6 +688,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  navbar_router:
+    dependency: "direct main"
+    description:
+      name: navbar_router
+      sha256: "47963e489d328e7b288482c8c64b14817259026a1af15ac8efaadb1d5fe03a8e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.3"
   nested:
     dependency: transitive
     description:
@@ -1190,5 +1222,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.2.0 <4.0.0"
+  dart: ">=3.2.1 <4.0.0"
   flutter: ">=3.16.0"

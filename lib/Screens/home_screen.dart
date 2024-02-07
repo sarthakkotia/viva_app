@@ -50,61 +50,65 @@ class _HomeScreenState extends State<HomeScreen> {
         Provider.of<DataProvider>(context, listen: false);
     var fetchedLists = data_provider.fetcheddata;
 
-    return Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-      Padding(
-          padding: const EdgeInsets.all(25),
-          child: Image.asset("assets/Logos/vivlogo.png")
-              .animate()
-              .flipV(duration: const Duration(milliseconds: 1250))
-              .slideY()
-              .scaleXY()),
-      Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        height: 40,
-        child: ListView.separated(
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (BuildContext context, int index) {
-            return HomePageChip(
-              title: names[index],
-              icon: icons[index],
-              onPressed: () {
-                setState(() {
-                  currentindex = index;
-                });
-              },
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) {
-            return const SizedBox(
-              width: 10,
-            );
-          },
-          itemCount: names.length,
+    return Container(
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/Logos/img2.png"), fit: BoxFit.cover)),
+      child:
+          Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        Padding(
+            padding: const EdgeInsets.all(25),
+            child: Image.asset("assets/Logos/vivlogo.png")
+                .animate()
+                .flipV(duration: const Duration(milliseconds: 1250))),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          height: 40,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (BuildContext context, int index) {
+              return HomePageChip(
+                title: names[index],
+                icon: icons[index],
+                onPressed: () {
+                  setState(() {
+                    currentindex = index;
+                  });
+                },
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return const SizedBox(
+                width: 10,
+              );
+            },
+            itemCount: names.length,
+          ),
         ),
-      ),
-      Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        height: MediaQuery.of(context).size.height * 0.6,
-        child: StackedListView(
-          itemCount: fetchedLists[currentindex]!.length,
-          builder: (BuildContext context, int index) {
-            // fetch data from hive
-            return HomePageCard(
-              title: fetchedLists[currentindex]![index].Title,
-              imgUrl: fetchedLists[currentindex]![index].Img,
-              genre: fetchedLists[currentindex]![index].Genre,
-              desc: fetchedLists[currentindex]![index].Desc,
-              date: fetchedLists[currentindex]![index].DateandTime,
-              venue: fetchedLists[currentindex]![index].Venue,
-              day: fetchedLists[currentindex]![index].Day,
-              poster: (fetchedLists[currentindex]![index].Poster != 'null')
-                  ? fetchedLists[currentindex]![index].Poster
-                  : fetchedLists[currentindex]![index].Img,
-            );
-          },
-          itemExtent: MediaQuery.of(context).size.height * 0.30,
-        ),
-      )
-    ]);
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          height: MediaQuery.of(context).size.height * 0.6,
+          child: StackedListView(
+            itemCount: fetchedLists[currentindex]!.length,
+            builder: (BuildContext context, int index) {
+              // fetch data from hive
+              return HomePageCard(
+                title: fetchedLists[currentindex]![index].Title,
+                imgUrl: fetchedLists[currentindex]![index].Img,
+                genre: fetchedLists[currentindex]![index].Genre,
+                desc: fetchedLists[currentindex]![index].Desc,
+                date: fetchedLists[currentindex]![index].DateandTime,
+                venue: fetchedLists[currentindex]![index].Venue,
+                day: fetchedLists[currentindex]![index].Day,
+                poster: (fetchedLists[currentindex]![index].Poster != 'null')
+                    ? fetchedLists[currentindex]![index].Poster
+                    : fetchedLists[currentindex]![index].Img,
+              );
+            },
+            itemExtent: MediaQuery.of(context).size.height * 0.25,
+          ),
+        )
+      ]),
+    );
   }
 }
