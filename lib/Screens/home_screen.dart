@@ -67,10 +67,12 @@ class _HomeScreenState extends State<HomeScreen> {
       child:
           Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         Padding(
-            padding: const EdgeInsets.all(25),
-            child: Image.asset("assets/Logos/vivlogo.png")
+            padding: const EdgeInsets.only(
+                top: 2.5, right: 2.5, left: 2.5, bottom: 25),
+            child: Image.asset("assets/Logos/unit sticker 1.png")
                 .animate()
-                .flipV(duration: const Duration(milliseconds: 1250))),
+                .flipV(duration: const Duration(milliseconds: 1000))
+                .shimmer()),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           height: 40,

@@ -48,25 +48,32 @@ class _CustomListTileState extends State<CustomListTile> {
   @override
   Widget build(BuildContext context) {
     return ExpansionTileCard(
+      trailing: const Icon(
+        Icons.expand_circle_down,
+        color: Color.fromRGBO(60, 40, 13, 1),
+      ),
+      animateTrailing: true,
       leading: Padding(
         padding: const EdgeInsets.only(top: 8.0, bottom: 8, left: 8),
         child: CircleAvatar(
+          backgroundColor: Colors.transparent,
           child: Image.asset(icons[widget.genre]!),
         ),
       ),
       initialElevation: 2.0,
       elevation: 5,
       shadowColor: Colors.transparent,
-      baseColor: Colors.deepPurple.shade800,
-      expandedColor: Color.fromRGBO(246, 226, 212, 1),
+      baseColor: const Color.fromRGBO(246, 226, 212, 1),
+      expandedColor: const Color.fromRGBO(246, 226, 212, 1),
       subtitle: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
               widget.venue,
               style: const TextStyle(
+                fontWeight: FontWeight.bold,
                 fontSize: 16.0,
                 color: Colors.black,
               ),
@@ -77,6 +84,7 @@ class _CustomListTileState extends State<CustomListTile> {
             child: Text(
               widget.time,
               style: const TextStyle(
+                fontWeight: FontWeight.bold,
                 fontSize: 16.0,
                 color: Colors.black,
               ),
@@ -107,7 +115,7 @@ class _CustomListTileState extends State<CustomListTile> {
             widget.desc,
             style: const TextStyle(
               fontSize: 15.0,
-              color: Colors.black,
+              color: Color.fromRGBO(60, 40, 13, 1),
             ),
           ),
         ),

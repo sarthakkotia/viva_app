@@ -100,28 +100,34 @@ class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
       bottomNavigationBar: ClipRect(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-          child: CircleNavBar(
-            iconCurve: Curves.linear,
-            iconDurationMillSec: 500,
-            tabCurve: Curves.easeOutSine,
-            tabDurationMillSec: 1500,
-            activeIcons: activeIcons,
-            inactiveIcons: inactiveIcons,
-            color: Colors.black,
-            circleColor: const Color.fromRGBO(0, 0, 0, 0.5),
-            padding: const EdgeInsets.only(top: 25),
-            height: 60,
-            circleWidth: 60,
-            onTap: (index) {
-              setState(() {
-                currentPageIndex = index;
-              });
-            },
-            shadowColor: const Color.fromRGBO(255, 240, 161, 0.5),
-            circleShadowColor: Colors.deepPurple,
-            elevation: 2,
-            activeIndex: currentPageIndex,
+          filter: ImageFilter.blur(
+            sigmaX: 10.0,
+            sigmaY: 10.0,
+          ),
+          child: Opacity(
+            opacity: 0.8,
+            child: CircleNavBar(
+              iconCurve: Curves.linear,
+              iconDurationMillSec: 500,
+              tabCurve: Curves.easeOutSine,
+              tabDurationMillSec: 1500,
+              activeIcons: activeIcons,
+              inactiveIcons: inactiveIcons,
+              color: Colors.black54,
+              circleColor: const Color.fromRGBO(0, 0, 0, 0.5),
+              padding: const EdgeInsets.only(top: 25),
+              height: 60,
+              circleWidth: 60,
+              onTap: (index) {
+                setState(() {
+                  currentPageIndex = index;
+                });
+              },
+              shadowColor: const Color.fromRGBO(255, 255, 255, 0.25),
+              circleShadowColor: Colors.deepPurple,
+              elevation: 2,
+              activeIndex: currentPageIndex,
+            ),
           ),
         ),
       ).animate().blurXY(
