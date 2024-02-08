@@ -110,44 +110,70 @@ class InfoScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                      padding: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(10),
                       onPressed: () {
                         launcher.launchInstaPage();
                       },
                       icon: SizedBox(
                         height: 40,
                         child: Image.asset(
-                          "assets/Logos/instagramlogo.png",
+                          'assets/Logos/instagram.png',
                           fit: BoxFit.contain,
                         ),
                       ),
                     ).animate().slideX(),
                     IconButton(
-                      padding: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(10),
                       onPressed: () {
                         launcher.launchLinkedInPage();
                       },
                       icon: SizedBox(
                         height: 40,
                         child: Image.asset(
-                          "assets/Logos/linkedinlogo.png",
+                          "assets/Logos/linkedin.png",
                           fit: BoxFit.contain,
                         ),
                       ),
                     ).animate().slideX(),
                     IconButton(
-                      padding: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(10),
                       onPressed: () {
                         launcher.launchYtPage();
                       },
                       icon: SizedBox(
                         height: 40,
                         child: Image.asset(
-                          "assets/Logos/youtubelogo.png",
+                          "assets/Logos/youtube.png",
                           fit: BoxFit.contain,
                         ),
                       ),
                     ).animate().slideX(),
+                    IconButton(
+                        padding: EdgeInsets.all(10),
+                        onPressed: () {
+                          final snackBar = SnackBar(
+                            content: const Text('Yay! A SnackBar!'),
+                            action: SnackBarAction(
+                              label: 'Undo',
+                              onPressed: () {},
+                            ),
+                          );
+
+                          // Find the ScaffoldMessenger in the widget tree
+                          // and use it to show a SnackBar.
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return ParallaxWidget();
+                          }));
+                        },
+                        icon: SizedBox(
+                          height: 40,
+                          child: Image.asset(
+                            "assets/Logos/hat.png",
+                            fit: BoxFit.contain,
+                          ),
+                        )).animate().slideX()
                   ],
                 ),
                 Container(
@@ -176,15 +202,15 @@ class InfoScreen extends StatelessWidget {
                     ),
                   ),
                 ).animate().flipH(),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Text(
-                  "Developed By",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.black),
+                const Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Text(
+                    "Developed By",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.black),
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -192,8 +218,7 @@ class InfoScreen extends StatelessWidget {
                     Column(
                       children: [
                         const CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          radius: 50,
+                          radius: 60,                        
                           backgroundImage:
                               AssetImage('assets/Logos/Ayush_Singh.webp'),
                         ),
@@ -202,6 +227,7 @@ class InfoScreen extends StatelessWidget {
                             "Ayush Singh",
                             style: TextStyle(
                                 color: Colors.black,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold),
                           ),
                           IconButton(
@@ -211,7 +237,7 @@ class InfoScreen extends StatelessWidget {
                             icon: SizedBox(
                               height: 20,
                               child: Image.asset(
-                                "assets/Logos/instagramlogo.png",
+                                "assets/Logos/instagram.png",
                                 fit: BoxFit.contain,
                               ),
                             ),
@@ -221,9 +247,8 @@ class InfoScreen extends StatelessWidget {
                     ),
                     Column(
                       children: [
-                        const CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          radius: 50,
+                        CircleAvatar(
+                          radius: 60,     
                           backgroundImage:
                               AssetImage('assets/Logos/Sarthak_Kotia.webp'),
                         ),
@@ -232,6 +257,7 @@ class InfoScreen extends StatelessWidget {
                             const Text(
                               "Sarthak Kotia",
                               style: TextStyle(
+                                  fontSize: 16,
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -242,7 +268,7 @@ class InfoScreen extends StatelessWidget {
                               icon: SizedBox(
                                 height: 20,
                                 child: Image.asset(
-                                  "assets/Logos/instagramlogo.png",
+                                  "assets/Logos/instagram.png",
                                   fit: BoxFit.contain,
                                 ),
                               ),

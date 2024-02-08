@@ -129,8 +129,9 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                         Uri url = Uri.parse(rulebooks[widget.genre]!);
                         launcher.launchweb(url);
                       },
-                      child: const Text(
+                      child: Text(
                         "Rulebook",
+                        style: TextStyle(color: Colors.deepPurple),         
                       ),
                     ))
                 : const SizedBox(

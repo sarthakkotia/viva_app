@@ -125,7 +125,9 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                               day: days[0][index].Day,
                               imgUrl: days[0][index].Img,
                               genre: days[0][index].Genre,
-                              poster: days[0][index].Poster,
+                              poster: days[0][index].Poster != 'null'
+                                  ? days[0][index].Poster
+                                  : days[0][index].Img,
                             ),
                           ),
                         ),
