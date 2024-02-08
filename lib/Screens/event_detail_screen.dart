@@ -103,10 +103,10 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                 children: [
                   const Icon(Icons.calendar_today_sharp,
                       color: Colors.blue), // Set icon color here
-                  SizedBox(width: 8.0),
+                  const SizedBox(width: 8.0),
                   Text(
                     widget.time.toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -125,7 +125,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                       },
                       child: Text("Rulebook"),
                     ))
-                : SizedBox(
+                : const SizedBox(
                     width: 0,
                     height: 0,
                   ),
