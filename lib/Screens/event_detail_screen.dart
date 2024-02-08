@@ -4,9 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:viva_app/Widgets/similar_event_tile.dart';
 
 import '../Provider/Data_provider.dart';
-import 'package:intl/intl.dart';
-
-import '../urllauncher.dart';
+import '../Provider/Services/urllauncher.dart';
 
 Map<String, String> icons = {
   "Pronite": "assets/Logos/concert.png", // pronite

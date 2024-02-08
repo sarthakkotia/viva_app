@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:viva_app/Provider/Services/urllauncher.dart';
 import 'package:viva_app/Widgets/ContactUs_widget.dart';
-import 'package:viva_app/urllauncher.dart';
 
 UrlLauncher launcher = UrlLauncher();
 
