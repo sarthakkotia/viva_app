@@ -51,4 +51,16 @@ class UrlLauncher {
     Uri ytUri = Uri.parse(ytPage);
     launchUrl(ytUri, mode: LaunchMode.externalApplication);
   }
+
+  Future<void> launchKotia() async {
+    String instaPage = "https://www.instagram.com/sarthak.kotia";
+    Uri instaUri = Uri.parse(instaPage);
+    launchUrl(instaUri, mode: LaunchMode.externalApplication);
+  }
+
+  Future<void> launchAyush() async {
+    String instaPage = "https://www.instagram.com/aystarc_";
+    Uri instaUri = Uri.parse(instaPage);
+    launchUrl(instaUri, mode: LaunchMode.externalApplication);
+  }
 }
