@@ -151,17 +151,6 @@ class InfoScreen extends StatelessWidget {
                     IconButton(
                         padding: EdgeInsets.all(10),
                         onPressed: () {
-                          final snackBar = SnackBar(
-                            content: const Text('Yay! A SnackBar!'),
-                            action: SnackBarAction(
-                              label: 'Undo',
-                              onPressed: () {},
-                            ),
-                          );
-
-                          // Find the ScaffoldMessenger in the widget tree
-                          // and use it to show a SnackBar.
-                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
                             return const ParallaxWidget();
@@ -218,7 +207,7 @@ class InfoScreen extends StatelessWidget {
                     Column(
                       children: [
                         const CircleAvatar(
-                          radius: 60,                        
+                          radius: 60,
                           backgroundImage:
                               AssetImage('assets/Logos/Ayush_Singh.webp'),
                         ),
@@ -248,7 +237,7 @@ class InfoScreen extends StatelessWidget {
                     Column(
                       children: [
                         const CircleAvatar(
-                          radius: 60,     
+                          radius: 60,
                           backgroundImage:
                               AssetImage('assets/Logos/Sarthak_Kotia.webp'),
                         ),
@@ -279,14 +268,6 @@ class InfoScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return const ParallaxWidget();
-                      }));
-                    },
-                    child: Text("eAsTeR egg"))
               ],
             ),
           ),
