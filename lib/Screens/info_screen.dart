@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:viva_app/Provider/Services/urllauncher.dart';
 import 'package:viva_app/Widgets/ContactUs_widget.dart';
-import 'package:viva_app/urllauncher.dart';
 
 UrlLauncher launcher = UrlLauncher();
 
@@ -50,7 +50,7 @@ class InfoScreen extends StatelessWidget {
                         onTap: () {
                           launcher.launchMail();
                         },
-                        child: FittedBox(
+                        child: const FittedBox(
                           child: Text("vivacity@lnmiit.ac.in",
                               style: TextStyle(
                                   fontSize: 25,
@@ -88,9 +88,22 @@ class InfoScreen extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 25,
                                 color: Colors.black,
-                                fontWeight: FontWeight.bold)),
-                      ).animate().fadeIn()
-                    ],
+                              )).animate().flipV(),
+                          InkWell(
+                            borderRadius: BorderRadius.circular(55),
+                            onTap: () {
+                              launcher.launchweb(
+                                  Uri(scheme: "https", host: "vivacity.live"));
+                            },
+                            child: const Text("vivacity.live",
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold)),
+                          ).animate().fadeIn()
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),

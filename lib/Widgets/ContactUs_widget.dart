@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:viva_app/urllauncher.dart';
+import 'package:viva_app/Provider/Services/urllauncher.dart';
 
 class ContactUsWidget extends StatelessWidget {
   final UrlLauncher launcher;

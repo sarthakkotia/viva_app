@@ -9,11 +9,13 @@ import "package:viva_app/Screens/info_screen.dart";
 import "package:viva_app/Screens/schedule_screen.dart";
 
 import "../Models/EventModelwithHive.dart";
+import "../Provider/Data_provider.dart";
 
 class HomePage extends StatefulWidget {
   List<List<EventModel>> days;
+  final DataProvider data_provider;
 
-  HomePage(this.days, {super.key});
+  HomePage(this.days, this.data_provider, {super.key});
 
   @override
   State<HomePage> createState() => _MyHomePageState();
@@ -74,20 +76,24 @@ List<Icon> inactiveIcons = const [
 ];
 
 List<Widget> screens = [
-  (HomeScreen()),
+  (HomeScreen(true)),
   (ScheduleScreen([])),
   (const InfoScreen())
 ];
 
 class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
-  Widget build(BuildContext context) {
+  void initState() {
     screens = [
-      (HomeScreen()),
+      (HomeScreen(widget.data_provider.network)),
       (ScheduleScreen(widget.days)),
       (const InfoScreen())
     ];
-    double heightscreen = MediaQuery.of(context).size.height;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
       primary: true,
