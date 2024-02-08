@@ -22,6 +22,16 @@ class ScheduleScreen extends StatefulWidget {
   _ScheduleScreenState createState() => _ScheduleScreenState();
 }
 
+String getdatetime(DateTime dateTime) {
+  int year = dateTime.year;
+  int month = dateTime.month;
+  int day = dateTime.day;
+
+  return "${day.toString()} + "
+      " + ${month.toString()} +  "
+      "  + ${dateTime.hour.toString()}";
+}
+
 class _ScheduleScreenState extends State<ScheduleScreen>
     with SingleTickerProviderStateMixin {
   int selectedIndex = 0;
@@ -98,50 +108,68 @@ class _ScheduleScreenState extends State<ScheduleScreen>
             controller: tabController,
             children: [
               ListView.separated(
-                  itemBuilder: (context, index) {
-                    return CustomListTile(
-                        title: days[0][index].Title +
-                            (" (${days[0][index].Genre})"),
-                        venue: days[0][index].Venue,
-                        time: days[0][index].DateandTime.toString(),
-                        eventDescription: days[0][index].Desc);
-                  },
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(
-                      height: 20,
-                    );
-                  },
-                  itemCount: days[0].length),
+                itemBuilder: (context, index) {
+                  // Sort the events by time before displaying
+                  days[0]
+                      .sort((a, b) => a.DateandTime.compareTo(b.DateandTime));
+
+                  return CustomListTile(
+                    title:
+                        days[0][index].Title + (" (${days[0][index].Genre})"),
+                    venue: days[0][index].Venue,
+                    time: getdatetime(days[0][index].DateandTime),
+                    eventDescription: days[0][index].Desc,
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return const SizedBox(
+                    height: 20,
+                  );
+                },
+                itemCount: days[0].length,
+              ),
               ListView.separated(
-                  itemBuilder: (context, index) {
-                    return CustomListTile(
-                        title: days[1][index].Title +
-                            (" (${days[1][index].Genre})"),
-                        venue: days[1][index].Venue,
-                        time: days[1][index].DateandTime.toString(),
-                        eventDescription: days[1][index].Desc);
-                  },
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(
-                      height: 20,
-                    );
-                  },
-                  itemCount: days[1].length),
+                itemBuilder: (context, index) {
+                  // Sort the events by time before displaying
+                  days[1]
+                      .sort((a, b) => a.DateandTime.compareTo(b.DateandTime));
+
+                  return CustomListTile(
+                    title:
+                        days[1][index].Title + (" (${days[1][index].Genre})"),
+                    venue: days[1][index].Venue,
+                    time: days[1][index].DateandTime.toString(),
+                    eventDescription: days[1][index].Desc,
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return const SizedBox(
+                    height: 20,
+                  );
+                },
+                itemCount: days[1].length,
+              ),
               ListView.separated(
-                  itemBuilder: (context, index) {
-                    return CustomListTile(
-                        title: days[2][index].Title +
-                            (" (${days[2][index].Genre})"),
-                        venue: days[2][index].Venue,
-                        time: days[2][index].DateandTime.toString(),
-                        eventDescription: days[2][index].Desc);
-                  },
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(
-                      height: 20,
-                    );
-                  },
-                  itemCount: days[2].length)
+                itemBuilder: (context, index) {
+                  // Sort the events by time before displaying
+                  days[2]
+                      .sort((a, b) => a.DateandTime.compareTo(b.DateandTime));
+
+                  return CustomListTile(
+                    title:
+                        days[2][index].Title + (" (${days[2][index].Genre})"),
+                    venue: days[2][index].Venue,
+                    time: days[2][index].DateandTime.toString(),
+                    eventDescription: days[2][index].Desc,
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return const SizedBox(
+                    height: 20,
+                  );
+                },
+                itemCount: days[2].length,
+              )
             ],
           ),
         ),

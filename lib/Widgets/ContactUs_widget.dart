@@ -11,12 +11,11 @@ class ContactUsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Column(
+    return Row(
+      children: [
+        Padding(
+          padding: EdgeInsets.all(5),
+          child: Column(
             children: [
               const CircleAvatar(
                 radius: 60,
@@ -26,7 +25,7 @@ class ContactUsWidget extends StatelessWidget {
                 backgroundColor: Colors.transparent,
               ),
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
+                padding: EdgeInsets.symmetric(vertical: 5.0),
                 child: Text(
                   "Ajay Raj",
                   style: TextStyle(
@@ -50,23 +49,22 @@ class ContactUsWidget extends StatelessWidget {
                     onTap: () async {
                       await launcher.callNumber("8529528101");
                     },
-                    child: const Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 5.0, horizontal: 4),
-                      child: Text(
-                        "8529528101",
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                      ),
+                    child: Text(
+                      "8529528101",
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
               ),
             ],
           ),
-          Column(
+        ),
+        Padding(
+          padding: EdgeInsets.all(5),
+          child: Column(
             children: [
               const CircleAvatar(
                 radius: 60,
@@ -103,24 +101,20 @@ class ContactUsWidget extends StatelessWidget {
                     onTap: () {
                       launcher.callNumber("7007175380");
                     },
-                    child: const Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 5.0, horizontal: 4),
-                      child: Text(
-                        "7007175380",
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                      ),
+                    child: Text(
+                      "7007175380",
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
               ),
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
