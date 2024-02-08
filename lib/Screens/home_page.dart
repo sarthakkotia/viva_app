@@ -124,7 +124,7 @@ class _MyHomePageState extends State<HomePage> with TickerProviderStateMixin {
                 });
               },
               shadowColor: const Color.fromRGBO(255, 255, 255, 0.25),
-              circleShadowColor: Colors.deepPurple,
+              circleShadowColor: Colors.black,
               elevation: 2,
               activeIndex: currentPageIndex,
             ),

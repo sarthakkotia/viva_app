@@ -29,7 +29,7 @@ class InfoScreen extends StatelessWidget {
                   child: FittedBox(
                     child: ContactUsWidget(launcher),
                   ),
-                ).animate().fadeIn(duration: Duration(milliseconds: 1000)),
+                ).animate().fadeIn(duration: const Duration(milliseconds: 1000)),
                 Expanded(
                   flex: 0,
                   child: FittedBox(

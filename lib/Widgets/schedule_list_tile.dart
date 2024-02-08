@@ -51,7 +51,7 @@ class _CustomListTileState extends State<CustomListTile> {
       trailing: const Icon(
         Icons.expand_circle_down,
         color: Color.fromRGBO(60, 40, 13, 1),
-      ),
+      ),contentPadding: EdgeInsets.symmetric(horizontal: 5),
       animateTrailing: true,
       leading: Padding(
         padding: const EdgeInsets.only(top: 8.0, bottom: 8, left: 8),
