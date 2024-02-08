@@ -77,6 +77,9 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             Hero(
               tag: widget.title,
               child: CachedNetworkImage(
+                progressIndicatorBuilder: (context, url, progress) {
+                  return Center(child: CircularProgressIndicator());
+                },
                 imageUrl: widget.poster,
                 fit: BoxFit.cover,
                 height: MediaQuery.of(context).size.height *
@@ -117,7 +120,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                 ],
               ),
             ),
-            (widget.genre != "Exciting")
+            (widget.genre != "Exciting" && widget.genre != "Pronite")
                 ? Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
