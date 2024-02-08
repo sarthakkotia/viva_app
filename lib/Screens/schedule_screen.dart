@@ -92,6 +92,7 @@ class _ScheduleScreenState extends State<ScheduleScreen>
             children: [
               AnimationLimiter(
                 child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
                     // Sort the events by time before displaying
                     days[0]
