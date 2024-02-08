@@ -30,63 +30,74 @@ class CustomListTile extends StatefulWidget {
 }
 
 Map<String, String> icons = {
-  "Pronite": "assets/Logos/concert.png", // pronite
-  "Social": "assets/Logos/social-care.png", // social
-  "Photography": "assets/Logos/camera.png", // photography
-  "Speaking Arts": "assets/Logos/conference.png", // speaking arts
-  "": "assets/Logos/healthy-lifestyle.png", //
-  "Art": "assets/Logos/palette.png", // Art
-  "Quiz": "assets/Logos/quiz.png", // Quizzing
-  "Drama": "assets/Logos/theatre.png", // Drama
+  "Pronite": "assets/Logos/concert.png",
+  "Social": "assets/Logos/social-care.png",
+  "Photography": "assets/Logos/camera.png",
+  "Speaking Arts": "assets/Logos/conference.png",
+  "Art": "assets/Logos/palette.png",
+  "Quiz": "assets/Logos/quiz.png",
+  "Drama": "assets/Logos/theatre.png",
   "Dance": "assets/Logos/dance.png",
-  "b": "assets/Logos/concert.png",
-  "c": "assets/Logos/healthy-lifestyle.png",
+  "Music": "assets/Logos/musical-notes.png",
+  "Exciting": "assets/Logos/smiley.png",
+  "Nukkad": "assets/Logos/concert.png",
+  "Fashion": "assets/Logos/fashion.png",
 };
 
 class _CustomListTileState extends State<CustomListTile> {
   @override
   Widget build(BuildContext context) {
     return ExpansionTileCard(
+      leading: Padding(
+        padding: const EdgeInsets.only(top: 8.0, bottom: 8, left: 8),
+        child: CircleAvatar(
+          child: Image.asset(icons[widget.genre]!),
+        ),
+      ),
       initialElevation: 2.0,
       elevation: 5,
       shadowColor: Colors.transparent,
-      contentPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 4),
-      baseColor: Color.fromRGBO(255, 145, 110, 1),
+      baseColor: Colors.deepPurple.shade800,
       expandedColor: Color.fromRGBO(246, 226, 212, 1),
       subtitle: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(
-            widget.venue,
-            style: const TextStyle(
-              fontSize: 16.0,
-              color: Colors.black,
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              widget.venue,
+              style: const TextStyle(
+                fontSize: 16.0,
+                color: Colors.black,
+              ),
             ),
           ),
-          Text(
-            widget.time,
-            style: const TextStyle(
-              fontSize: 16.0,
-              color: Colors.black,
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              widget.time,
+              style: const TextStyle(
+                fontSize: 16.0,
+                color: Colors.black,
+              ),
             ),
           )
         ],
       ),
-
-      // leading: Image.asset(icons[widget.genre].toString()),
-      // Set shadow color here
       borderRadius: BorderRadius.circular(12.0),
-      // margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       title: Padding(
         padding: const EdgeInsets.only(top: 2.5, bottom: 8),
-        child: Text(
-          widget.title,
-          style: const TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            widget.title,
+            style: const TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
         ),
       ),
       children: [
@@ -95,7 +106,7 @@ class _CustomListTileState extends State<CustomListTile> {
           child: Text(
             widget.desc,
             style: const TextStyle(
-              fontSize: 16.0,
+              fontSize: 15.0,
               color: Colors.black,
             ),
           ),

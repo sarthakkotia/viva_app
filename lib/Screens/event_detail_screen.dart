@@ -11,13 +11,13 @@ Map<String, String> icons = {
   "Social": "assets/Logos/social-care.png", // social
   "Photography": "assets/Logos/camera.png", // photography
   "Speaking Arts": "assets/Logos/conference.png", // speaking arts
-  "": "assets/Logos/healthy-lifestyle.png", //
   "Art": "assets/Logos/palette.png", // Art
   "Quiz": "assets/Logos/quiz.png", // Quizzing
   "Drama": "assets/Logos/theatre.png", // Drama
   "Dance": "assets/Logos/dance.png",
-  "b": "assets/Logos/concert.png",
-  "c": "assets/Logos/healthy-lifestyle.png",
+  "Music": "assets/Logos/musical-notes.png",
+  "Exciting": "assets/Logos/smiley.png", "Nukkad": "assets/Logos/concert.png",
+  "Fashion": "assets/Logos/fashion.png",
 };
 
 Map<String, String> rulebooks = {
