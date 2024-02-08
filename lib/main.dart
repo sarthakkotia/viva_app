@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:viva_app/Provider/Data_provider.dart';
-import 'package:viva_app/Widgets/splash_screen.dart';
 
+import 'Widgets/splash_screen2.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -29,7 +29,7 @@ class App extends StatelessWidget {
           brightness: Brightness.dark,
           useMaterial3: true,
         ),
-        home: const SplashScreen(),
+        home: const SplashScreen2(),
       ),
     );
   }
