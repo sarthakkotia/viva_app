@@ -75,8 +75,6 @@ class _HomePageCardState extends State<HomePageCard> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
               child: CachedNetworkImage(
-                memCacheWidth: 1920,
-                memCacheHeight: 1080,
                 placeholder: (context, url) {
                   if (network == true) {
                     return const Center(child: CircularProgressIndicator());
