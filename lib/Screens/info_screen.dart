@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:viva_app/Provider/Services/urllauncher.dart';
 import 'package:viva_app/Widgets/ContactUs_widget.dart';
-import 'package:viva_app/Widgets/Parallax__widget.dart';
+
+import '../Widgets/Parallax__widget.dart';
 
 UrlLauncher launcher = UrlLauncher();
 

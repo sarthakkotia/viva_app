@@ -5,7 +5,6 @@ class NotificationClass {
   Future<void> intitalize() async {
     FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
         FlutterLocalNotificationsPlugin();
-    //TODO:Initiate Channel
     const AndroidNotificationChannel channel = AndroidNotificationChannel(
         'users', 'users',
         description: 'This channel is used for important notifications.',
@@ -13,12 +12,10 @@ class NotificationClass {
         showBadge: true,
         enableVibration: true,
         playSound: true);
-    //TODO: Add channel to local notification object
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(channel);
-    //TODO:Create the android notifications details.
     var android = const AndroidNotificationDetails(
       'users',
       'users',

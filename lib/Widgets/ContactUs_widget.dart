@@ -47,7 +47,7 @@ class ContactUsWidget extends StatelessWidget {
                   onTap: () async {
                     await launcher.callNumber("8529528101");
                   },
-                  child: Text(
+                  child: const Text(
                     "8529528101",
                     style: TextStyle(
                         fontSize: 18,

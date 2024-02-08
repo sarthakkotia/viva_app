@@ -20,18 +20,11 @@ class _HomePageChipState extends State<HomePageChip> {
   @override
   Widget build(BuildContext context) {
     return ChoiceChip(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       surfaceTintColor: Colors.purple,
       label: Text(widget.title),
       selected: false,
       avatar: Image.asset(widget.icon),
     );
-    // return Chip(
-    //   label: Text(widget.title),
-    //   avatar: GestureDetector(
-    //     onTap: widget.onPressed,
-    //     child: Image.asset(widget.icon),
-    //   ),
-    // ).animate().moveX().fade();
   }
 }

@@ -21,31 +21,7 @@ class ParallaxWidget extends StatelessWidget {
           imageHeight: 500,
           imageFit: BoxFit.fitHeight,
         ),
-        // is third layer even needed
-        Layer(sensitivity: 10),
       ],
-      child: Column(
-        children: [
-          // ListView.builder(
-          //   itemCount: 2,
-          //   itemBuilder: (context, index) {
-          //     return ListTile(
-          //       title: Text("Sd"),
-          //     );
-          //   },
-          //   scrollDirection: Axis.horizontal,
-          // ),
-          // StackedListView(
-          //   itemCount: 2,
-          //   builder: (context, index) {
-          //     return Card(
-          //       child: Text("aff"),
-          //     );
-          //   },
-          //   itemExtent: 20,
-          // ),
-        ],
-      ),
     );
   }
 }

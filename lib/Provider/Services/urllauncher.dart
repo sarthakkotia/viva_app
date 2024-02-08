@@ -14,13 +14,6 @@ class UrlLauncher {
         'https://www.google.com/maps/place/The+LNM+Institute+of+Information+Technology/@26.9362886,75.9139619,16z/data=!4m10!1m2!2m1!1sThe+LNM+Institute+Of+Information+Technology!3m6!1s0x396dba21e8a1d1c9:0x5ab565cce4d44c2b!8m2!3d26.9362886!4d75.9234891!15sCitUaGUgTE5NIEluc3RpdHV0ZSBPZiBJbmZvcm1hdGlvbiBUZWNobm9sb2d5kgEKdW5pdmVyc2l0eeABAA!16s%2Fm%2F04cql40?entry=ttu';
     Uri googleUri = Uri.parse(googleUrl);
     launchUrl(googleUri);
-
-    // if (await canLaunchUrlString(mapsUrl)) {
-    //   return launchUrlString(mapsUrl,
-    //       mode: LaunchMode.externalNonBrowserApplication);
-    // } else {
-    //   throw 'Could not launch $mapsUrl';
-    // }
   }
 
   Future<void> launchMail() async {

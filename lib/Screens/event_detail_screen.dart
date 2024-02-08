@@ -131,7 +131,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                       },
                       child: Text(
                         "Rulebook",
-                        style: TextStyle(color: Colors.deepPurple),         
+                        style: TextStyle(color: Colors.deepPurple),
                       ),
                     ))
                 : const SizedBox(
@@ -164,7 +164,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                 itemCount: similarEvents.length,
                 itemBuilder: (context, index) {
                   if (similarEvents[index].Title == widget.title) {
-                    return Visibility(visible: false, child: SizedBox());
+                    return const Visibility(visible: false, child: SizedBox());
                   }
 
                   return SimilarEventTile(
@@ -181,7 +181,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) {
-                  return SizedBox(
+                  return const SizedBox(
                     width: 10,
                   );
                 },
