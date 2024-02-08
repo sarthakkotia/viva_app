@@ -101,16 +101,19 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                     return AnimationConfiguration.staggeredList(
                       position: index,
                       child: SlideAnimation(
-                        child: CustomListTile(
-                          title: days[0][index].Title +
-                              (" (${days[0][index].Genre})"),
-                          venue: days[0][index].Venue,
-                          time: formatDateTime(days[0][index].DateandTime),
-                          desc: days[0][index].Desc,
-                          day: days[0][index].Day,
-                          imgUrl: days[0][index].Img,
-                          genre: days[0][index].Genre,
-                          poster: days[0][index].Poster,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          child: CustomListTile(
+                            title: days[0][index].Title +
+                                (" (${days[0][index].Genre})"),
+                            venue: days[0][index].Venue,
+                            time: formatDateTime(days[0][index].DateandTime),
+                            desc: days[0][index].Desc,
+                            day: days[0][index].Day,
+                            imgUrl: days[0][index].Img,
+                            genre: days[0][index].Genre,
+                            poster: days[0][index].Poster,
+                          ),
                         ),
                       ),
                     );
