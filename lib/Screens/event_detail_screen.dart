@@ -78,7 +78,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               tag: widget.title,
               child: CachedNetworkImage(
                 progressIndicatorBuilder: (context, url, progress) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 },
                 imageUrl: widget.poster,
                 fit: BoxFit.cover,
@@ -129,7 +129,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                         Uri url = Uri.parse(rulebooks[widget.genre]!);
                         launcher.launchweb(url);
                       },
-                      child: Text(
+                      child: const Text(
                         "Rulebook",
                         style: TextStyle(color: Colors.deepPurple),
                       ),
