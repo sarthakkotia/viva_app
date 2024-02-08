@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:viva_app/Provider/Services/urllauncher.dart';
 import 'package:viva_app/Widgets/ContactUs_widget.dart';
+import 'package:viva_app/Widgets/Parallax__widget.dart';
 
 UrlLauncher launcher = UrlLauncher();
 
@@ -24,12 +25,24 @@ class InfoScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: Text(
+                    "Fest Heads",
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                ),
                 Container(
                   margin: EdgeInsets.only(bottom: heightscreen / 70),
                   child: FittedBox(
                     child: ContactUsWidget(launcher),
                   ),
-                ).animate().fadeIn(duration: const Duration(milliseconds: 1000)),
+                )
+                    .animate()
+                    .fadeIn(duration: const Duration(milliseconds: 1000)),
                 Expanded(
                   flex: 0,
                   child: FittedBox(
@@ -139,12 +152,14 @@ class InfoScreen extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  width: MediaQuery.of(context).size.width * 0.6,
+                  // height: MediaQuery.of(context).size.height * 0.3,
+                  // width: MediaQuery.of(context).size.width * 0.6,
                   margin: const EdgeInsets.symmetric(vertical: 5),
                   child: InkWell(
                     onTap: () => launcher.launchURL(),
                     child: Container(
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      width: MediaQuery.of(context).size.width * 0.8,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15.0),
                         border: Border.all(
@@ -165,31 +180,46 @@ class InfoScreen extends StatelessWidget {
                     ),
                   ),
                 ).animate().flipH(),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Text(
-                  "Made By",
+                const Text(
+                  "Developed By",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                       color: Colors.black),
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
                       children: [
-                        CircleAvatar(
+                        const CircleAvatar(
                           radius: 50,
                           backgroundImage:
                               AssetImage('assets/Logos/Ayush_Singh.webp'),
                         ),
-                        Text(
-                          "Ayush Singh",
-                          style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold),
-                        )
+                        Row(children: [
+                          const Text(
+                            "Ayush Singh",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              launcher.launchAyush();
+                            },
+                            icon: SizedBox(
+                              height: 20,
+                              child: Image.asset(
+                                "assets/Logos/instagramlogo.png",
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ).animate().slideX()
+                        ])
                       ],
                     ),
                     Column(
@@ -199,15 +229,40 @@ class InfoScreen extends StatelessWidget {
                           backgroundImage:
                               AssetImage('assets/Logos/Sarthak_Kotia.webp'),
                         ),
-                        Text(
-                          "Sarthak Kotia",
-                          style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold),
+                        Row(
+                          children: [
+                            Text(
+                              "Sarthak Kotia",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                launcher.launchKotia();
+                              },
+                              icon: SizedBox(
+                                height: 20,
+                                child: Image.asset(
+                                  "assets/Logos/instagramlogo.png",
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                            ).animate().slideX()
+                          ],
                         )
                       ],
                     )
                   ],
-                )
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return ParallaxWidget();
+                      }));
+                    },
+                    child: Text("eAsTeR egg"))
               ],
             ),
           ),

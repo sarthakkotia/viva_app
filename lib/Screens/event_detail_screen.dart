@@ -85,7 +85,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               child: Row(
                 children: [
                   Icon(Icons.location_pin,
-                      color: Colors.blue), // Set icon color here
+                      color: Colors.deepPurple), // Set icon color here
                   SizedBox(width: 8.0),
                   Text(
                     widget.venue,
@@ -102,7 +102,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               child: Row(
                 children: [
                   const Icon(Icons.calendar_today_sharp,
-                      color: Colors.blue), // Set icon color here
+                      color: Colors.deepPurple), // Set icon color here
                   const SizedBox(width: 8.0),
                   Text(
                     widget.time.toString(),
@@ -123,7 +123,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                         Uri url = Uri.parse(rulebooks[widget.genre]!);
                         launcher.launchweb(url);
                       },
-                      child: Text("Rulebook"),
+                      child: Text("Rulebook",style: TextStyle(color: Colors.deepPurple),),
                     ))
                 : const SizedBox(
                     width: 0,
