@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:viva_app/Widgets/ContactUs_widget.dart';
@@ -46,27 +47,21 @@ class InfoScreen extends StatelessWidget {
                             },
                             icon: const Icon(
                               Icons.mail_outline,
-                              size: 35,
+                              size: 38,
                               color: Colors.black,
                             )).animate().flipV(),
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: InkWell(
-                            borderRadius: BorderRadius.circular(55),
-                            onTap: () {
-                              launcher.launchMail();
-                            },
-                            child: const Padding(
-                              padding: EdgeInsets.only(right: 20.0, left: 20),
-                              child: FittedBox(
-                                child: Text("vivacity@lnmiit.ac.in",
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold)),
-                              ),
-                            ).animate().fadeIn(),
-                          ),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(55),
+                          onTap: () {
+                            launcher.launchMail();
+                          },
+                          child: FittedBox(
+                            child: Text("vivacity@lnmiit.ac.in",
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold)),
+                          ).animate().fadeIn(),
                         )
                       ],
                     ),
@@ -81,29 +76,26 @@ class InfoScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           IconButton(
-                                  iconSize: 38,
-                                  onPressed: () async {
-                                    await launcher.launchweb(Uri(
-                                        scheme: "https",
-                                        host: "vivacity.live"));
-                                  },
-                                  icon: const Icon(Icons.web))
-                              .animate()
-                              .flipV(),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: InkWell(
-                              borderRadius: BorderRadius.circular(55),
-                              onTap: () {
-                                launcher.launchweb(Uri(
+                              iconSize: 38,
+                              onPressed: () async {
+                                await launcher.launchweb(Uri(
                                     scheme: "https", host: "vivacity.live"));
                               },
-                              child: const Padding(
-                                padding: EdgeInsets.only(right: 20.0, left: 20),
-                                child: Text("vivacity.live",
-                                    style: TextStyle(fontSize: 28)),
-                              ),
-                            ),
+                              icon: const Icon(
+                                Icons.web,
+                                color: Colors.black,
+                              )).animate().flipV(),
+                          InkWell(
+                            borderRadius: BorderRadius.circular(55),
+                            onTap: () {
+                              launcher.launchweb(
+                                  Uri(scheme: "https", host: "vivacity.live"));
+                            },
+                            child: Text("vivacity.live",
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold)),
                           ).animate().fadeIn()
                         ],
                       ),
@@ -124,7 +116,7 @@ class InfoScreen extends StatelessWidget {
                             launcher.launchInstaPage();
                           },
                           icon: SizedBox(
-                            height: 43,
+                            height: 40,
                             child: Image.asset(
                               "assets/Logos/instagramlogo.png",
                               fit: BoxFit.contain,
@@ -137,7 +129,7 @@ class InfoScreen extends StatelessWidget {
                             launcher.launchLinkedInPage();
                           },
                           icon: SizedBox(
-                            height: 43,
+                            height: 40,
                             child: Image.asset(
                               "assets/Logos/linkedinlogo.png",
                               fit: BoxFit.contain,
@@ -150,7 +142,7 @@ class InfoScreen extends StatelessWidget {
                             launcher.launchYtPage();
                           },
                           icon: SizedBox(
-                            height: 43,
+                            height: 40,
                             child: Image.asset(
                               "assets/Logos/youtubelogo.png",
                               fit: BoxFit.contain,
@@ -189,6 +181,29 @@ class InfoScreen extends StatelessWidget {
                     ),
                   ),
                 ).animate().flipH(),
+                Text("Made By"),
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        CachedNetworkImage(imageUrl: 'imageUrl'),
+                        Text(
+                          "Ayush Singh",
+                          style: TextStyle(color: Colors.black),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        CachedNetworkImage(imageUrl: 'imageUrl'),
+                        Text(
+                          "Sarthak Kotia",
+                          style: TextStyle(color: Colors.black),
+                        )
+                      ],
+                    )
+                  ],
+                )
               ],
             ),
           ),

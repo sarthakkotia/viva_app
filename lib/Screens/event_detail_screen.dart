@@ -6,6 +6,8 @@ import 'package:viva_app/Widgets/similar_event_tile.dart';
 import '../Provider/Data_provider.dart';
 import 'package:intl/intl.dart';
 
+import '../urllauncher.dart';
+
 Map<String, String> icons = {
   "Pronite": "assets/Logos/concert.png", // pronite
   "Social": "assets/Logos/social-care.png", // social
@@ -13,11 +15,29 @@ Map<String, String> icons = {
   "Speaking Arts": "assets/Logos/conference.png", // speaking arts
   "": "assets/Logos/healthy-lifestyle.png", //
   "Art": "assets/Logos/palette.png", // Art
-  "Quizzing": "assets/Logos/quiz.png", // Quizzing
+  "Quiz": "assets/Logos/quiz.png", // Quizzing
   "Drama": "assets/Logos/theatre.png", // Drama
   "Dance": "assets/Logos/dance.png",
   "b": "assets/Logos/concert.png",
   "c": "assets/Logos/healthy-lifestyle.png",
+};
+
+Map<String, String> rulebooks = {
+  "Nukkad": 'https://d3lhw1p67h4h5r.cloudfront.net/AAVEG%20Rule%20Book.pdf',
+  "Photography":
+      'https://d3lhw1p67h4h5r.cloudfront.net/IMAGINATION%20RULEBOOK-1.pdf',
+  "Music":
+      'https://d3lhw1p67h4h5r.cloudfront.net/Capriccio%20(Music%20Events%20Detail).pdf',
+  "Art": 'https://d3lhw1p67h4h5r.cloudfront.net/vignette%20Rulebook.pdf',
+  "SpeakingArts":
+      'https://d3lhw1p67h4h5r.cloudfront.net/Speaking-Arts-viva2k24.pdf',
+  "Drama":
+      'https://d3lhw1p67h4h5r.cloudfront.net/Rendition%20Rule%20Book_24.pdf',
+  "Quiz": 'https://d3lhw1p67h4h5r.cloudfront.net/QUIZZINGA.pdf',
+  "Dance":
+      'https://d3lhw1p67h4h5r.cloudfront.net/Insignia Rulebook (updated).pdf',
+  "Social": 'https://d3lhw1p67h4h5r.cloudfront.net/Sankalp-Sahyog.pdf',
+  "Fashion": 'https://d3lhw1p67h4h5r.cloudfront.net/EMINENCE Rule Book.pdf',
 };
 
 class EventDetailScreen extends StatefulWidget {
@@ -59,7 +79,8 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             CachedNetworkImage(
               imageUrl: widget.poster,
               fit: BoxFit.cover,
-              height: 350.0, // Set the desired height for the poster image
+              height: MediaQuery.of(context).size.height *
+                  0.4, // Set the desired height for the poster image
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -95,6 +116,21 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                 ],
               ),
             ),
+            (widget.genre != "Exciting")
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        UrlLauncher launcher = UrlLauncher();
+                        Uri url = Uri.parse(rulebooks[widget.genre]!);
+                        launcher.launchweb(url);
+                      },
+                      child: Text("Rulebook"),
+                    ))
+                : SizedBox(
+                    width: 0,
+                    height: 0,
+                  ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
@@ -119,8 +155,9 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                 scrollDirection: Axis.horizontal,
                 itemCount: similarEvents.length,
                 itemBuilder: (context, index) {
-                  if (similarEvents[index].Title == widget.title)
-                    return Visibility(visible: false,child: SizedBox());
+                  if (similarEvents[index].Title == widget.title) {
+                    return Visibility(visible: false, child: SizedBox());
+                  }
 
                   return SimilarEventTile(
                     imgUrl: similarEvents[index].Img,
