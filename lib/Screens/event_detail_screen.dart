@@ -74,22 +74,25 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CachedNetworkImage(
-              imageUrl: widget.poster,
-              fit: BoxFit.cover,
-              height: MediaQuery.of(context).size.height *
-                  0.4, // Set the desired height for the poster image
+            Hero(
+              tag: widget.title,
+              child: CachedNetworkImage(
+                imageUrl: widget.poster,
+                fit: BoxFit.cover,
+                height: MediaQuery.of(context).size.height *
+                    0.4, // Set the desired height for the poster image
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
                   Icon(Icons.location_pin,
-                      color: Colors.deepPurple), // Set icon color here
-                  SizedBox(width: 8.0),
+                      color: Colors.deepPurple.shade300), // Set icon color here
+                  const SizedBox(width: 8.0),
                   Text(
                     widget.venue,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -101,8 +104,8 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  const Icon(Icons.calendar_today_sharp,
-                      color: Colors.deepPurple), // Set icon color here
+                  Icon(Icons.calendar_today_sharp,
+                      color: Colors.deepPurple.shade300), // Set icon color here
                   const SizedBox(width: 8.0),
                   Text(
                     widget.time.toString(),
@@ -123,7 +126,9 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                         Uri url = Uri.parse(rulebooks[widget.genre]!);
                         launcher.launchweb(url);
                       },
-                      child: Text("Rulebook",style: TextStyle(color: Colors.deepPurple),),
+                      child: const Text(
+                        "Rulebook",
+                      ),
                     ))
                 : const SizedBox(
                     width: 0,

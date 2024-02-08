@@ -80,6 +80,8 @@ class DataProvider with ChangeNotifier {
         return ExcitingList;
       case "Fashion":
         return FashionList;
+      case "Pronite":
+        return PronitesList;
     }
     return allEventList;
   }
@@ -156,7 +158,8 @@ class DataProvider with ChangeNotifier {
         NukkadList.isEmpty ||
         ExcitingList.isEmpty ||
         SocialList.isEmpty ||
-        FashionList.isEmpty) {
+        FashionList.isEmpty ||
+        PronitesList.isEmpty) {
       EventsList el = EventsListbox.get(0)!;
       for (var event in el.ls) {
         switch (event.Genre) {
@@ -167,17 +170,11 @@ class DataProvider with ChangeNotifier {
             if (DanceList.isNotEmpty &&
                 event.Title.split(" ")[0] ==
                     DanceList.last.Title.split(" ")[0]) {
-              EventModel eve = EventModel(
-                  Title: event.Title.split(" ")[0],
-                  DateandTime: event.DateandTime,
-                  Day: event.Day,
-                  Desc: event.Desc,
-                  Genre: event.Genre,
-                  Img: event.Img,
-                  Venue: event.Venue,
-                  Poster: event.Poster);
-              DanceList.removeLast();
-              DanceList.add(eve);
+              int idx = DanceList.length;
+              EventModel temp = DanceList.last;
+              DanceList.removeAt(idx - 1);
+              DanceList.add(event);
+              DanceList.add(temp);
               break;
             }
             DanceList.add(event);
@@ -186,17 +183,11 @@ class DataProvider with ChangeNotifier {
             if (DramaList.isNotEmpty &&
                 event.Title.split(" ")[0] ==
                     DramaList.last.Title.split(" ")[0]) {
-              EventModel eve = EventModel(
-                  Title: event.Title.split(" ")[0],
-                  DateandTime: event.DateandTime,
-                  Day: event.Day,
-                  Desc: event.Desc,
-                  Genre: event.Genre,
-                  Img: event.Img,
-                  Venue: event.Venue,
-                  Poster: event.Poster);
-              DramaList.removeLast();
-              DramaList.add(eve);
+              int idx = DramaList.length;
+              EventModel temp = DramaList.last;
+              DramaList.removeAt(idx - 1);
+              DramaList.add(event);
+              DramaList.add(temp);
               break;
             }
             DramaList.add(event);
@@ -205,17 +196,11 @@ class DataProvider with ChangeNotifier {
             if (MusicList.isNotEmpty &&
                 event.Title.split(" ")[0] ==
                     MusicList.last.Title.split(" ")[0]) {
-              EventModel eve = EventModel(
-                  Title: event.Title.split(" ")[0],
-                  DateandTime: event.DateandTime,
-                  Day: event.Day,
-                  Desc: event.Desc,
-                  Genre: event.Genre,
-                  Img: event.Img,
-                  Venue: event.Venue,
-                  Poster: event.Poster);
-              MusicList.removeLast();
-              MusicList.add(eve);
+              int idx = MusicList.length;
+              EventModel temp = MusicList.last;
+              MusicList.removeAt(idx - 1);
+              MusicList.add(event);
+              MusicList.add(temp);
               break;
             }
             MusicList.add(event);
@@ -223,21 +208,15 @@ class DataProvider with ChangeNotifier {
           case "Quiz":
             QuizList.add(event);
             break;
-          case "SpeakingArts":
+          case "Speaking Arts":
             if (SpeakingArtsList.isNotEmpty &&
                 event.Title.split(" ")[0] ==
                     SpeakingArtsList.last.Title.split(" ")[0]) {
-              EventModel eve = EventModel(
-                  Title: event.Title.split(" ")[0],
-                  DateandTime: event.DateandTime,
-                  Day: event.Day,
-                  Desc: event.Desc,
-                  Genre: event.Genre,
-                  Img: event.Img,
-                  Venue: event.Venue,
-                  Poster: event.Poster);
-              SpeakingArtsList.removeLast();
-              SpeakingArtsList.add(eve);
+              int idx = SpeakingArtsList.length;
+              EventModel temp = SpeakingArtsList.last;
+              SpeakingArtsList.removeAt(idx - 1);
+              SpeakingArtsList.add(event);
+              SpeakingArtsList.add(temp);
               break;
             }
             SpeakingArtsList.add(event);
@@ -258,20 +237,17 @@ class DataProvider with ChangeNotifier {
             if (FashionList.isNotEmpty &&
                 event.Title.split(" ")[0] ==
                     FashionList.last.Title.split(" ")[0]) {
-              EventModel eve = EventModel(
-                  Title: event.Title.split(" ")[0],
-                  DateandTime: event.DateandTime,
-                  Day: event.Day,
-                  Desc: event.Desc,
-                  Genre: event.Genre,
-                  Img: event.Img,
-                  Venue: event.Venue,
-                  Poster: event.Poster);
-              FashionList.removeLast();
-              FashionList.add(eve);
+              int idx = FashionList.length;
+              EventModel temp = FashionList.last;
+              FashionList.removeAt(idx - 1);
+              FashionList.add(event);
+              FashionList.add(temp);
               break;
             }
             FashionList.add(event);
+            break;
+          case "Pronite":
+            PronitesList.add(event);
             break;
         }
       }
