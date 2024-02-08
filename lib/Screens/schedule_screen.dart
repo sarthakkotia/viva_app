@@ -14,8 +14,6 @@ List<String> daysassets = [
 ];
 
 class ScheduleScreen extends StatefulWidget {
-  // bool offline;
-
   List<List<EventModel>> days;
 
   ScheduleScreen(this.days, {super.key});
@@ -48,22 +46,6 @@ class _ScheduleScreenState extends State<ScheduleScreen>
   void initState() {
     super.initState();
     tabController = TabController(length: 3, vsync: this);
-    // Hive.openBox<EventsList>("Events").then((value) {
-    //   dataProvider = Provider.of<DataProvider>(context, listen: false);
-    //   days = dataProvider.days;
-    //   setState(() {
-    //     schedule = days[0];
-    //   });
-    // });
-
-    /*
-    if (widget.offline == false) {
-      setState(() {
-        schedule = schedule_data.Dayindexdetails(0);
-        loaded = true;
-      });
-    }
-     */
   }
 
   @override
@@ -114,13 +96,13 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                     // Sort the events by time before displaying
                     days[0]
                         .sort((a, b) => a.DateandTime.compareTo(b.DateandTime));
-                
+
                     return AnimationConfiguration.staggeredList(
                       position: index,
                       child: SlideAnimation(
                         child: CustomListTile(
-                          title:
-                              days[0][index].Title + (" (${days[0][index].Genre})"),
+                          title: days[0][index].Title +
+                              (" (${days[0][index].Genre})"),
                           venue: days[0][index].Venue,
                           time: formatDateTime(days[0][index].DateandTime),
                           desc: days[0][index].Desc,
@@ -146,13 +128,13 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                     // Sort the events by time before displaying
                     days[1]
                         .sort((a, b) => a.DateandTime.compareTo(b.DateandTime));
-                
+
                     return AnimationConfiguration.staggeredList(
                       position: index,
                       child: SlideAnimation(
                         child: CustomListTile(
-                          title:
-                              days[1][index].Title + (" (${days[1][index].Genre})"),
+                          title: days[1][index].Title +
+                              (" (${days[1][index].Genre})"),
                           venue: days[1][index].Venue,
                           time: formatDateTime(days[1][index].DateandTime),
                           desc: days[1][index].Desc,
@@ -178,13 +160,13 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                     // Sort the events by time before displaying
                     days[2]
                         .sort((a, b) => a.DateandTime.compareTo(b.DateandTime));
-                
+
                     return AnimationConfiguration.staggeredList(
                       position: index,
                       child: SlideAnimation(
                         child: CustomListTile(
-                          title:
-                              days[2][index].Title + (" (${days[2][index].Genre})"),
+                          title: days[2][index].Title +
+                              (" (${days[2][index].Genre})"),
                           venue: days[2][index].Venue,
                           time: formatDateTime(days[2][index].DateandTime),
                           desc: days[2][index].Desc,
@@ -209,97 +191,5 @@ class _ScheduleScreenState extends State<ScheduleScreen>
         ),
       ],
     );
-    /*
-    return Scaffold(
-      appBar: AppBar(
-        bottom: TabBar(
-          tabs: [
-            TextButton(
-                onPressed: () {
-                  setState(() {
-                    selectedIndex = 1;
-                    schedule = days[0];
-                  });
-                },
-                child: Image.asset("assets/Logos/9feb.png")),
-            TextButton(
-                onPressed: () {
-                  setState(() {
-                    selectedIndex = 2;
-                    schedule = days[1];
-                  });
-                },
-                child: Image.asset("assets/Logos/10feb.png")),
-            TextButton(
-                onPressed: () {
-                  setState(() {
-                    selectedIndex = 3;
-                    schedule = days[2];
-                  });
-                },
-                child: Image.asset("assets/Logos/11feb.png")),
-          ],
-        ),
-      ),
-      body: TabBarView(
-        children: <Widget>[
-          ListView.separated(
-              itemBuilder: (context, index) {
-                return CustomListTile(
-                    title: days[0][index].Title +
-                        (" (${days[0][index].Genre})"),
-                    venue: days[0][index].Venue,
-                    time: days[0][index].DateandTime.toString(),
-                    eventDescription: days[0][index].Desc);
-              },
-              separatorBuilder: (context, index) {
-                return const SizedBox(
-                  height: 10,
-                );
-              },
-              itemCount: days[0].length),
-          ListView.separated(
-              itemBuilder: (context, index) {
-                return CustomListTile(
-                    title: days[1][index].Title +
-                        (" (${days[1][index].Genre})"),
-                    venue: days[1][index].Venue,
-                    time: days[1][index].DateandTime.toString(),
-                    eventDescription: days[1][index].Desc);
-              },
-              separatorBuilder: (context, index) {
-                return const SizedBox(
-                  height: 10,
-                );
-              },
-              itemCount: days[1].length),
-          ListView.separated(
-              itemBuilder: (context, index) {
-                return CustomListTile(
-                    title: days[2][index].Title +
-                        (" (${days[2][index].Genre})"),
-                    venue: days[2][index].Venue,
-                    time: days[2][index].DateandTime.toString(),
-                    eventDescription: days[2][index].Desc);
-              },
-              separatorBuilder: (context, index) {
-                return const SizedBox(
-                  height: 10,
-                );
-              },
-              itemCount: days[2].length)
-        ],
-      ),
-    );
-
-
-     */
-    /*
-          widget.offline == true
-              ? Lottie.asset("assets/AnimatedIcons/NoConnection.json")
-              : loaded == false
-                  ? const CircularProgressIndicator()
-                  : ScheduleList(schedule)
-    */
   }
 }

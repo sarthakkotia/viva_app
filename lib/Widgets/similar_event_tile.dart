@@ -44,9 +44,6 @@ String formatDateTime(DateTime dateTime) {
 class _SimilarEventTileState extends State<SimilarEventTile> {
   @override
   Widget build(BuildContext context) {
-    DataProvider data_provider =
-        Provider.of<DataProvider>(context, listen: false);
-
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -81,10 +78,11 @@ class _SimilarEventTileState extends State<SimilarEventTile> {
               ),
             ),
           ),
-          SizedBox(height: 8.0), // Add some spacing between the Card and Text
+          const SizedBox(
+              height: 8.0), // Add some spacing between the Card and Text
           Text(
             widget.title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 15.0,
               fontWeight: FontWeight.bold,
               color: Colors.white,

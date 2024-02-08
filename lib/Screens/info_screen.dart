@@ -55,7 +55,7 @@ class InfoScreen extends StatelessWidget {
                           onTap: () {
                             launcher.launchMail();
                           },
-                          child: FittedBox(
+                          child: const FittedBox(
                             child: Text("vivacity@lnmiit.ac.in",
                                 style: TextStyle(
                                     fontSize: 25,
@@ -91,7 +91,7 @@ class InfoScreen extends StatelessWidget {
                               launcher.launchweb(
                                   Uri(scheme: "https", host: "vivacity.live"));
                             },
-                            child: Text("vivacity.live",
+                            child: const Text("vivacity.live",
                                 style: TextStyle(
                                     fontSize: 25,
                                     color: Colors.black,
@@ -187,7 +187,7 @@ class InfoScreen extends StatelessWidget {
                     Column(
                       children: [
                         CachedNetworkImage(imageUrl: 'imageUrl'),
-                        Text(
+                        const Text(
                           "Ayush Singh",
                           style: TextStyle(color: Colors.black),
                         )
@@ -196,7 +196,7 @@ class InfoScreen extends StatelessWidget {
                     Column(
                       children: [
                         CachedNetworkImage(imageUrl: 'imageUrl'),
-                        Text(
+                        const Text(
                           "Sarthak Kotia",
                           style: TextStyle(color: Colors.black),
                         )

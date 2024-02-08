@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import 'package:viva_app/Provider/Data_provider.dart';
 import 'package:viva_app/Screens/event_detail_screen.dart';
 
 class HomePageCard extends StatefulWidget {
@@ -29,10 +31,9 @@ class HomePageCard extends StatefulWidget {
   State<HomePageCard> createState() => _HomePageCardState();
 }
 
-
 String formatDateTime(DateTime dateTime) {
-  // Use intl package for formatting
-  String formattedDate = DateFormat('MMMM d').format(dateTime); // Full month name and day
+  String formattedDate =
+      DateFormat('MMMM d').format(dateTime); // Full month name and day
   String formattedTime = DateFormat.jm().format(dateTime); // Time with AM/PM
 
   return '$formattedDate, $formattedTime';
@@ -41,6 +42,7 @@ String formatDateTime(DateTime dateTime) {
 class _HomePageCardState extends State<HomePageCard> {
   @override
   Widget build(BuildContext context) {
+    bool network = Provider.of<DataProvider>(context, listen: false).network;
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -62,7 +64,7 @@ class _HomePageCardState extends State<HomePageCard> {
         children: [
           Card(
             elevation: 100.0,
-            margin: EdgeInsets.all(8.0),
+            margin: const EdgeInsets.all(8.0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12.0),
               side: const BorderSide(
@@ -73,8 +75,20 @@ class _HomePageCardState extends State<HomePageCard> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
               child: CachedNetworkImage(
+                memCacheWidth: 1920,
+                memCacheHeight: 1080,
+                placeholder: (context, url) {
+                  if (network == true) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else {
+                    return Card();
+                  }
+                },
                 fit: BoxFit.cover,
                 imageUrl: widget.imgUrl,
+                errorWidget: (context, url, error) {
+                  return Card();
+                },
               ),
             ),
           ),

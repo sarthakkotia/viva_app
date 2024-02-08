@@ -7,7 +7,9 @@ import 'package:viva_app/Widgets/homepage_tile.dart';
 import '../Provider/Data_provider.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  bool network;
+
+  HomeScreen(this.network, {Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -47,11 +49,17 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   int _value = 0;
 
+  bool connection = true;
+
   @override
   Widget build(BuildContext context) {
     var data_provider = Provider.of<DataProvider>(context, listen: false);
     var fetchedLists = data_provider.fetcheddata;
-    print("fhg");
+    if (widget.network == false && ([...fetchedLists.values][1].isEmpty)) {
+      setState(() {
+        connection = false;
+      });
+    }
     return Container(
       decoration: const BoxDecoration(
           image: DecorationImage(
@@ -76,19 +84,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 selected: chipidx == _value,
                 avatar: Image.asset(icons[chipidx]),
                 backgroundColor: Colors.black,
-                selectedColor: Colors.black,
-                // surfaceTintColor: Colors.white12,
-                side: const BorderSide(width: 1),
+                selectedColor: Colors.black12,
                 showCheckmark: false,
-                // shadowColor: Colors.black,
-                // surfaceTintColor: Colors.transparent,
-                // color: MaterialStateColor.resolveWith((states) {
-                //   // If the button is pressed, return green, otherwise blue
-                //   if (states.contains(MaterialState.pressed)) {
-                //     return Colors.transparent;
-                //   }
-                //   return Colors.transparent;
-                // }),
+                pressElevation: 5,
                 onSelected: (value) {
                   if (value == true) {
                     setState(() {
@@ -110,25 +108,28 @@ class _HomeScreenState extends State<HomeScreen> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           height: MediaQuery.of(context).size.height * 0.6,
-          child: StackedListView(
-            itemCount: fetchedLists[currentindex]!.length,
-            builder: (BuildContext context, int index) {
-              // fetch data from hive
-              return HomePageCard(
-                title: fetchedLists[currentindex]![index].Title,
-                imgUrl: fetchedLists[currentindex]![index].Img,
-                genre: fetchedLists[currentindex]![index].Genre,
-                desc: fetchedLists[currentindex]![index].Desc,
-                date: fetchedLists[currentindex]![index].DateandTime,
-                venue: fetchedLists[currentindex]![index].Venue,
-                day: fetchedLists[currentindex]![index].Day,
-                poster: (fetchedLists[currentindex]![index].Poster != 'null')
-                    ? fetchedLists[currentindex]![index].Poster
-                    : fetchedLists[currentindex]![index].Img,
-              );
-            },
-            itemExtent: MediaQuery.of(context).size.height * 0.25,
-          ),
+          child: connection == false
+              ? Image.asset("assets/AnimatedIcons/noconnection.gif")
+              : StackedListView(
+                  itemCount: fetchedLists[currentindex]!.length,
+                  builder: (BuildContext context, int index) {
+                    // fetch data from hive
+                    return HomePageCard(
+                      title: fetchedLists[currentindex]![index].Title,
+                      imgUrl: fetchedLists[currentindex]![index].Img,
+                      genre: fetchedLists[currentindex]![index].Genre,
+                      desc: fetchedLists[currentindex]![index].Desc,
+                      date: fetchedLists[currentindex]![index].DateandTime,
+                      venue: fetchedLists[currentindex]![index].Venue,
+                      day: fetchedLists[currentindex]![index].Day,
+                      poster:
+                          (fetchedLists[currentindex]![index].Poster != 'null')
+                              ? fetchedLists[currentindex]![index].Poster
+                              : fetchedLists[currentindex]![index].Img,
+                    );
+                  },
+                  itemExtent: MediaQuery.of(context).size.height * 0.25,
+                ),
         )
       ]),
     );
