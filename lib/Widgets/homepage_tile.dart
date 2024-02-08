@@ -45,7 +45,6 @@ class _HomePageCardState extends State<HomePageCard> {
   Widget build(BuildContext context) {
     bool network = Provider.of<DataProvider>(context, listen: false).network;
     return GestureDetector(
-
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           // fetch data from hive
@@ -65,7 +64,7 @@ class _HomePageCardState extends State<HomePageCard> {
         fit: StackFit.passthrough,
         children: [
           Card(
-            elevation: 100.0,
+            elevation: 10.0,
             margin: const EdgeInsets.all(8.0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12.0),
@@ -81,41 +80,41 @@ class _HomePageCardState extends State<HomePageCard> {
                   if (network == true) {
                     return const Center(child: CircularProgressIndicator());
                   } else {
-                    return Card();
+                    return const Card();
                   }
                 },
                 fit: BoxFit.cover,
                 imageUrl: widget.imgUrl,
                 errorWidget: (context, url, error) {
-                  return Card();
+                  return const Card();
                 },
               ),
             ),
           ),
           Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
+            left: 8,
+            bottom: 5,
             child: Container(
+              width: MediaQuery.of(context).size.width * 0.91,
               padding: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.55),
-                borderRadius: const BorderRadius.only(
+              decoration: const BoxDecoration(
+                color: Colors.black54,
+                borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(12.0),
                   bottomRight: Radius.circular(12.0),
                 ),
-                border: Border.all(
-                  color: Colors.black, // Set border color here
-                  width: 2.0, // Set border width here
-                ),
               ),
-              child: Text(
-                widget.title,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Text(
+                  widget.title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    wordSpacing: 3,
+                    fontSize: 18,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
           ),

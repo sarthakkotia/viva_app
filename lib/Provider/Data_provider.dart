@@ -162,19 +162,84 @@ class DataProvider with ChangeNotifier {
         switch (event.Genre) {
           case "Art":
             ArtList.add(event);
+            break;
           case "Dance":
+            if (DanceList.isNotEmpty &&
+                event.Title.split(" ")[0] ==
+                    DanceList.last.Title.split(" ")[0]) {
+              EventModel eve = EventModel(
+                  Title: event.Title.split(" ")[0],
+                  DateandTime: event.DateandTime,
+                  Day: event.Day,
+                  Desc: event.Desc,
+                  Genre: event.Genre,
+                  Img: event.Img,
+                  Venue: event.Venue,
+                  Poster: event.Poster);
+              DanceList.removeLast();
+              DanceList.add(eve);
+              break;
+            }
             DanceList.add(event);
             break;
           case "Drama":
+            if (DramaList.isNotEmpty &&
+                event.Title.split(" ")[0] ==
+                    DramaList.last.Title.split(" ")[0]) {
+              EventModel eve = EventModel(
+                  Title: event.Title.split(" ")[0],
+                  DateandTime: event.DateandTime,
+                  Day: event.Day,
+                  Desc: event.Desc,
+                  Genre: event.Genre,
+                  Img: event.Img,
+                  Venue: event.Venue,
+                  Poster: event.Poster);
+              DramaList.removeLast();
+              DramaList.add(eve);
+              break;
+            }
             DramaList.add(event);
             break;
           case "Music":
+            if (MusicList.isNotEmpty &&
+                event.Title.split(" ")[0] ==
+                    MusicList.last.Title.split(" ")[0]) {
+              EventModel eve = EventModel(
+                  Title: event.Title.split(" ")[0],
+                  DateandTime: event.DateandTime,
+                  Day: event.Day,
+                  Desc: event.Desc,
+                  Genre: event.Genre,
+                  Img: event.Img,
+                  Venue: event.Venue,
+                  Poster: event.Poster);
+              MusicList.removeLast();
+              MusicList.add(eve);
+              break;
+            }
             MusicList.add(event);
             break;
           case "Quiz":
             QuizList.add(event);
             break;
           case "SpeakingArts":
+            if (SpeakingArtsList.isNotEmpty &&
+                event.Title.split(" ")[0] ==
+                    SpeakingArtsList.last.Title.split(" ")[0]) {
+              EventModel eve = EventModel(
+                  Title: event.Title.split(" ")[0],
+                  DateandTime: event.DateandTime,
+                  Day: event.Day,
+                  Desc: event.Desc,
+                  Genre: event.Genre,
+                  Img: event.Img,
+                  Venue: event.Venue,
+                  Poster: event.Poster);
+              SpeakingArtsList.removeLast();
+              SpeakingArtsList.add(eve);
+              break;
+            }
             SpeakingArtsList.add(event);
             break;
           case "Photography":
@@ -190,6 +255,22 @@ class DataProvider with ChangeNotifier {
             SocialList.add(event);
             break;
           case "Fashion":
+            if (FashionList.isNotEmpty &&
+                event.Title.split(" ")[0] ==
+                    FashionList.last.Title.split(" ")[0]) {
+              EventModel eve = EventModel(
+                  Title: event.Title.split(" ")[0],
+                  DateandTime: event.DateandTime,
+                  Day: event.Day,
+                  Desc: event.Desc,
+                  Genre: event.Genre,
+                  Img: event.Img,
+                  Venue: event.Venue,
+                  Poster: event.Poster);
+              FashionList.removeLast();
+              FashionList.add(eve);
+              break;
+            }
             FashionList.add(event);
             break;
         }

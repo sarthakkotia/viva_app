@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'package:stacked_listview/stacked_listview.dart';
-import 'package:viva_app/Widgets/homepage_tile.dart';
 
 import '../Provider/Data_provider.dart';
+import '../Widgets/homepage_tile.dart';
 
 class HomeScreen extends StatefulWidget {
   bool network;
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         Padding(
             padding: const EdgeInsets.only(
-                top: 2.5, right: 2.5, left: 2.5, bottom: 25),
+                top: 1.5, right: 1.5, left: 1.5, bottom: 25),
             child: Image.asset("assets/Logos/unit sticker 1.png")
                 .animate()
                 .flipV(duration: const Duration(milliseconds: 1000))
