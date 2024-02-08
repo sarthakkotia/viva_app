@@ -2,8 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:viva_app/Provider/Data_provider.dart';
 import 'package:viva_app/Screens/event_detail_screen.dart';
+
+import '../Provider/Data_provider.dart';
 
 class HomePageCard extends StatefulWidget {
   final String imgUrl;
@@ -44,6 +45,7 @@ class _HomePageCardState extends State<HomePageCard> {
   Widget build(BuildContext context) {
     bool network = Provider.of<DataProvider>(context, listen: false).network;
     return GestureDetector(
+
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           // fetch data from hive
