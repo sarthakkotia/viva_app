@@ -1,5 +1,6 @@
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
+import 'package:viva_app/Screens/event_detail_screen.dart';
 
 class CustomListTile extends StatefulWidget {
   const CustomListTile(
@@ -7,13 +8,17 @@ class CustomListTile extends StatefulWidget {
       required this.title,
       required this.venue,
       required this.time,
-      required this.eventDescription})
+      required this.desc, required this.imgUrl, required this.genre, required this.day, required this.poster})
       : super(key: key);
 
+  final String imgUrl;
+  final String genre;
   final String title;
-  final String venue;
   final String time;
-  final String eventDescription;
+  final int day;
+  final String desc;
+  final String venue;
+  final String poster;
 
   @override
   State<CustomListTile> createState() => _CustomListTileState();
@@ -68,7 +73,7 @@ class _CustomListTileState extends State<CustomListTile> {
         Padding(
           padding: EdgeInsets.all(12.0),
           child: Text(
-            widget.eventDescription,
+            widget.desc,
             style: TextStyle(
               fontSize: 16.0,
               color: Colors.white,
@@ -79,7 +84,11 @@ class _CustomListTileState extends State<CustomListTile> {
         Padding(
           padding: EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context){
+                return EventDetailScreen(genre: widget.genre, title: widget.title, time: widget.time, desc: widget.desc, venue: widget.venue, day: widget.day, imgUrl: widget.imgUrl, poster: widget.poster);
+              }));
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.lightBlueAccent, // Set button color here
             ),

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:viva_app/Screens/event_detail_screen.dart';
 
@@ -15,27 +16,51 @@ class SimilarEventTile extends StatefulWidget {
   final String desc;
   final String venue;
   final String poster;
-  const SimilarEventTile({Key? key, required this.title, required this.imgUrl, required this.genre, required this.time, required this.day, required this.desc, required this.venue, required this.poster})
+  const SimilarEventTile(
+      {Key? key,
+      required this.title,
+      required this.imgUrl,
+      required this.genre,
+      required this.time,
+      required this.day,
+      required this.desc,
+      required this.venue,
+      required this.poster})
       : super(key: key);
 
   @override
   State<SimilarEventTile> createState() => _SimilarEventTileState();
 }
 
-class _SimilarEventTileState extends State<SimilarEventTile> {
+String formatDateTime(DateTime dateTime) {
+  // Use intl package for formatting
+  String formattedDate =
+      DateFormat('MMMM d').format(dateTime); // Full month name and day
+  String formattedTime = DateFormat.jm().format(dateTime); // Time with AM/PM
 
+  return '$formattedDate, $formattedTime';
+}
+
+class _SimilarEventTileState extends State<SimilarEventTile> {
   @override
   Widget build(BuildContext context) {
     DataProvider data_provider =
         Provider.of<DataProvider>(context, listen: false);
 
     return GestureDetector(
-      onTap: ()
-    {
-      Navigator.push(context, MaterialPageRoute(builder: (context){
-        return EventDetailScreen(genre: widget.genre, title: widget.title, time: widget.time, desc: widget.desc, venue: widget.venue, day: widget.day, imgUrl: widget.imgUrl, poster: widget.poster);}));
-    }
-      ,
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return EventDetailScreen(
+              genre: widget.genre,
+              title: widget.title,
+              time: formatDateTime(widget.time),
+              desc: widget.desc,
+              venue: widget.venue,
+              day: widget.day,
+              imgUrl: widget.imgUrl,
+              poster: widget.poster);
+        }));
+      },
       child: Column(
         children: [
           Card(
@@ -68,6 +93,5 @@ class _SimilarEventTileState extends State<SimilarEventTile> {
         ],
       ),
     );
-
   }
 }

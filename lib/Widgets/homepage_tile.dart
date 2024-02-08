@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:viva_app/Screens/event_detail_screen.dart';
 
 class HomePageCard extends StatefulWidget {
@@ -28,6 +29,15 @@ class HomePageCard extends StatefulWidget {
   State<HomePageCard> createState() => _HomePageCardState();
 }
 
+
+String formatDateTime(DateTime dateTime) {
+  // Use intl package for formatting
+  String formattedDate = DateFormat('MMMM d').format(dateTime); // Full month name and day
+  String formattedTime = DateFormat.jm().format(dateTime); // Time with AM/PM
+
+  return '$formattedDate, $formattedTime';
+}
+
 class _HomePageCardState extends State<HomePageCard> {
   @override
   Widget build(BuildContext context) {
@@ -39,7 +49,7 @@ class _HomePageCardState extends State<HomePageCard> {
             genre: widget.genre,
             title: widget.title,
             day: widget.day,
-            time: widget.date,
+            time: formatDateTime(widget.date),
             desc: widget.desc,
             venue: widget.venue,
             imgUrl: widget.imgUrl,
