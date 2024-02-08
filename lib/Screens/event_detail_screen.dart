@@ -147,7 +147,8 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              margin: const EdgeInsets.only(bottom: 10),
               height: MediaQuery.of(context).size.height * 0.25,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
