@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:viva_app/Provider/Services/urllauncher.dart';
@@ -178,13 +177,10 @@ class InfoScreen extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  // height: MediaQuery.of(context).size.height * 0.3,
-                  // width: MediaQuery.of(context).size.width * 0.6,
                   margin: const EdgeInsets.symmetric(vertical: 5),
                   child: InkWell(
                     onTap: () => launcher.launchURL(),
                     child: Container(
-                      height: MediaQuery.of(context).size.height * 0.3,
                       width: MediaQuery.of(context).size.width * 0.8,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15.0),
@@ -222,7 +218,7 @@ class InfoScreen extends StatelessWidget {
                     Column(
                       children: [
                         const CircleAvatar(
-                          radius: 60,
+                          radius: 60,                        
                           backgroundImage:
                               AssetImage('assets/Logos/Ayush_Singh.webp'),
                         ),
@@ -252,13 +248,13 @@ class InfoScreen extends StatelessWidget {
                     Column(
                       children: [
                         CircleAvatar(
-                          radius: 60,
+                          radius: 60,     
                           backgroundImage:
                               AssetImage('assets/Logos/Sarthak_Kotia.webp'),
                         ),
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               "Sarthak Kotia",
                               style: TextStyle(
                                   fontSize: 16,
@@ -283,6 +279,14 @@ class InfoScreen extends StatelessWidget {
                     )
                   ],
                 ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const ParallaxWidget();
+                      }));
+                    },
+                    child: Text("eAsTeR egg"))
               ],
             ),
           ),
