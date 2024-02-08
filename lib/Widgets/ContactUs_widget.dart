@@ -13,54 +13,51 @@ class ContactUsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Padding(
-          padding: EdgeInsets.all(5),
-          child: Column(
-            children: [
-              const CircleAvatar(
-                radius: 60,
-                backgroundImage: AssetImage(
-                  "assets/Logos/Ajay-Raj.jpeg",
-                ),
-                backgroundColor: Colors.transparent,
+        Column(
+          children: [
+            const CircleAvatar(
+              radius: 60,
+              backgroundImage: AssetImage(
+                "assets/Logos/Ajay-Raj.jpeg",
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 5.0),
-                child: Text(
-                  "Ajay Raj",
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
-                ),
+              backgroundColor: Colors.transparent,
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 5.0),
+              child: Text(
+                "Ajay Raj",
+                style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold),
               ),
-              Row(
-                children: [
-                  IconButton(
-                      onPressed: () async {
-                        await launcher.callNumber("8529528101");
-                      },
-                      icon: const Icon(
-                        Icons.call,
-                        color: Colors.green,
-                      )),
-                  InkWell(
-                    borderRadius: BorderRadius.circular(60),
-                    onTap: () async {
+            ),
+            Row(
+              children: [
+                IconButton(
+                    onPressed: () async {
                       await launcher.callNumber("8529528101");
                     },
-                    child: Text(
-                      "8529528101",
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                    ),
+                    icon: const Icon(
+                      Icons.call,
+                      color: Colors.green,
+                    )),
+                InkWell(
+                  borderRadius: BorderRadius.circular(60),
+                  onTap: () async {
+                    await launcher.callNumber("8529528101");
+                  },
+                  child: Text(
+                    "8529528101",
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
                   ),
-                ],
-              ),
-            ],
-          ),
+                ),
+              ],
+            ),
+          ],
         ),
         Padding(
           padding: EdgeInsets.all(5),
