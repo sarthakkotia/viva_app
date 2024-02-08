@@ -164,7 +164,7 @@ class InfoScreen extends StatelessWidget {
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return ParallaxWidget();
+                            return const ParallaxWidget();
                           }));
                         },
                         icon: SizedBox(
@@ -247,7 +247,7 @@ class InfoScreen extends StatelessWidget {
                     ),
                     Column(
                       children: [
-                        CircleAvatar(
+                        const CircleAvatar(
                           radius: 60,     
                           backgroundImage:
                               AssetImage('assets/Logos/Sarthak_Kotia.webp'),
