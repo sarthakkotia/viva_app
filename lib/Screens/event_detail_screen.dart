@@ -44,7 +44,7 @@ class EventDetailScreen extends StatefulWidget {
   final String imgUrl;
   final String genre;
   final String title;
-  final DateTime time;
+  final String time;
   final int day;
   final String desc;
   final String venue;

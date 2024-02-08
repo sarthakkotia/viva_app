@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:viva_app/Models/EventModelwithHive.dart';
 import 'package:viva_app/Provider/Data_provider.dart';
@@ -22,14 +24,13 @@ class ScheduleScreen extends StatefulWidget {
   _ScheduleScreenState createState() => _ScheduleScreenState();
 }
 
-String getdatetime(DateTime dateTime) {
-  int year = dateTime.year;
-  int month = dateTime.month;
-  int day = dateTime.day;
+String formatDateTime(DateTime dateTime) {
+  // Use intl package for formatting
+  String formattedDate =
+      DateFormat('MMMM d').format(dateTime); // Full month name and day
+  String formattedTime = DateFormat.jm().format(dateTime); // Time with AM/PM
 
-  return "${day.toString()} + "
-      " + ${month.toString()} +  "
-      "  + ${dateTime.hour.toString()}";
+  return '$formattedDate, $formattedTime';
 }
 
 class _ScheduleScreenState extends State<ScheduleScreen>
@@ -107,68 +108,101 @@ class _ScheduleScreenState extends State<ScheduleScreen>
           child: TabBarView(
             controller: tabController,
             children: [
-              ListView.separated(
-                itemBuilder: (context, index) {
-                  // Sort the events by time before displaying
-                  days[0]
-                      .sort((a, b) => a.DateandTime.compareTo(b.DateandTime));
-
-                  return CustomListTile(
-                    title:
-                        days[0][index].Title + (" (${days[0][index].Genre})"),
-                    venue: days[0][index].Venue,
-                    time: getdatetime(days[0][index].DateandTime),
-                    eventDescription: days[0][index].Desc,
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return const SizedBox(
-                    height: 20,
-                  );
-                },
-                itemCount: days[0].length,
+              AnimationLimiter(
+                child: ListView.separated(
+                  itemBuilder: (context, index) {
+                    // Sort the events by time before displaying
+                    days[0]
+                        .sort((a, b) => a.DateandTime.compareTo(b.DateandTime));
+                
+                    return AnimationConfiguration.staggeredList(
+                      position: index,
+                      child: SlideAnimation(
+                        child: CustomListTile(
+                          title:
+                              days[0][index].Title + (" (${days[0][index].Genre})"),
+                          venue: days[0][index].Venue,
+                          time: formatDateTime(days[0][index].DateandTime),
+                          desc: days[0][index].Desc,
+                          day: days[0][index].Day,
+                          imgUrl: days[0][index].Img,
+                          genre: days[0][index].Genre,
+                          poster: days[0][index].Poster,
+                        ),
+                      ),
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(
+                      height: 20,
+                    );
+                  },
+                  itemCount: days[0].length,
+                ),
               ),
-              ListView.separated(
-                itemBuilder: (context, index) {
-                  // Sort the events by time before displaying
-                  days[1]
-                      .sort((a, b) => a.DateandTime.compareTo(b.DateandTime));
-
-                  return CustomListTile(
-                    title:
-                        days[1][index].Title + (" (${days[1][index].Genre})"),
-                    venue: days[1][index].Venue,
-                    time: days[1][index].DateandTime.toString(),
-                    eventDescription: days[1][index].Desc,
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return const SizedBox(
-                    height: 20,
-                  );
-                },
-                itemCount: days[1].length,
+              AnimationLimiter(
+                child: ListView.separated(
+                  itemBuilder: (context, index) {
+                    // Sort the events by time before displaying
+                    days[1]
+                        .sort((a, b) => a.DateandTime.compareTo(b.DateandTime));
+                
+                    return AnimationConfiguration.staggeredList(
+                      position: index,
+                      child: SlideAnimation(
+                        child: CustomListTile(
+                          title:
+                              days[1][index].Title + (" (${days[1][index].Genre})"),
+                          venue: days[1][index].Venue,
+                          time: formatDateTime(days[1][index].DateandTime),
+                          desc: days[1][index].Desc,
+                          day: days[1][index].Day,
+                          imgUrl: days[1][index].Img,
+                          genre: days[1][index].Genre,
+                          poster: days[1][index].Poster,
+                        ),
+                      ),
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(
+                      height: 20,
+                    );
+                  },
+                  itemCount: days[1].length,
+                ),
               ),
-              ListView.separated(
-                itemBuilder: (context, index) {
-                  // Sort the events by time before displaying
-                  days[2]
-                      .sort((a, b) => a.DateandTime.compareTo(b.DateandTime));
-
-                  return CustomListTile(
-                    title:
-                        days[2][index].Title + (" (${days[2][index].Genre})"),
-                    venue: days[2][index].Venue,
-                    time: days[2][index].DateandTime.toString(),
-                    eventDescription: days[2][index].Desc,
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return const SizedBox(
-                    height: 20,
-                  );
-                },
-                itemCount: days[2].length,
+              AnimationLimiter(
+                child: ListView.separated(
+                  itemBuilder: (context, index) {
+                    // Sort the events by time before displaying
+                    days[2]
+                        .sort((a, b) => a.DateandTime.compareTo(b.DateandTime));
+                
+                    return AnimationConfiguration.staggeredList(
+                      position: index,
+                      child: SlideAnimation(
+                        child: CustomListTile(
+                          title:
+                              days[2][index].Title + (" (${days[2][index].Genre})"),
+                          venue: days[2][index].Venue,
+                          time: formatDateTime(days[2][index].DateandTime),
+                          desc: days[2][index].Desc,
+                          day: days[2][index].Day,
+                          imgUrl: days[2][index].Img,
+                          genre: days[2][index].Genre,
+                          poster: days[2][index].Poster,
+                        ),
+                      ),
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(
+                      height: 20,
+                    );
+                  },
+                  itemCount: days[2].length,
+                ),
               )
             ],
           ),
