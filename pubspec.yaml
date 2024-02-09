@@ -104,14 +104,6 @@ flutter:
       fonts:
         - asset: fonts/CasagrandeGrind-Regular.ttf
     - family: ProtestRiot
-      fonts:
-        - asset: fonts/ProtestRiot-Regular.ttf
-    - family: Outfit
-      fonts:
-        - asset: fonts/Outfit-Regular.ttf
-    - family: PoorStory
-      fonts:
-        - asset: fonts/PoorStory-Regular.ttf
     - family: Overpass
       fonts:
         - asset: fonts/Overpass-Regular.ttf
