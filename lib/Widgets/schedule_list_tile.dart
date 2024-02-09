@@ -51,7 +51,7 @@ class _CustomListTileState extends State<CustomListTile> {
       trailing: const Icon(
         Icons.expand_circle_down,
         color: Color.fromRGBO(60, 40, 13, 1),
-      ),contentPadding: EdgeInsets.symmetric(horizontal: 5),
+      ),contentPadding: const EdgeInsets.symmetric(horizontal: 5),
       animateTrailing: true,
       leading: Padding(
         padding: const EdgeInsets.only(top: 8.0, bottom: 8, left: 8),
@@ -72,9 +72,9 @@ class _CustomListTileState extends State<CustomListTile> {
             fit: BoxFit.scaleDown,
             child: Text(
               widget.venue,
-              style: const TextStyle(
+              style: const TextStyle(fontFamily: "Overpass",
                 fontWeight: FontWeight.bold,
-                fontSize: 16.0,
+                fontSize: 17.0,
                 color: Colors.black,
               ),
             ),
@@ -83,7 +83,7 @@ class _CustomListTileState extends State<CustomListTile> {
             fit: BoxFit.scaleDown,
             child: Text(
               widget.time,
-              style: const TextStyle(
+              style: const TextStyle(fontFamily: "Overpass",
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
                 color: Colors.black,
@@ -100,8 +100,7 @@ class _CustomListTileState extends State<CustomListTile> {
           child: Text(
             widget.title,
             style: const TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
+              fontSize: 20.0,fontFamily: "CasagrandeGrind",
               color: Colors.black,
             ),
             textAlign: TextAlign.center,
@@ -114,7 +113,7 @@ class _CustomListTileState extends State<CustomListTile> {
           child: Text(
             widget.desc,
             style: const TextStyle(
-              fontSize: 15.0,
+              fontSize: 15.0,fontFamily: "Overpass",
               color: Color.fromRGBO(60, 40, 13, 1),
             ),
           ),

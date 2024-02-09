@@ -13,9 +13,6 @@ class InfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double heightscreen = MediaQuery.of(context).size.height;
-    final bottomPadding = MediaQuery.of(context).padding.bottom;
-    final topPadding = MediaQuery.of(context).padding.top;
-    double heightfinal = heightscreen - bottomPadding - topPadding;
     return Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
@@ -29,9 +26,8 @@ class InfoScreen extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: 10),
                   child: Text(
                     "Fest Heads",
-                    style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
+                    style: TextStyle(fontFamily: "CasagrandeGrind",
+                        fontSize: 28,
                         color: Colors.black),
                   ),
                 ),
@@ -66,7 +62,7 @@ class InfoScreen extends StatelessWidget {
                           child: const FittedBox(
                             child: Text("vivacity@lnmiit.ac.in",
                                 style: TextStyle(
-                                    fontSize: 25,
+                                    fontSize: 25,fontFamily: "Overpass",
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold)),
                           ).animate().fadeIn(),
@@ -98,7 +94,7 @@ class InfoScreen extends StatelessWidget {
                                 Uri(scheme: "https", host: "vivacity.live"));
                           },
                           child: const Text("vivacity.live",
-                              style: TextStyle(
+                              style: TextStyle(fontFamily: "Overpass",
                                   fontSize: 25,
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold)),
@@ -150,7 +146,7 @@ class InfoScreen extends StatelessWidget {
                       ),
                     ).animate().slideX(),
                     IconButton(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         onPressed: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
@@ -197,8 +193,8 @@ class InfoScreen extends StatelessWidget {
                   child: Text(
                     "Developed By",
                     style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                      fontFamily: "CasagrandeGrind",
+                        fontSize: 22,
                         color: Colors.black),
                   ),
                 ),
@@ -215,7 +211,7 @@ class InfoScreen extends StatelessWidget {
                         Row(children: [
                           const Text(
                             "Ayush Singh",
-                            style: TextStyle(
+                            style: TextStyle(fontFamily: "Overpass",
                                 color: Colors.black,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold),
@@ -247,7 +243,7 @@ class InfoScreen extends StatelessWidget {
                             const Text(
                               "Sarthak Kotia",
                               style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 16,fontFamily: "Overpass",
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold),
                             ),

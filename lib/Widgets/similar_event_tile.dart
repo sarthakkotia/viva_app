@@ -1,11 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 import 'package:viva_app/Screens/event_detail_screen.dart';
-
-import '../Provider/Data_provider.dart';
 
 class SimilarEventTile extends StatefulWidget {
   final String imgUrl;
@@ -84,7 +80,7 @@ class _SimilarEventTileState extends State<SimilarEventTile> {
             widget.title,
             style: const TextStyle(
               fontSize: 15.0,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.bold,fontFamily: "Overpass",
               color: Colors.white,
             ),
           ),

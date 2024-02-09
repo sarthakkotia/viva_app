@@ -115,7 +115,7 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                         child: SlideAnimation(
                           child: Padding(
                             padding:
-                                const EdgeInsets.symmetric(horizontal: 10.0),
+                                const EdgeInsets.symmetric(horizontal: 12.0),
                             child: CustomListTile(
                               title: days[0][index].Title +
                                   (" (${days[0][index].Genre})"),
@@ -151,18 +151,21 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                       return AnimationConfiguration.staggeredList(
                         position: index,
                         child: SlideAnimation(
-                          child: CustomListTile(
-                            title: days[1][index].Title +
-                                (" (${days[1][index].Genre})"),
-                            venue: days[1][index].Venue,
-                            time: formatDateTime(days[1][index].DateandTime),
-                            desc: days[1][index].Desc,
-                            day: days[1][index].Day,
-                            imgUrl: days[1][index].Img,
-                            genre: days[1][index].Genre,
-                            poster: days[1][index].Poster != 'null'
-                                ? days[1][index].Poster
-                                : days[1][index].Img,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                            child: CustomListTile(
+                              title: days[1][index].Title +
+                                  (" (${days[1][index].Genre})"),
+                              venue: days[1][index].Venue,
+                              time: formatDateTime(days[1][index].DateandTime),
+                              desc: days[1][index].Desc,
+                              day: days[1][index].Day,
+                              imgUrl: days[1][index].Img,
+                              genre: days[1][index].Genre,
+                              poster: days[1][index].Poster != 'null'
+                                  ? days[1][index].Poster
+                                  : days[1][index].Img,
+                            ),
                           ),
                         ),
                       );
@@ -185,18 +188,21 @@ class _ScheduleScreenState extends State<ScheduleScreen>
                       return AnimationConfiguration.staggeredList(
                         position: index,
                         child: SlideAnimation(
-                          child: CustomListTile(
-                            title: days[2][index].Title +
-                                (" (${days[2][index].Genre})"),
-                            venue: days[2][index].Venue,
-                            time: formatDateTime(days[2][index].DateandTime),
-                            desc: days[2][index].Desc,
-                            day: days[2][index].Day,
-                            imgUrl: days[2][index].Img,
-                            genre: days[2][index].Genre,
-                            poster: days[2][index].Poster != 'null'
-                                ? days[2][index].Poster
-                                : days[2][index].Img,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                            child: CustomListTile(
+                              title: days[2][index].Title +
+                                  (" (${days[2][index].Genre})"),
+                              venue: days[2][index].Venue,
+                              time: formatDateTime(days[2][index].DateandTime),
+                              desc: days[2][index].Desc,
+                              day: days[2][index].Day,
+                              imgUrl: days[2][index].Img,
+                              genre: days[2][index].Genre,
+                              poster: days[2][index].Poster != 'null'
+                                  ? days[2][index].Poster
+                                  : days[2][index].Img,
+                            ),
                           ),
                         ),
                       );

@@ -28,7 +28,7 @@ class ContactUsWidget extends StatelessWidget {
                 "Ajay Raj",
                 style: TextStyle(
                     fontSize: 20,
-                    color: Colors.black,
+                    color: Colors.black,fontFamily: "Overpass",
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -77,7 +77,7 @@ class ContactUsWidget extends StatelessWidget {
                     maxLines: 3,
                     "Prathmesh Ranjan",
                     style: TextStyle(
-                        fontSize: 19,
+                        fontSize: 19,fontFamily: "Overpass",
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
                   ),
