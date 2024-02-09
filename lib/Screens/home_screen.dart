@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
             itemBuilder: (BuildContext context, int chipidx) {
               return ChoiceChip(
                 elevation: 9,
-                label: Text(names[chipidx]),
+                label: Text(names[chipidx],style: TextStyle(fontFamily: "Overpass",fontWeight: FontWeight.bold,fontSize: 15 ),),
                 selected: chipidx == _value,
                 avatar: Image.asset(icons[chipidx]),
                 backgroundColor: Colors.black,

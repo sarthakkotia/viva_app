@@ -97,7 +97,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                     widget.venue,
                     style: const TextStyle(
                       fontSize: 16.0,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.bold,fontFamily: "Overpass"
                     ),
                   ),
                 ],
@@ -114,7 +114,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                     widget.time.toString(),
                     style: const TextStyle(
                       fontSize: 16.0,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.bold,fontFamily: "Overpass"
                     ),
                   ),
                 ],
@@ -131,7 +131,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                       },
                       child: const Text(
                         "Rulebook",
-                        style: TextStyle(color: Colors.deepPurple),
+                        style: TextStyle(fontSize: 18)
                       ),
                     ))
                 : const SizedBox(
@@ -142,14 +142,14 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 widget.desc,
-                style: const TextStyle(fontSize: 16.0),
+                style: const TextStyle(fontSize: 16.0,fontFamily: "Overpass"),
               ),
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(
                 "Similar Events",
-                style: TextStyle(
+                style: TextStyle(fontFamily: "Overpass",
                   fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                 ),

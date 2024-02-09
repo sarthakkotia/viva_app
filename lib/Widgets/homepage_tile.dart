@@ -110,7 +110,7 @@ class _HomePageCardState extends State<HomePageCard> {
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
                     widget.title,
-                    style: const TextStyle(
+                    style: const TextStyle(fontFamily: "CasagrandeGrind",
                       color: Colors.white,
                       wordSpacing: 3,
                       fontSize: 18,
