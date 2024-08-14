@@ -36,7 +36,7 @@ class ContactUsWidget extends StatelessWidget {
               children: [
                 IconButton(
                     onPressed: () async {
-                      await launcher.callNumber("8529528101");
+                      await launcher.callNumber("<number>");
                     },
                     icon: const Icon(
                       Icons.call,
@@ -45,10 +45,10 @@ class ContactUsWidget extends StatelessWidget {
                 InkWell(
                   borderRadius: BorderRadius.circular(60),
                   onTap: () async {
-                    await launcher.callNumber("8529528101");
+                    await launcher.callNumber("<number>");
                   },
                   child: const Text(
-                    "8529528101",
+                    "<number>",
                     style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,
@@ -87,7 +87,7 @@ class ContactUsWidget extends StatelessWidget {
                 children: [
                   IconButton(
                       onPressed: () {
-                        launcher.callNumber("7007175380");
+                        launcher.callNumber("<number>");
                       },
                       icon: const Icon(
                         Icons.call,
@@ -96,10 +96,10 @@ class ContactUsWidget extends StatelessWidget {
                   InkWell(
                     borderRadius: BorderRadius.circular(60),
                     onTap: () {
-                      launcher.callNumber("7007175380");
+                      launcher.callNumber("<number>");
                     },
                     child: Text(
-                      "7007175380",
+                      "<number>",
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.black,
