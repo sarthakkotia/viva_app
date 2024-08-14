@@ -50,17 +50,17 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDqAAyWc8Uyuu5Jw2CX4G_3E8ilWzFuMPQ',
-    appId: '1:985618950954:android:1f7117140429c95302cc53',
-    messagingSenderId: '985618950954',
+    apiKey: '<firebase_api_key>',
+    appId: '<firebase_api_id>',
+    messagingSenderId: '<messageid>',
     projectId: 'viva-schedule',
     storageBucket: 'viva-schedule.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyALxCzCzZN6nIl6C2HZrT3OVDlBOvVbfdE',
-    appId: '1:985618950954:ios:842af0d0d5c6847402cc53',
-    messagingSenderId: '985618950954',
+    apiKey: '<api_key>',
+    appId: 'firebase_api_id',
+    messagingSenderId: '<messageSenderId>',
     projectId: 'viva-schedule',
     storageBucket: 'viva-schedule.appspot.com',
     iosBundleId: 'com.example.vivaApp',
